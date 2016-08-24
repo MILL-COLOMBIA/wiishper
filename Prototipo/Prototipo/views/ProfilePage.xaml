@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Prototipo.ProfilePage"
+             BackgroundColor="Black">
+  <ContentPage.Content>
+    <ScrollView>
+      <RelativeLayout x:Name="Pane">
+        <BoxView Color="Black" HeightRequest="100" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
+        <Button BorderRadius="45" x:Name="ProfilePic" BackgroundColor="White" HeightRequest="90" WidthRequest="90" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-45}" RelativeLayout.YConstraint=" {ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=50}" />
+        <Button BorderRadius="40" BackgroundColor="Aqua" HeightRequest="80" WidthRequest="80" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfilePic, Property=X, Factor=1, Constant=5}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=55 }" />
+        <Label Text="{Binding Username}" BackgroundColor="Transparent" TextColor="White" FontAttributes="Bold" FontSize="26" HorizontalTextAlignment="Center" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=140}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" x:Name="usernameEntry"/>
+        <StackLayout RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=200}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+          <Label BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding Email}" />
+          <Label BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding Name}" />
+          <Label BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding Surname}"/>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="Fecha nacimiento" BackgroundColor="Transparent" TextColor="White" HorizontalOptions="FillAndExpand"/>
+            <DatePicker Date="{Binding Birthdate}" HorizontalOptions="FillAndExpand">
+              <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+            </DatePicker>
+          </StackLayout>
+          <Button Text="Editar" Clicked="OnEdit"/>
+          <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+            <Button Image="profile.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+            <Button Image="shop.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+            <Button Image="main.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+            <Button Image="calendar.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+            <Button Image="follow.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+          </StackLayout>
+        </StackLayout>
+      </RelativeLayout>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>

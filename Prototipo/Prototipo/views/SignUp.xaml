@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Prototipo.SignUp"
+             BackgroundImage ="background.png">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+  </ContentPage.Padding>
+  <ContentPage.Content>
+    <StackLayout Orientation="Vertical">
+      <Image x:Name="logo" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Source="logo.png"/>
+      <Entry x:Name="username" VerticalOptions="Center" Placeholder="Correo"/>
+      <Entry x:Name="password" VerticalOptions="Center" Placeholder="Contraseña" IsPassword="True"/>
+      <Button x:Name="signUp" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Image="path" Clicked="OnSignUp"/>
+      <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
+        <Button x:Name="fbSignUp" Image="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-128.png" Clicked="OnFbSignUp"/>
+        <Button x:Name="twitterSignUp" Image="path/to/twiter" Clicked="OnTwitterSignUp"/>
+        <Button x:Name="googleSignUp" Image="path/to/google" Clicked="OnGoogleSignUp"/>
+      </StackLayout>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

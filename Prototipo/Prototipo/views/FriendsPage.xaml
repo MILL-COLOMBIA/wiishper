@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Prototipo.FriendsPage"
+             Title="Amigos">
+  <ListView x:Name="friendsView">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <ViewCell.View>
+            <StackLayout Padding="20,0,20,0" Orientation="Horizontal">
+              <Image Source="{Binding profilepic}"/>
+              <StackLayout>
+                <Label BackgroundColor="Transparent" TextColor="#0AF3E5" FontAttributes="Bold" Text="{Binding username}"/>
+                <Label BackgroundColor="Transparent" TextColor="White" Text="{Binding name}"/>
+              </StackLayout>
+            </StackLayout>
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+  
+</ContentPage>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="Prototipo.FormPage"
+             BackgroundColor="Black"
+             Title=" Datos Personales">
+  <ContentPage.Content>
+    <ScrollView>
+      <RelativeLayout>
+        <BoxView Color="Black" HeightRequest="100" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
+        <Button BorderRadius="55" x:Name="ProfilePic" BackgroundColor="White" HeightRequest="90" WidthRequest="90" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-45}" RelativeLayout.YConstraint=" {ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=50}" />
+        <Button BorderRadius="40" BackgroundColor="Aqua" HeightRequest="80" WidthRequest="80" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfilePic, Property=X, Factor=1, Constant=5}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=55 }" />
+        <Entry Text="{Binding username}" Placeholder="User Name" BackgroundColor="Transparent" TextColor="White" FontAttributes="Bold" FontSize="26" HorizontalTextAlignment="Center" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=140}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" x:Name="usernameEntry"/>
+        <StackLayout RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=200}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+          <Entry Placeholder="email" BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding email}" x:Name="emailEntry"/>
+          <Entry Placeholder="nombres" BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding name}" x:Name="nameEntry"/>
+          <Entry Placeholder="apellidos" BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding surname}" x:Name="surnameEntry"/>
+          <Entry Placeholder="contraseña" BackgroundColor="Transparent" TextColor="White" HorizontalOptions="Start" Text="{Binding password}" x:Name="passwordEntry" IsPassword="True" />
+          <StackLayout Orientation="Horizontal">
+            <Label Text="Fecha nacimiento" BackgroundColor="Transparent" TextColor="White" HorizontalOptions="FillAndExpand"/>
+            <DatePicker Date="{Binding birthdate}" HorizontalOptions="FillAndExpand" x:Name="birthdateEntry">
+              <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+            </DatePicker>
+          </StackLayout>
+          <Button Text="Guardar" Clicked="OnSave"/> 
+          <Label x:Name="Result" BackgroundColor="Transparent" TextColor="White" Text="StandBy" />
+        </StackLayout>
+      </RelativeLayout>
+    </ScrollView>
+  </ContentPage.Content>
+ 
+</ContentPage>
