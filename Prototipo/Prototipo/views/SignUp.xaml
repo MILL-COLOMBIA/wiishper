@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Prototipo.SignUp"
              BackgroundImage ="background.png">
+  
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
   </ContentPage.Padding>
@@ -13,7 +14,7 @@
       <Entry x:Name="password" VerticalOptions="Center" Placeholder="Contraseña" IsPassword="True"/>
       <Button x:Name="signUp" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Image="path" Clicked="OnSignUp"/>
       <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
-        <Button x:Name="fbSignUp" Image="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-128.png" Clicked="OnFbSignUp"/>
+        <Button x:Name="fbSignUp" Image="facebook_small.png" Clicked="OnFbSignUp" BackgroundColor="Transparent"/>
         <Button x:Name="twitterSignUp" Image="path/to/twiter" Clicked="OnTwitterSignUp"/>
         <Button x:Name="googleSignUp" Image="path/to/google" Clicked="OnGoogleSignUp"/>
       </StackLayout>

@@ -82,8 +82,6 @@ namespace Prototipo
             }
             catch (Exception ex)
             {
-                //TODO exception handling
-                Debug.WriteLine(ex.Message);
                 return null;
             }
         }

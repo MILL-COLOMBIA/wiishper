@@ -22,13 +22,7 @@ namespace Prototipo
         async void OnSave(object sender, EventArgs e)
         {
             user = (User)BindingContext;
-            //int result = -1;
-            //result = App.Database.SaveUser(user);
-            //if (result > 0)
-            //{
-            //    Result.Text = "User Saved " + result;
-            //    Result.BackgroundColor = Color.Green;
-            //}
+         
             var response = await App.Manager.SignUp(user);
             if(response != null)
             {

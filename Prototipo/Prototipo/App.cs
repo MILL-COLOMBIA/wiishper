@@ -27,9 +27,9 @@ namespace Prototipo
             //LoadUsers();
             //UpdateUsers();
             Manager = new RESTManager(new RestService());
-            if (IsLoggedIn)
+            if (!IsLoggedIn)
                 // The root page of your application
-                MainPage = new NavigationPage(new SignUp());
+                MainPage = new NavigationPage(new SignUp()) { BarBackgroundColor = Color.FromRgb(0.1, 1, 0.1) };
             else
                 MainPage = new NavigationPage(new CarruselPage());
         }
