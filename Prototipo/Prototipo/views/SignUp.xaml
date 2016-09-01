@@ -8,16 +8,18 @@
     <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
   </ContentPage.Padding>
   <ContentPage.Content>
-    <StackLayout Orientation="Vertical">
-      <Image x:Name="logo" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Source="logo.png"/>
-      <Entry x:Name="username" VerticalOptions="Center" Placeholder="Correo"/>
-      <Entry x:Name="password" VerticalOptions="Center" Placeholder="Contraseña" IsPassword="True"/>
-      <Button x:Name="signUp" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Image="path" Clicked="OnSignUp"/>
-      <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
-        <Button x:Name="fbSignUp" Image="facebook_small.png" Clicked="OnFbSignUp" BackgroundColor="Transparent"/>
-        <Button x:Name="twitterSignUp" Image="path/to/twiter" Clicked="OnTwitterSignUp"/>
-        <Button x:Name="googleSignUp" Image="path/to/google" Clicked="OnGoogleSignUp"/>
+    <RelativeLayout>
+      <Image x:Name="logo" HorizontalOptions="Center" Source="logo.png" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5, Constant=-40}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-145}"/>
+      <StackLayout Orientation="Vertical" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5, Constant=50}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-145}">
+        <Entry x:Name="username" VerticalOptions="Center" Placeholder="Correo"/>
+        <Entry x:Name="password" VerticalOptions="Center" Placeholder="Contraseña" IsPassword="True"/>
+        <Button x:Name="signUp" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Image="path" BackgroundColor="#00DDE5" Clicked="OnSignUp" Text="Registrarse"/>
+        <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
+          <Button x:Name="fbSignUp" Image="fb_smaller.png" Clicked="OnFbSignUp" BackgroundColor="Transparent" HeightRequest="20"/>
+          <Button x:Name="twitterSignUp" Image="path/to/twiter" Clicked="OnTwitterSignUp"/>
+          <Button x:Name="googleSignUp" Image="path/to/google" Clicked="OnGoogleSignUp"/>
+        </StackLayout>
       </StackLayout>
-    </StackLayout>
+    </RelativeLayout>
   </ContentPage.Content>
 </ContentPage>

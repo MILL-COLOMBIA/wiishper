@@ -13,6 +13,7 @@ namespace Prototipo
         //Resources
         public static string UsersResource = "/Users";
         public static string FriendsResource = "/Friends";
+        public static string ProductsResource = "/Products";
 
         //Actions
         public static string SignUp = "/signup";

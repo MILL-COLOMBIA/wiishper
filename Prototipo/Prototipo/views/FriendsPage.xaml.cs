@@ -20,7 +20,6 @@ namespace Prototipo
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            Debug.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             friendsView.ItemsSource = await App.Manager.GetFriends();
         }
     }

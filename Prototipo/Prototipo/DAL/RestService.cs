@@ -16,6 +16,7 @@ namespace Prototipo
         HttpClient client;
 
         public List<User> Friends { get; private set; }
+        public List<Products> _Products { get; private set; }
 
         public RestService()
         {
@@ -29,7 +30,6 @@ namespace Prototipo
             Friends = new List<User>();
 
             var uri = new Uri(string.Format(Constants.RestURL, Constants.FriendsResource, string.Empty));
-            Debug.WriteLine("--------------------------- GetFriends ------------------------------------");
             try
             {
                 var response = await client.GetAsync(uri);
@@ -37,7 +37,6 @@ namespace Prototipo
                 {
                     byte[] buffer = await response.Content.ReadAsByteArrayAsync();
                     string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
-                    Debug.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAA");
                     Debug.WriteLine(result);
                     ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
                     Friends = JsonConvert.DeserializeObject<List<User>>(sr.data.ToString());
@@ -46,7 +45,6 @@ namespace Prototipo
                 {
                     byte[] buffer = await response.Content.ReadAsByteArrayAsync();
                     string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
-                    Debug.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAA");
                     Debug.WriteLine(result);
                 }
             }
@@ -57,6 +55,39 @@ namespace Prototipo
             }
 
             return Friends;
+        }
+
+        public async Task<List<Products>> GetProducts()
+        {
+            _Products = new List<Products>();
+
+            var uri = new Uri(string.Format(Constants.RestURL, Constants.ProductsResource, string.Empty));
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    byte[] buffer = await response.Content.ReadAsByteArrayAsync();
+                    string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                    Debug.WriteLine(result);
+                    ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
+                    _Products = JsonConvert.DeserializeObject<List<Products>>(sr.data.ToString());
+                }
+                else
+                {
+                    byte[] buffer = await response.Content.ReadAsByteArrayAsync();
+                    string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                    Debug.WriteLine(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                //TODO exception handling
+            }
+
+            return _Products;
         }
 
         public async Task<string> SignUp(User user)

@@ -18,8 +18,12 @@ namespace Prototipo
 
         public Task<List<User>> GetFriends()
         {
-            Debug.WriteLine("________ GETFRIENDS _______________");
             return restService.GetFriends();
+        }
+
+        public Task<List<Products>> GetProducts()
+        {
+            return restService.GetProducts();
         }
 
         public Task<string> SignUp(User user)

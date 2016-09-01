@@ -16,6 +16,12 @@ namespace Prototipo
             ItemsSource = ColorsDataModel.All;
         }
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+        }
+
         async private void OnNext(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FormPage());
