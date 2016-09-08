@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +14,15 @@ namespace Prototipo
         public CarruselPage()
         {
             InitializeComponent();
-            ItemsSource = ColorsDataModel.All;
+            ItemsSource = App.Manager.products();
+            //ItemsSource = ColorsDataModel.All;
+            //ItemsSource = new List<Products>();
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
+            ItemsSource = await App.Manager.GetProducts();
         }
 
         async private void OnNext(object sender, EventArgs e)

@@ -1,18 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Prototipo.CarruselPage">
+             x:Class="Prototipo.CarruselPage"
+             BackgroundImage="shop_bg.png">
   <CarouselPage.ItemTemplate>
     <DataTemplate>
       <ContentPage>
         <ContentPage.Padding>
           <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0"/>
         </ContentPage.Padding>
-        <StackLayout>
-          <Label Text="{Binding name}" FontSize="Medium" HorizontalOptions="Center"/>
+        <RelativeLayout>
+          <Label Text="¡Descubre aquí lo que más te gusta!" HorizontalOptions="Center" TextColor="White" BackgroundColor="Transparent"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.1}"
+                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.05}"/>
+          <Image Source="{Binding image}" 
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}"
+                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25}"
+                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.29}"/>
+          <Label Text="{Binding name}" TextColor="White" BackgroundColor="Transparent"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.1}"
+                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.68}"/>
+          <Button Text="X" BackgroundColor="Red"
+                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.2}"
+                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Heigth, Factor=0.1}"
+                  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.2}"
+                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.78}"/>
+        <Button Text="V" BackgroundColor="Lime"
+                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.2}"
+                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Heigth, Factor=0.1}"
+                  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.6}"
+                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.78}"/>
+        </RelativeLayout>
+        <!--<StackLayout>
+          <Label Text="{Binding name}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
           <Image Source="{Binding image}" WidthRequest="200" HeightRequest="200" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
           <Button Text="NEXT" Clicked="OnNext"/>
-        </StackLayout>
+        </StackLayout>-->
       </ContentPage>
     </DataTemplate>
   </CarouselPage.ItemTemplate>

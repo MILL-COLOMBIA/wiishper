@@ -16,13 +16,15 @@ namespace Prototipo
         HttpClient client;
 
         public List<User> Friends { get; private set; }
-        public List<Products> _Products { get; private set; }
+        public static List<Products> _Products { get; private set; }
 
         public RestService()
         {
             client = new HttpClient();
             client.MaxResponseContentBufferSize = 256000;
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "e0d8b9bf0ec4908d130bc93130480eb8");
+            _Products = new List<Products>();
+            _Products.Add(new Products() { name = "producto 1", image = "profilepic.png" });
         }
 
         public async Task<List<User>> GetFriends()

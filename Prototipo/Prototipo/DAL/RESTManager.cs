@@ -40,5 +40,10 @@ namespace Prototipo
         {
             return restService.GetUsers();
         }
+
+        public List<Products> products()
+        {
+            return RestService._Products;
+        }
     }
 }

@@ -3336,8 +3336,8 @@ namespace Prototipo.Droid
 			// aapt resource value: 0x7f02006b
 			public const int mr_ic_settings_light = 2130837611;
 			
-			// aapt resource value: 0x7f02006f
-			public const int notification_template_icon_bg = 2130837615;
+			// aapt resource value: 0x7f020070
+			public const int notification_template_icon_bg = 2130837616;
 			
 			// aapt resource value: 0x7f02006c
 			public const int profile = 2130837612;
@@ -3347,6 +3347,9 @@ namespace Prototipo.Droid
 			
 			// aapt resource value: 0x7f02006e
 			public const int shop = 2130837614;
+			
+			// aapt resource value: 0x7f02006f
+			public const int shop_bg = 2130837615;
 			
 			static Drawable()
 			{

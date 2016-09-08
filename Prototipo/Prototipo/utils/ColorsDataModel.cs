@@ -10,8 +10,9 @@ namespace Prototipo
 {
     class ColorsDataModel
     {
-        public string Name { get; set; }
+        public string name { get; set; }
         public Color Color { get; set; }
+        public string image { get; set; }
 
         public static IList<ColorsDataModel> All { get; set; }
 
@@ -21,18 +22,21 @@ namespace Prototipo
             {
                 new ColorsDataModel
                 {
-                    Name = "Red",
-                    Color = Color.Red
+                    name = "Red",
+                    Color = Color.Red,
+                    image = "main.png"
                 },
                 new ColorsDataModel
                 {
-                    Name = "Blue",
-                    Color = Color.Blue
+                    name = "Blue",
+                    Color = Color.Blue,
+                    image = "shop.png"
                 },
                 new ColorsDataModel
                 {
-                    Name = "Green",
-                    Color = Color.Green
+                    name = "Green",
+                    Color = Color.Green,
+                    image = "profile.png"
                 }
             };
         }
