@@ -7,7 +7,7 @@ using SQLite;
 
 namespace Prototipo
 {
-    public class Products
+    public class Product
     {
         [PrimaryKey, AutoIncrement]
         public int idproducts { get; set; }

@@ -21,7 +21,7 @@ namespace Prototipo
             return restService.GetFriends();
         }
 
-        public Task<List<Products>> GetProducts()
+        public Task<List<Product>> GetProducts()
         {
             return restService.GetProducts();
         }
@@ -41,7 +41,7 @@ namespace Prototipo
             return restService.GetUsers();
         }
 
-        public List<Products> products()
+        public List<Product> products()
         {
             return RestService._Products;
         }

@@ -16,15 +16,15 @@ namespace Prototipo
         HttpClient client;
 
         public List<User> Friends { get; private set; }
-        public static List<Products> _Products { get; private set; }
+        public static List<Product> _Products { get; private set; }
 
         public RestService()
         {
             client = new HttpClient();
             client.MaxResponseContentBufferSize = 256000;
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "e0d8b9bf0ec4908d130bc93130480eb8");
-            _Products = new List<Products>();
-            _Products.Add(new Products() { name = "producto 1", image = "profilepic.png" });
+            _Products = new List<Product>();
+            _Products.Add(new Product() { name = "producto 1", image = "profilepic.png" });
         }
 
         public async Task<List<User>> GetFriends()
@@ -59,9 +59,9 @@ namespace Prototipo
             return Friends;
         }
 
-        public async Task<List<Products>> GetProducts()
+        public async Task<List<Product>> GetProducts()
         {
-            _Products = new List<Products>();
+            _Products = new List<Product>();
 
             var uri = new Uri(string.Format(Constants.RestURL, Constants.ProductsResource, string.Empty));
 
@@ -74,7 +74,7 @@ namespace Prototipo
                     string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
                     Debug.WriteLine(result);
                     ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
-                    _Products = JsonConvert.DeserializeObject<List<Products>>(sr.data.ToString());
+                    _Products = JsonConvert.DeserializeObject<List<Product>>(sr.data.ToString());
                 }
                 else
                 {
