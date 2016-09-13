@@ -14,6 +14,7 @@ namespace Prototipo
 
         static UserDatabase database;
         public static bool IsLoggedIn { get; set; }
+        public static string ApiKey { get; set; }
         public static UserDatabase Database
         {
             get

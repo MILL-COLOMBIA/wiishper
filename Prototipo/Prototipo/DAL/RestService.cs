@@ -39,7 +39,6 @@ namespace Prototipo
                 {
                     byte[] buffer = await response.Content.ReadAsByteArrayAsync();
                     string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
-                    Debug.WriteLine(result);
                     ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
                     Friends = JsonConvert.DeserializeObject<List<User>>(sr.data.ToString());
                 }
@@ -85,8 +84,9 @@ namespace Prototipo
             }
             catch (Exception ex)
             {
+                Debug.WriteLine("********************************------------------------------------****************************");
                 Debug.WriteLine(ex);
-                //TODO exception handling
+                return new List<Product>();
             }
 
             return _Products;

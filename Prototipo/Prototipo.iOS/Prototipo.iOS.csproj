@@ -151,10 +151,43 @@
     <BundleResource Include="Resources\background.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\facebook_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fb_smaller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\follow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\logo1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profilepic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\shop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\shop_bg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

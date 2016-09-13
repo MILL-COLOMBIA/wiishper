@@ -2,13 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
-             x:Class="Prototipo.ProductsPage">
-  <Grid RowSpacing="0">
+             x:Class="Prototipo.ProductsPage"
+             BackgroundImage="shop_bg.png"
+             Title="Productos">
+  <Grid RowSpacing="0" x:Name="MainGrid">
     <Grid.RowDefinitions>
-      <RowDefinition Height=".3*"/>
-      <RowDefinition Height=".7*"/>
+      <RowDefinition Height=".03*"/>
+      <RowDefinition Height=".1*"/>
+      <RowDefinition Height=".03*"/>
+      <RowDefinition Height=".40*"/>
+      <RowDefinition Height=".2*"/>
+      <RowDefinition Height=".05*"/>
+      <RowDefinition Height=".08*"/>
+      <RowDefinition Height=".03*"/>
+      <RowDefinition Height=".08*"/>
     </Grid.RowDefinitions>
-    <cv:CarouselView ItemsSource="{Binding Products}" x:Name="CarouselProducts">
+    <StackLayout Grid.Row="1">
+      <Label Text="¡Descubre aquí lo que más te gusta!" TextColor="White" BackgroundColor="Transparent" FontSize="18" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+    </StackLayout>
+    <cv:CarouselView Grid.Row="3" ItemsSource="{Binding Products}" x:Name="CarouselProducts">
       <cv:CarouselView.ItemTemplate>
         <DataTemplate>
           <Grid>
@@ -16,7 +28,7 @@
               <RowDefinition Height="*"/>
               <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding image}"/>
+            <Image Grid.RowSpan="2" Aspect="AspectFit" Source="{Binding image}"/>
             <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
               <Label TextColor="White" Text="{Binding name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
@@ -24,5 +36,30 @@
         </DataTemplate>
       </cv:CarouselView.ItemTemplate>
     </cv:CarouselView>
+    <Grid Grid.Row="6">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+      </Grid.ColumnDefinitions>
+      <Button Text="X" TextColor="White" BackgroundColor="Red" Clicked="OnReject" Grid.Column="1" FontSize="20"/>
+      <Button Text="O" TextColor="White" BackgroundColor="Lime" Clicked="OnLike" Grid.Column="3" FontSize="20"/>
+    </Grid>
+    <Grid Grid.Row="8">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+      </Grid.ColumnDefinitions>
+      <Button BackgroundColor="Aqua" Grid.Column="0" FontSize="20" TextColor="White" Text="1"/>
+      <Button BackgroundColor="Aqua" Grid.Column="1" FontSize="20" TextColor="White" Text="2"/>
+      <Button BackgroundColor="Aqua" Grid.Column="2" FontSize="20" TextColor="White" Text="3"/>
+      <Button BackgroundColor="Aqua" Grid.Column="3" FontSize="20" TextColor="White" Text="4"/>
+      <Button BackgroundColor="Aqua" Grid.Column="4" FontSize="20" TextColor="White" Text="5"/>      
+    </Grid>
   </Grid>
 </ContentPage>
