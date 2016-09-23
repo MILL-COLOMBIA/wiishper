@@ -15,23 +15,28 @@ namespace Prototipo
     {
         HttpClient client;
 
+        dynamic sendContent;
+
         public List<User> Friends { get; private set; }
-        public static List<Product> _Products { get; private set; }
+        public static List<Product> Products { get; private set; }
 
         public RestService()
         {
             client = new HttpClient();
             client.MaxResponseContentBufferSize = 256000;
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "e0d8b9bf0ec4908d130bc93130480eb8");
-            _Products = new List<Product>();
-            _Products.Add(new Product() { name = "producto 1", image = "profilepic.png" });
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "82991d5c121abd6985314d7df5708260");
+            Products = new List<Product>();
+            Products.Add(new Product() { name = "producto 1", image = "profilepic.png" });
+            sendContent = new JObject();
+            sendContent.data = new JObject();
+            sendContent.control = new JObject();
         }
 
         public async Task<List<User>> GetFriends()
         {
             Friends = new List<User>();
 
-            var uri = new Uri(string.Format(Constants.RestURL, Constants.FriendsResource, string.Empty));
+            var uri = new Uri(Constants.RestURL);
             try
             {
                 var response = await client.GetAsync(uri);
@@ -60,20 +65,25 @@ namespace Prototipo
 
         public async Task<List<Product>> GetProducts()
         {
-            _Products = new List<Product>();
+            Products = new List<Product>();
 
-            var uri = new Uri(string.Format(Constants.RestURL, Constants.ProductsResource, string.Empty));
+            var uri = new Uri(Constants.RestURL);
+            dynamic sentjson = new JObject();
+            sendContent.control.operation = Constants.SHOW_RANDOM_PRODS;
+            var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
+            Debug.WriteLine(client.DefaultRequestHeaders.Authorization);
 
             try
             {
-                var response = await client.GetAsync(uri);
+                var response = await client.PostAsync(uri, content);
                 if (response.IsSuccessStatusCode)
                 {
                     byte[] buffer = await response.Content.ReadAsByteArrayAsync();
                     string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
                     Debug.WriteLine(result);
                     ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
-                    _Products = JsonConvert.DeserializeObject<List<Product>>(sr.data.ToString());
+                    Debug.WriteLine("********************************------------------------------------****************************");
+                    Products = JsonConvert.DeserializeObject<List<Product>>(sr.data.ToString());
                 }
                 else
                 {
@@ -84,18 +94,17 @@ namespace Prototipo
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("********************************------------------------------------****************************");
                 Debug.WriteLine(ex);
                 return new List<Product>();
             }
 
-            return _Products;
+            return Products;
         }
 
         public async Task<string> SignUp(User user)
         {
-            var uri = new Uri(string.Format(Constants.RestURL, Constants.UsersResource, Constants.SignUp));
-
+            var uri = new Uri(Constants.RestURL);
+            
             try
             {
                 var json = JsonConvert.SerializeObject(user);
@@ -121,7 +130,7 @@ namespace Prototipo
 
         public async Task AddFriend(int friendId)
         {
-            var uri = new Uri(string.Format(Constants.RestURL, Constants.FriendsResource, Constants.Add));
+            var uri = new Uri(Constants.RestURL);
 
             try
             {
@@ -148,7 +157,7 @@ namespace Prototipo
         {
             Friends = new List<User>();
 
-            var uri = new Uri(string.Format(Constants.RestURL, Constants.UsersResource, string.Empty));
+            var uri = new Uri(Constants.RestURL);
 
             try
             {

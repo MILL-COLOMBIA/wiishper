@@ -43,7 +43,7 @@ namespace Prototipo
 
         public List<Product> products()
         {
-            return RestService._Products;
+            return RestService.Products;
         }
     }
 }

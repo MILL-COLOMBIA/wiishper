@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Xamarin.Forms;
+using Plugin.Toasts;
 using Foundation;
 using UIKit;
 
@@ -23,6 +24,10 @@ namespace Prototipo.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            DependencyService.Register<ToastNotificatorImplementation>();
+            ToastNotificatorImplementation.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

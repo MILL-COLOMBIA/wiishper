@@ -3,22 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              x:Class="Prototipo.ProductsPage"
-             BackgroundImage="shop_bg.png"
-             Title="Productos">
+             BackgroundColor="White"
+             Title="Wiishper">
   <Grid RowSpacing="0" x:Name="MainGrid">
     <Grid.RowDefinitions>
       <RowDefinition Height=".03*"/>
       <RowDefinition Height=".1*"/>
       <RowDefinition Height=".03*"/>
-      <RowDefinition Height=".40*"/>
-      <RowDefinition Height=".2*"/>
+      <RowDefinition Height=".5*"/>
+      <RowDefinition Height=".1*"/>
       <RowDefinition Height=".05*"/>
       <RowDefinition Height=".08*"/>
       <RowDefinition Height=".03*"/>
       <RowDefinition Height=".08*"/>
     </Grid.RowDefinitions>
     <StackLayout Grid.Row="1">
-      <Label Text="¡Descubre aquí lo que más te gusta!" TextColor="White" BackgroundColor="Transparent" FontSize="18" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+      <Label Text="¡Descubre aquí lo que más te gusta!" TextColor="Black" BackgroundColor="Transparent" FontSize="18" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
     </StackLayout>
     <cv:CarouselView Grid.Row="3" ItemsSource="{Binding Products}" x:Name="CarouselProducts">
       <cv:CarouselView.ItemTemplate>
@@ -30,7 +30,7 @@
             </Grid.RowDefinitions>
             <Image Grid.RowSpan="2" Aspect="AspectFit" Source="{Binding image}"/>
             <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
-              <Label TextColor="White" Text="{Binding name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+              <Label TextColor="Black" Text="{Binding name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
           </Grid>
         </DataTemplate>
