@@ -13,5 +13,6 @@ namespace Prototipo
         Task<string> SignUp(User user);
         Task AddFriend(int idFriend);
         Task<List<User>> GetUsers();
+        Task<User> Login(string username, string password);
     }
 }

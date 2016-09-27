@@ -23,6 +23,7 @@ namespace Prototipo
         public string profilepic { get; set; }
         public string apikey { get; set;}
         public string password { get; set; }
+        public char gender { get; set; }
 
         public override string ToString()
         {

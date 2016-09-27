@@ -46,7 +46,6 @@
     <Compile Include="views\CarruselPage.xaml.cs">
       <DependentUpon>CarruselPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="utils\ColorsDataModel.cs" />
     <Compile Include="views\FormPage.xaml.cs">
       <DependentUpon>FormPage.xaml</DependentUpon>
     </Compile>
@@ -54,7 +53,6 @@
       <DependentUpon>FriendsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DAL\ISQLite.cs" />
-    <Compile Include="utils\MainCarousel.cs" />
     <Compile Include="views\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>
     </Compile>

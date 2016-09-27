@@ -11,10 +11,11 @@ namespace Prototipo
     public partial class ProfilePage : ContentPage
     {
         private User user;
-        public ProfilePage()
+        public ProfilePage(User user)
         {
             InitializeComponent();
-            user = App.Database.GetUser(1) != null ? App.Database.GetUser(1) : new User();
+            //user = App.Database.GetUser(1) != null ? App.Database.GetUser(1) : new User();
+            this.user = user;
             this.BindingContext = user;
         }
 

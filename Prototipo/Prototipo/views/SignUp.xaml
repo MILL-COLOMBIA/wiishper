@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Prototipo.SignUp"
              BackgroundImage ="background.png">
-  
+
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
   </ContentPage.Padding>
@@ -13,11 +13,12 @@
       <StackLayout Orientation="Vertical" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5, Constant=50}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-145}">
         <Entry x:Name="username" VerticalOptions="Center" Placeholder="Correo"/>
         <Entry x:Name="password" VerticalOptions="Center" Placeholder="Contraseña" IsPassword="True"/>
-        <Button x:Name="signUp" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Image="path" BackgroundColor="#00DDE5" Clicked="OnSignUp" Text="Registrarse"/>
-        <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
+        <Button x:Name="login" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="#00DDE5" Clicked="OnLogin" Text="Ingresar"/>
+        <Button x:Name="singup" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#00DDE5" Clicked="OnSignUp" Text="Regístrate"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
           <Button x:Name="fbSignUp" Image="fb_smaller.png" Clicked="OnFbSignUp" BackgroundColor="Transparent" HeightRequest="20"/>
-          <Button x:Name="twitterSignUp" Image="path/to/twiter" Clicked="OnTwitterSignUp"/>
-          <Button x:Name="googleSignUp" Image="path/to/google" Clicked="OnGoogleSignUp"/>
+          <Button x:Name="twitterSignUp" Clicked="OnTwitterSignUp"/>
+          <Button x:Name="googleSignUp"  Clicked="OnGoogleSignUp"/>
         </StackLayout>
       </StackLayout>
     </RelativeLayout>

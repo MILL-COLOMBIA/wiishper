@@ -5,34 +5,52 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Plugin.Toasts;
 
 namespace Prototipo
 {
     public partial class FormPage : ContentPage
     {
         private User user;
-        public FormPage()
+        private IToastNotificator notificator;
+        public FormPage(User user = null)
         {
             InitializeComponent();
-            //user = App.Database.GetUser(1) != null ? App.Database.GetUser(1) : new User();
-            user = new User();
+            notificator = DependencyService.Get<IToastNotificator>();
+            if(user == null)
+                user = new User() { email = "a.mejia@mill.com.co", birthdate = new DateTime(1987,5,19), name = "Andrés", surname = "Mejía", gender = 'M', password = "123456"};
             this.BindingContext = user;
         }
 
-        async void OnSave(object sender, EventArgs e)
+        private async void OnSave(object sender, EventArgs e)
         {
             user = (User)BindingContext;
          
             var response = await App.Manager.SignUp(user);
-            if(response != null)
+
+            if (response != null)
             {
-                Result.Text = "User Saved " + response;
-                Result.BackgroundColor = Color.Green;
+                await notificator.Notify(ToastNotificationType.Success, "Wiishper", "Bienvenido a wiishper", TimeSpan.FromSeconds(2));
+                await Navigation.PushAsync(new ProfilePage(user));
             }
             else
             {
-                Result.Text = "ERROR";
-                Result.BackgroundColor = Color.Red;
+                await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, ocurrió un error en el registro", TimeSpan.FromSeconds(2));
+            }
+        }
+
+        private void OnGenderChanged(object sender, EventArgs e)
+        {
+            user = (User)BindingContext;
+            switch(gender.SelectedIndex)
+            {
+                case 0:
+                default:
+                    user.gender = 'M';
+                    break;
+                case 1:
+                    user.gender = 'F';
+                    break;
             }
         }
     }

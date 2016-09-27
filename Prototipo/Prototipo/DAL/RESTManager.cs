@@ -45,5 +45,10 @@ namespace Prototipo
         {
             return RestService.Products;
         }
+
+        public Task<User> Login(string username, string password)
+        {
+            return restService.Login(username, password);
+        }
     }
 }
