@@ -4,8 +4,12 @@
              x:Class="Prototipo.ProfilePage"
              BackgroundImage="shop_bg.png">
   <ContentPage.Content>
-    <ScrollView>
-      <RelativeLayout x:Name="Pane">
+    <Grid RowSpacing="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height=".9*"/>
+        <RowDefinition Height=".1*"/>
+      </Grid.RowDefinitions>
+      <RelativeLayout x:Name="Pane" Grid.Row="0">
         <BoxView Color="Transparent" HeightRequest="100" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
         <Button BorderRadius="45" x:Name="ProfilePic" BackgroundColor="White" HeightRequest="90" WidthRequest="90" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-45}" RelativeLayout.YConstraint=" {ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=50}" />
         <Button BorderRadius="40" BackgroundColor="Aqua" HeightRequest="80" WidthRequest="80" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfilePic, Property=X, Factor=1, Constant=5}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=55 }" />
@@ -22,15 +26,22 @@
             </DatePicker>
           </StackLayout>
           <Button Text="Editar" Clicked="OnEdit"/>
-          <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
-            <Button Image="profile.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-            <Button Image="shop.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-            <Button Image="main.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-            <Button Image="calendar.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-            <Button Image="follow.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-          </StackLayout>
         </StackLayout>
       </RelativeLayout>
-    </ScrollView>
+      <Grid ColumnSpacing="0" Grid.Row="1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width=".2*"/>
+          <ColumnDefinition Width=".2*"/>
+          <ColumnDefinition Width=".2*"/>
+          <ColumnDefinition Width=".2*"/>
+          <ColumnDefinition Width=".2*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Image="profile.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+        <Button Grid.Column="1" Image="shop.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+        <Button Grid.Column="2" Image="main.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowPeople"/>
+        <Button Grid.Column="3" Image="calendar.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+        <Button Grid.Column="4" Image="follow.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+        </Grid>
+    </Grid>
   </ContentPage.Content>
 </ContentPage>

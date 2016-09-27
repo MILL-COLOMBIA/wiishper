@@ -228,6 +228,43 @@ namespace Prototipo
             return LoggedUser;
         }
 
+        public async Task<List<User>> ShowPeople()
+        {
+            var uri = new Uri(Constants.RestURL);
+            dynamic data = new JObject();
+            dynamic sendContent = CreateMessage(Constants.SEARCH_PEOPLE, data);
+            List<User> people =  new List<User>();
+            PrepareClient();
+            Debug.WriteLine(sendContent.ToString());
+            try
+            {
+                var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(uri, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    byte[] buffer = await response.Content.ReadAsByteArrayAsync();
+                    string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                    Debug.WriteLine(result);
+                    ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
+                    people = JsonConvert.DeserializeObject<List<User>>(sr.data.ToString());
+                    return people;
+                }
+                else
+                {
+                    byte[] buffer = await response.Content.ReadAsByteArrayAsync();
+                    string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                    Debug.WriteLine(result);
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+        }
+
         private dynamic CreateMessage(int operation, dynamic data)
         {
             dynamic message = new JObject();

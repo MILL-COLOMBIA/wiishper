@@ -50,5 +50,10 @@ namespace Prototipo
         {
             return restService.Login(username, password);
         }
+
+        public Task<List<User>> ShowPeople()
+        {
+            return restService.ShowPeople();
+        }
     }
 }

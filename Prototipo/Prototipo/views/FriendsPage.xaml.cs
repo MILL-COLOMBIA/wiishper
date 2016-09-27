@@ -11,16 +11,14 @@ namespace Prototipo
 {
     public partial class FriendsPage : ContentPage
     {
-        public FriendsPage()
+
+        private List<User> list;
+        public FriendsPage(List<User> list)
         {
             InitializeComponent();
-            //friendsView.ItemsSource = App.Database.GetUsers();
+            this.list = list;
+            friendsView.ItemsSource = list;
         }
 
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            friendsView.ItemsSource = await App.Manager.GetFriends();
-        }
     }
 }

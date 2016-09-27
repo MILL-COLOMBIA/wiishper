@@ -47,7 +47,7 @@
       <Button Text="X" TextColor="White" BackgroundColor="Red" Clicked="OnReject" Grid.Column="1" FontSize="20"/>
       <Button Text="O" TextColor="White" BackgroundColor="Lime" Clicked="OnLike" Grid.Column="3" FontSize="20"/>
     </Grid>
-    <Grid Grid.Row="8">
+    <Grid Grid.Row="8" ColumnSpacing="0">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width=".2*"/>
         <ColumnDefinition Width=".2*"/>

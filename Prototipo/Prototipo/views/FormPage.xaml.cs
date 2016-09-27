@@ -17,8 +17,8 @@ namespace Prototipo
         {
             InitializeComponent();
             notificator = DependencyService.Get<IToastNotificator>();
-            if(user == null)
-                user = new User() { email = "a.mejia@mill.com.co", birthdate = new DateTime(1987,5,19), name = "Andrés", surname = "Mejía", gender = 'M', password = "123456"};
+            if (user == null)
+                user = new User();
             this.BindingContext = user;
         }
 
