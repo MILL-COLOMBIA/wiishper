@@ -11,9 +11,13 @@ namespace Prototipo
         Task<List<User>> GetFriends();
         Task<List<Product>> GetProducts();
         Task<string> SignUp(User user);
-        Task AddFriend(int idFriend);
         Task<List<User>> GetUsers();
         Task<User> Login(string username, string password);
         Task<List<User>> ShowPeople();
+        Task<bool> IsFriend(int id);
+        Task<string> AddFriend(int id);
+        Task<string> Unfriend(int id);
+        Task<string> LikeProduct(int id);
+        Task<string> RejectProduct(int id);
     }
 }

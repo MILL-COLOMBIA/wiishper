@@ -4,9 +4,10 @@
              x:Class="Prototipo.ProfilePage"
              BackgroundImage="shop_bg.png">
   <ContentPage.Content>
-    <Grid RowSpacing="0">
+    <Grid x:Name="MainGrid" RowSpacing="0">
       <Grid.RowDefinitions>
-        <RowDefinition Height=".9*"/>
+        <RowDefinition Height=".8*"/>
+        <RowDefinition Height=".1*"/>
         <RowDefinition Height=".1*"/>
       </Grid.RowDefinitions>
       <RelativeLayout x:Name="Pane" Grid.Row="0">
@@ -21,14 +22,13 @@
           <Label BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding gender}"/>
           <StackLayout Orientation="Horizontal">
             <Label Text="Fecha nacimiento" BackgroundColor="Transparent" TextColor="White" HorizontalOptions="FillAndExpand"/>
-            <DatePicker Date="{Binding Birthdate}" HorizontalOptions="FillAndExpand">
+            <DatePicker Date="{Binding birthdate}" HorizontalOptions="FillAndExpand" IsEnabled="false">
               <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
             </DatePicker>
           </StackLayout>
-          <Button Text="Editar" Clicked="OnEdit"/>
         </StackLayout>
       </RelativeLayout>
-      <Grid ColumnSpacing="0" Grid.Row="1">
+      <Grid ColumnSpacing="0" Grid.Row="2">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width=".2*"/>
           <ColumnDefinition Width=".2*"/>
@@ -36,11 +36,11 @@
           <ColumnDefinition Width=".2*"/>
           <ColumnDefinition Width=".2*"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Image="profile.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-        <Button Grid.Column="1" Image="shop.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+        <Button Grid.Column="0" Image="profile.png" BackgroundColor="#00D6DE" HorizontalOptions="Fill"/>
+        <Button Grid.Column="1" Image="friends.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowFriends"/>
         <Button Grid.Column="2" Image="main.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowPeople"/>
         <Button Grid.Column="3" Image="calendar.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-        <Button Grid.Column="4" Image="follow.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+        <Button Grid.Column="4" Image="shop.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowProducts"/>
         </Grid>
     </Grid>
   </ContentPage.Content>

@@ -19,6 +19,7 @@ namespace Prototipo
         public static int ADD_FRIEND = 202;
         public static int UNFRIEND = 203;
         public static int SYNC_FRIENDS = 204;
+        public static int IS_FRIEND = 205;
         public static int SHOW_RANDOM_PRODS = 300;
         public static int LIKE_PROD = 301;
         public static int REJECT_PROD = 302;

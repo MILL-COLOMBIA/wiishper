@@ -20,5 +20,16 @@ namespace Prototipo
             friendsView.ItemsSource = list;
         }
 
+        private async void OnProfile(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage(RestService.LoggedUser));
+        }
+
+        private async void OnSelectUser(object sender, SelectedItemChangedEventArgs e)
+        {
+            var selectedUser = e.SelectedItem as User;
+            await Navigation.PushAsync(new ProfilePage(selectedUser));
+        }
+
     }
 }

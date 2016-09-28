@@ -31,11 +31,6 @@ namespace Prototipo
             return restService.SignUp(user);
         }
 
-        public Task AddFriend(int friendId)
-        {
-            return restService.AddFriend(friendId);
-        }
-
         public Task<List<User>> GetUsers()
         {
             return restService.GetUsers();
@@ -54,6 +49,31 @@ namespace Prototipo
         public Task<List<User>> ShowPeople()
         {
             return restService.ShowPeople();
+        }
+
+        public Task<bool> IsFriend(int id)
+        {
+            return restService.IsFriend(id);
+        }
+
+        public Task<string> AddFriend(int id)
+        {
+            return restService.AddFriend(id);
+        }
+
+        public Task<string> Unfriend(int id)
+        {
+            return restService.Unfriend(id);
+        }
+
+        public Task<string> LikeProduct(int id)
+        {
+            return restService.LikeProduct(id);
+        }
+
+        public Task<string> RejectProduct(int id)
+        {
+            return restService.RejectProduct(id);
         }
     }
 }

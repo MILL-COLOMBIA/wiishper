@@ -55,11 +55,11 @@
         <ColumnDefinition Width=".2*"/>
         <ColumnDefinition Width=".2*"/>
       </Grid.ColumnDefinitions>
-      <Button BackgroundColor="Aqua" Grid.Column="0" FontSize="20" TextColor="White" Text="1"/>
-      <Button BackgroundColor="Aqua" Grid.Column="1" FontSize="20" TextColor="White" Text="2"/>
-      <Button BackgroundColor="Aqua" Grid.Column="2" FontSize="20" TextColor="White" Text="3"/>
-      <Button BackgroundColor="Aqua" Grid.Column="3" FontSize="20" TextColor="White" Text="4"/>
-      <Button BackgroundColor="Aqua" Grid.Column="4" FontSize="20" TextColor="White" Text="5"/>      
+      <Button Grid.Column="0" Image="profile.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+      <Button Grid.Column="1" Image="friends.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowFriends"/>
+      <Button Grid.Column="2" Image="main.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowPeople"/>
+      <Button Grid.Column="3" Image="calendar.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+      <Button Grid.Column="4" Image="shop.png" BackgroundColor="#00D6DE" HorizontalOptions="Fill"/>    
     </Grid>
   </Grid>
 </ContentPage>
