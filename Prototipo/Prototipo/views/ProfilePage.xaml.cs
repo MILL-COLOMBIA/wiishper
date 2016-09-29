@@ -28,21 +28,25 @@ namespace Prototipo
             {
                 Button btnEdit = new Button() { Text = "Editar Perfil"};
                 btnEdit.Clicked += OnEdit;
-                MainGrid.Children.Add(btnEdit, 0, 1);
+                MainGrid.Children.Add(btnEdit, 0, 2);
+                List<Product> products = await App.Manager.ShowLikedProducts(-1);
+                ProductsView.ItemsSource = products;
             }
             else
             {
                 if(await App.Manager.IsFriend(this.user.idusers))
                 {
-                    Button btnUnfriend = new Button() { Text = "Eliminar" };
+                    Button btnUnfriend = new Button() { Text = "Eliminar amigo" };
                     btnUnfriend.Clicked += OnUnfriend;
-                    MainGrid.Children.Add(btnUnfriend, 0, 1);
+                    MainGrid.Children.Add(btnUnfriend, 0, 2);
+                    List<Product> products = await App.Manager.ShowLikedProducts(this.user.idusers);
+                    ProductsView.ItemsSource = products;
                 }
                 else
                 {
-                    Button btnAddFriend = new Button() { Text = "Agregar" };
+                    Button btnAddFriend = new Button() { Text = "Agregar amigo" };
                     btnAddFriend.Clicked += OnAddFriend;
-                    MainGrid.Children.Add(btnAddFriend, 0, 1);
+                    MainGrid.Children.Add(btnAddFriend, 0, 2);
                 }
             }
         }
@@ -61,7 +65,7 @@ namespace Prototipo
             }
             else
             {
-                await notificator.Notify(ToastNotificationType.Success, "Wiishper", "Amigo eliminado", TimeSpan.FromSeconds(2));
+                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Amigo eliminado", TimeSpan.FromSeconds(2));
                 await Navigation.PopAsync();
             }
         }
@@ -75,7 +79,7 @@ namespace Prototipo
             }
             else
             {
-                await notificator.Notify(ToastNotificationType.Success, "Wiishper", "Amigo agregado", TimeSpan.FromSeconds(2));
+                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Amigo agregado", TimeSpan.FromSeconds(2));
                 await Navigation.PopAsync();
             }
         }
@@ -86,7 +90,7 @@ namespace Prototipo
 
             if(people != null)
             {
-                await Navigation.PushAsync(new FriendsPage(people));
+                await Navigation.PushAsync(new FriendsPage(people, false));
             }
             else
             {
@@ -100,7 +104,7 @@ namespace Prototipo
 
             if (friends != null)
             {
-                await Navigation.PushAsync(new FriendsPage(friends));
+                await Navigation.PushAsync(new FriendsPage(friends, true));
             }
             else
             {

@@ -19,5 +19,7 @@ namespace Prototipo
         Task<string> Unfriend(int id);
         Task<string> LikeProduct(int id);
         Task<string> RejectProduct(int id);
+        Task<List<Product>> ShowLikedProducts(int id);
+        Task<List<Product>> ShowRejectedProducts(int id);
     }
 }

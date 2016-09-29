@@ -6,14 +6,16 @@
   <ContentPage.Content>
     <Grid x:Name="MainGrid" RowSpacing="0">
       <Grid.RowDefinitions>
-        <RowDefinition Height=".8*"/>
+        <RowDefinition Height=".65*"/>
+        <RowDefinition Height=".15*"/>
         <RowDefinition Height=".1*"/>
         <RowDefinition Height=".1*"/>
       </Grid.RowDefinitions>
-      <RelativeLayout x:Name="Pane" Grid.Row="0">
+      <ScrollView Grid.Row="0">
+      <RelativeLayout x:Name="Pane" >
         <BoxView Color="Transparent" HeightRequest="100" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
-        <Button BorderRadius="45" x:Name="ProfilePic" BackgroundColor="White" HeightRequest="90" WidthRequest="90" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-45}" RelativeLayout.YConstraint=" {ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=50}" />
-        <Button BorderRadius="40" BackgroundColor="Aqua" HeightRequest="80" WidthRequest="80" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfilePic, Property=X, Factor=1, Constant=5}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=55 }" />
+        <Button BorderRadius="45" x:Name="ProfilePic" BackgroundColor="White" HeightRequest="90" WidthRequest="90" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-45}" RelativeLayout.YConstraint=" {ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=20}" />
+        <Button BorderRadius="40" BackgroundColor="Aqua" HeightRequest="80" WidthRequest="80" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfilePic, Property=X, Factor=1, Constant=5}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=25 }" />
         <Label Text="{Binding username}" BackgroundColor="Transparent" TextColor="White" FontAttributes="Bold" FontSize="26" HorizontalTextAlignment="Center" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=140}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" x:Name="usernameEntry"/>
         <StackLayout RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=200}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
           <Label BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding email}" />
@@ -28,7 +30,25 @@
           </StackLayout>
         </StackLayout>
       </RelativeLayout>
-      <Grid ColumnSpacing="0" Grid.Row="2">
+      </ScrollView>
+      <ListView x:Name="ProductsView" Grid.Row="1">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <StackLayout Padding="20,0,20,0" Orientation="Horizontal">
+                  <Image Source="{Binding image}"/>
+                  <StackLayout>
+                    <Label BackgroundColor="Transparent" TextColor="#0AF3E5" FontAttributes="Bold" Text="{Binding name}"/>
+                    <Label BackgroundColor="Transparent" TextColor="White" Text="{Binding price}"/>
+                  </StackLayout>
+                </StackLayout>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <Grid ColumnSpacing="0" Grid.Row="3">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width=".2*"/>
           <ColumnDefinition Width=".2*"/>

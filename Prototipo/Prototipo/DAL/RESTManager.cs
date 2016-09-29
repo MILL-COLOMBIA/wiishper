@@ -75,5 +75,15 @@ namespace Prototipo
         {
             return restService.RejectProduct(id);
         }
+
+        public Task<List<Product>> ShowLikedProducts(int id)
+        {
+            return restService.ShowLikedProducts(id);
+        }
+
+        public Task<List<Product>> ShowRejectedProducts(int id)
+        {
+            return restService.ShowRejectedProducts(id);
+        }
     }
 }

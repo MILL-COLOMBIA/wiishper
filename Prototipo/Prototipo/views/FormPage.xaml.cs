@@ -30,7 +30,8 @@ namespace Prototipo
 
             if (response != null)
             {
-                await notificator.Notify(ToastNotificationType.Success, "Wiishper", "Bienvenido a wiishper", TimeSpan.FromSeconds(2));
+                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Bienvenido a wiishper", TimeSpan.FromSeconds(2));
+                RestService.LoggedUser = user;
                 await Navigation.PushAsync(new ProfilePage(user));
             }
             else

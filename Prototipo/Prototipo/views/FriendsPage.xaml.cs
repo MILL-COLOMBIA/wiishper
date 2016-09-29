@@ -13,11 +13,26 @@ namespace Prototipo
     {
 
         private List<User> list;
-        public FriendsPage(List<User> list)
+        private bool visited = false;
+        private bool friends;
+        public FriendsPage(List<User> list, bool friends)
         {
             InitializeComponent();
             this.list = list;
             friendsView.ItemsSource = list;
+            this.friends = friends;
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (!visited)
+                visited = true;
+            else
+            {
+                list = friends ? await App.Manager.GetFriends() : await App.Manager.ShowPeople();
+                friendsView.ItemsSource = list;
+            }
         }
 
         private async void OnProfile(object sender, EventArgs e)

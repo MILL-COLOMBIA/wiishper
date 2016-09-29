@@ -130,6 +130,7 @@ namespace Prototipo
                     byte[] buffer = await response.Content.ReadAsByteArrayAsync();
                     string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
                     Debug.WriteLine(result);
+                    App.Database.SaveUser(user);
                     return result;
                 }
                 else
@@ -194,6 +195,7 @@ namespace Prototipo
                     Debug.WriteLine(result);
                     ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
                     LoggedUser = JsonConvert.DeserializeObject<User>(sr.data.ToString());
+                    App.Database.SaveUser(LoggedUser);
                     return LoggedUser;
                 }
                 else
@@ -441,6 +443,84 @@ namespace Prototipo
                 Debug.WriteLine(e);
                 Debug.WriteLine(e.Message);
                 return "FAIL";
+            }
+        }
+
+
+        public async Task<List<Product>> ShowLikedProducts(int userid)
+        {
+            var uri = new Uri(Constants.RestURL);
+            dynamic data = new JObject();
+            if (userid >= 0)
+                data.userid = userid;
+            dynamic sendContent = CreateMessage(Constants.SHOW_LIKED_PRODS , data);
+            PrepareClient();
+            Debug.WriteLine(sendContent.ToString());
+
+            try
+            {
+                var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await client.PostAsync(uri, content);
+                byte[] buffer = await response.Content.ReadAsByteArrayAsync();
+                string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                Debug.WriteLine(result);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
+                    List<Product> products = JsonConvert.DeserializeObject<List<Product>>(sr.data.ToString());
+                    return products;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+
+        public async Task<List<Product>> ShowRejectedProducts(int userid)
+        {
+            var uri = new Uri(Constants.RestURL);
+            dynamic data = new JObject();
+            if (userid >= 0)
+                data.userid = userid;
+            dynamic sendContent = CreateMessage(Constants.SHOW_REJECTED_PRODS , data);
+            PrepareClient();
+            Debug.WriteLine(sendContent.ToString());
+
+            try
+            {
+                var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await client.PostAsync(uri, content);
+                byte[] buffer = await response.Content.ReadAsByteArrayAsync();
+                string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                Debug.WriteLine(result);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
+                    List<Product> products = JsonConvert.DeserializeObject<List<Product>>(sr.data.ToString());
+                    return products;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                Debug.WriteLine(e.Message);
+                return null;
             }
         }
 
