@@ -24,29 +24,32 @@ namespace Prototipo
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            if(this.user.email == RestService.LoggedUser.email)
+            if (RestService.LoggedUser != null)
             {
-                Button btnEdit = new Button() { Text = "Editar Perfil"};
-                btnEdit.Clicked += OnEdit;
-                MainGrid.Children.Add(btnEdit, 0, 2);
-                List<Product> products = await App.Manager.ShowLikedProducts(-1);
-                ProductsView.ItemsSource = products;
-            }
-            else
-            {
-                if(await App.Manager.IsFriend(this.user.idusers))
+                if (this.user.email == RestService.LoggedUser.email)
                 {
-                    Button btnUnfriend = new Button() { Text = "Eliminar amigo" };
-                    btnUnfriend.Clicked += OnUnfriend;
-                    MainGrid.Children.Add(btnUnfriend, 0, 2);
-                    List<Product> products = await App.Manager.ShowLikedProducts(this.user.idusers);
+                    Button btnEdit = new Button() { Text = "Editar Perfil" };
+                    btnEdit.Clicked += OnEdit;
+                    MainGrid.Children.Add(btnEdit, 0, 2);
+                    List<Product> products = await App.Manager.ShowLikedProducts(-1);
                     ProductsView.ItemsSource = products;
                 }
                 else
                 {
-                    Button btnAddFriend = new Button() { Text = "Agregar amigo" };
-                    btnAddFriend.Clicked += OnAddFriend;
-                    MainGrid.Children.Add(btnAddFriend, 0, 2);
+                    if (await App.Manager.IsFriend(this.user.idusers))
+                    {
+                        Button btnUnfriend = new Button() { Text = "Eliminar amigo" };
+                        btnUnfriend.Clicked += OnUnfriend;
+                        MainGrid.Children.Add(btnUnfriend, 0, 2);
+                        List<Product> products = await App.Manager.ShowLikedProducts(this.user.idusers);
+                        ProductsView.ItemsSource = products;
+                    }
+                    else
+                    {
+                        Button btnAddFriend = new Button() { Text = "Agregar amigo" };
+                        btnAddFriend.Clicked += OnAddFriend;
+                        MainGrid.Children.Add(btnAddFriend, 0, 2);
+                    }
                 }
             }
         }
@@ -115,6 +118,13 @@ namespace Prototipo
         private async void OnShowProducts(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ProductsPage());
+        }
+
+        private async void OnLogout(object sender, EventArgs e)
+        {
+            App.Database.DeleteUser(RestService.LoggedUser.idusers);
+            RestService.LoggedUser = null;
+            await Navigation.PopToRootAsync();
         }
     }
 }

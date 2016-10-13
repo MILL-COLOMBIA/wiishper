@@ -63,7 +63,7 @@ namespace Prototipo
 
             if (people != null)
             {
-                await Navigation.PushAsync(new FriendsPage(people));
+                await Navigation.PushAsync(new FriendsPage(people, false));
             }
             else
             {
@@ -77,7 +77,7 @@ namespace Prototipo
 
             if (friends != null)
             {
-                await Navigation.PushAsync(new FriendsPage(friends));
+                await Navigation.PushAsync(new FriendsPage(friends, true));
             }
             else
             {

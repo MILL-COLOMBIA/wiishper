@@ -130,7 +130,7 @@ namespace Prototipo
                     byte[] buffer = await response.Content.ReadAsByteArrayAsync();
                     string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
                     Debug.WriteLine(result);
-                    App.Database.SaveUser(user);
+                    //App.Database.SaveUser(user);
                     return result;
                 }
                 else
@@ -195,7 +195,7 @@ namespace Prototipo
                     Debug.WriteLine(result);
                     ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
                     LoggedUser = JsonConvert.DeserializeObject<User>(sr.data.ToString());
-                    App.Database.SaveUser(LoggedUser);
+                    //App.Database.SaveUser(LoggedUser);
                     return LoggedUser;
                 }
                 else

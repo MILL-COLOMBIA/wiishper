@@ -26,11 +26,8 @@ namespace Prototipo
         public App()
         {
             Manager = new RESTManager(new RestService());
-            if (!IsLoggedIn)
-                // The root page of your application
-                MainPage = new NavigationPage(new SignUp()) { BarBackgroundColor = Color.FromRgb(0, 0, 0) };
-            else
-                MainPage = new NavigationPage(new ProductsPage()) { BarBackgroundColor = Color.FromRgb(0, 0, 0), BarTextColor=Color.White };
+            MainPage = new NavigationPage(new SignUp()) { BarBackgroundColor = Color.FromRgb(0, 0, 0) };
+                        
         }
 
         protected override void OnStart()
