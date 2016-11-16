@@ -18,6 +18,7 @@ namespace Prototipo
         {
             database = DependencyService.Get<ISQLite>().GetConnection();
             database.CreateTable<User>();
+            database.CreateTable<Taste>();
         }
 
         public User GetUser(int id)
@@ -63,6 +64,22 @@ namespace Prototipo
         public IEnumerable<User> GetUsers()
         {
             return (from user in database.Table<User>() select user).ToList();
+        }
+
+        public int SaveProduct(Taste taste)
+        {
+            lock(locker)
+            {
+                if(taste.idproducts != 0)
+                {
+                    database.Update(taste);
+                    return taste.idproducts;
+                }
+                else
+                {
+                    return database.Insert(taste);
+                }
+            }
         }
     }
 }

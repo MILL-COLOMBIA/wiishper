@@ -2,25 +2,36 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Prototipo.SignUp"
-             BackgroundImage ="background.png">
+             BackgroundColor="White">
 
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
   </ContentPage.Padding>
   <ContentPage.Content>
     <RelativeLayout>
-      <Image x:Name="logo" HorizontalOptions="Center" Source="logo.png" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5, Constant=-40}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-145}"/>
-      <StackLayout Orientation="Vertical" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5, Constant=50}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-145}">
-        <Entry x:Name="username" VerticalOptions="Center" Placeholder="Correo"/>
-        <Entry x:Name="password" VerticalOptions="Center" Placeholder="Contraseña" IsPassword="True"/>
-        <Button x:Name="login" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="#00DDE5" Clicked="OnLogin" Text="Ingresar"/>
-        <Button x:Name="singup" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#00DDE5" Clicked="OnSignUp" Text="Regístrate"/>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-          <Button x:Name="fbSignUp" Image="fb_smaller.png" Clicked="OnFbSignUp" BackgroundColor="Transparent" HeightRequest="20"/>
-          <Button x:Name="twitterSignUp" Clicked="OnTwitterSignUp"/>
-          <Button x:Name="googleSignUp"  Clicked="OnGoogleSignUp"/>
-        </StackLayout>
-      </StackLayout>
+      <Image x:Name="logo" Source="logo.png" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=72}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-122}"/>
+      <StackLayout Orientation="Vertical" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=logo, Property=Height, Factor=1, Constant=102}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}" Spacing="8">
+        <Entry x:Name="username"  HorizontalOptions="Fill" VerticalOptions="Center" Placeholder="correo electrónico" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="#909090"/>
+        <Entry x:Name="password" HorizontalOptions="Fill" VerticalOptions="Center" IsPassword="true" Placeholder="contraseña" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="#909090"/>
+        <Button x:Name="login" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#F2F2F2" Text="Ingresa" WidthRequest="174"  HeightRequest="35" FontSize="14" FontAttributes="Bold" TextColor="#87888A" Clicked="OnLogin"/>
+        <Button x:Name="forgot" HorizontalOptions="Center" HeightRequest="35" BackgroundColor="White" TextColor="#BCBEC0" Text="¿Olvidó su contraseña?" FontSize="14"/>
+        <BoxView Color="White" HeightRequest="5" />
+        <Image HorizontalOptions="Center" Source="separator.png"/>
+        <BoxView Color="White" HeightRequest="5" />
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".15*"/>
+            <ColumnDefinition Width=".30*"/>
+            <ColumnDefinition Width=".1*"/>
+            <ColumnDefinition Width=".30*"/>
+            <ColumnDefinition Width=".15*"/>
+          </Grid.ColumnDefinitions>
+          <Button Image="facebook.png" HeightRequest="35" BackgroundColor="#2A559A" Grid.Column="1" Clicked="OnFbSignUp"/>
+          <Button Image="twitter.png" HeightRequest="35" BackgroundColor="#00ADEF" Grid.Column="3" Clicked="OnTwitterSignUp"/>
+        </Grid>
+        <BoxView Color="White" HeightRequest="40" />
+        <Button x:Name="create" VerticalOptions="EndAndExpand" BackgroundColor="White" TextColor="#60C4C3" FontSize="16" FontAttributes="Bold" Text="Crear una cuenta" Clicked="OnSignUp"/>
+      </StackLayout>      
     </RelativeLayout>
   </ContentPage.Content>
 </ContentPage>

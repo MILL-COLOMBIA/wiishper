@@ -5,7 +5,72 @@
              x:Class="Prototipo.ProductsPage"
              BackgroundColor="White"
              Title="Wiishper">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" WinPhone="0, 0, 0, 0"/>
+  </ContentPage.Padding>
   <Grid RowSpacing="0" x:Name="MainGrid">
+    <Grid.RowDefinitions>
+      <RowDefinition Height=".0705*"/>
+      <RowDefinition Height=".0026*"/>
+      <RowDefinition Height=".0522*"/>
+      <RowDefinition Height=".0026*"/>
+      <RowDefinition Height=".5907*"/>
+      <RowDefinition Height=".0026*"/>
+      <RowDefinition Height=".0261*"/>
+      <RowDefinition Height=".1240*"/>
+      <RowDefinition Height=".0261*"/>
+      <RowDefinition Height=".0026*"/>
+      <RowDefinition Height=".1*"/>
+    </Grid.RowDefinitions>
+  <BoxView Color="#5D5D5D" Grid.Row="0"/>
+  <BoxView Color="#74C7CD" Grid.Row="1"/>
+  <BoxView Color="#DEDEDE" Grid.Row="3"/>
+    <cv:CarouselView Grid.Row="4" ItemsSource="{Binding Products}" x:Name="CarouselProducts">
+      <cv:CarouselView.ItemTemplate>
+        <DataTemplate>
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Image Grid.RowSpan="2" Aspect="AspectFit" Source="{Binding image}"/>
+            <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
+              <Label TextColor="Black" Text="{Binding name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+          </Grid>
+        </DataTemplate>
+      </cv:CarouselView.ItemTemplate>
+    </cv:CarouselView>
+    <BoxView Color="#DEDEDE" Grid.Row="5"/>
+    <Grid Grid.Row="7">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width=".1484*"/>
+        <ColumnDefinition Width=".2032*"/>
+        <ColumnDefinition Width=".0396*"/>
+        <ColumnDefinition Width=".1088*"/>
+        <ColumnDefinition Width=".0396*"/>
+        <ColumnDefinition Width=".2032*"/>
+        <ColumnDefinition Width=".1484*"/>
+      </Grid.ColumnDefinitions>
+      <Button Grid.Column="5" Image="like.png" Clicked="OnLike"/>
+      <Button Grid.Column="1" Image="dislike.png" Clicked="OnReject"/>
+    </Grid>
+    <BoxView Color="#DEDEDE" Grid.Row="9"/>
+  <Grid ColumnSpacing="0" Grid.Row="10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width=".2*"/>
+      </Grid.ColumnDefinitions>
+      <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill"/>
+      <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill"/>
+      <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill"/>
+      <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill"/>
+      <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill"/>
+    </Grid>
+  <!--<Grid RowSpacing="0" x:Name="MainGrid">
     <Grid.RowDefinitions>
       <RowDefinition Height=".03*"/>
       <RowDefinition Height=".1*"/>
@@ -61,5 +126,6 @@
       <Button Grid.Column="3" Image="calendar.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
       <Button Grid.Column="4" Image="shop.png" BackgroundColor="#00D6DE" HorizontalOptions="Fill"/>    
     </Grid>
-  </Grid>
+  </Grid>-->
+</Grid>
 </ContentPage>

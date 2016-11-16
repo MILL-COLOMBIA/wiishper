@@ -17,43 +17,64 @@ namespace Prototipo
         public ProductsPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             notificator = DependencyService.Get<IToastNotificator>();            
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            bool tapped = await notificator.Notify(ToastNotificationType.Info, "Wiishper", "Estamos cargando productos para tí", TimeSpan.FromSeconds(2));
+            notificator.Notify(ToastNotificationType.Info, "Wiishper", "Estamos cargando productos para tí", TimeSpan.FromSeconds(2));
             CarouselProducts.ItemsSource = await App.Manager.GetProducts();
-            if(CarouselProducts.ItemsSource == null || ((IEnumerable<Product>)CarouselProducts.ItemsSource).Count() < 0)
+            if (CarouselProducts.ItemsSource == null || ((IEnumerable<Product>)CarouselProducts.ItemsSource).Count() <= 0)
             {
-                tapped = await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, no encontramos ningún producto", TimeSpan.FromSeconds(2));
+                await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, no encontramos ningún producto", TimeSpan.FromSeconds(2));
             }
         }
 
         private async void OnReject(object sender, EventArgs e)
         {
-            string result = await App.Manager.RejectProduct(((Product)CarouselProducts.Item).idproducts);
-            if(result.Equals("FAIL"))
+            int idproduct = ((Product)CarouselProducts.Item).idproducts;
+            if (RestService.LoggedUser != null)
             {
-                await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al rechazar el producto", TimeSpan.FromSeconds(2));
+                string result = await App.Manager.RejectProduct(idproduct);
+                if (result.Equals("FAIL"))
+                {
+                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al rechazar el producto", TimeSpan.FromSeconds(2));
+                }
+                else
+                {
+                    notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(2));
+                }
             }
             else
             {
-                await notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(2));
+                App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = new DateTime(), liked = false });
+                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(2));
             }
         }
 
         private async void OnLike(object sender, EventArgs e)
         {
-            string result = await App.Manager.LikeProduct(((Product)CarouselProducts.Item).idproducts);
-            if (result.Equals("FAIL"))
+            int idproduct = ((Product)CarouselProducts.Item).idproducts;
+            if (RestService.LoggedUser != null)
             {
-                await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al agregar el producto", TimeSpan.FromSeconds(2));
+                string result = await App.Manager.LikeProduct(idproduct);
+                if (result.Equals("FAIL"))
+                {
+                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al agregar el producto", TimeSpan.FromSeconds(2));
+                }
+                else
+                {
+                    notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(2));
+                    ((List<Product>)CarouselProducts.ItemsSource).Remove((Product)CarouselProducts.Item);
+                }
             }
             else
             {
-                await notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(2));
+                App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = new DateTime(), liked = true });
+                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(2));
+                ((List<Product>)CarouselProducts.ItemsSource).Remove((Product)CarouselProducts.Item);
             }
         }
 
@@ -84,5 +105,7 @@ namespace Prototipo
                 await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ocurrió un error al desplegar la información de amigos", TimeSpan.FromSeconds(2));
             }
         }
+
+
     }
 }

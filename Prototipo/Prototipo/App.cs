@@ -26,7 +26,7 @@ namespace Prototipo
         public App()
         {
             Manager = new RESTManager(new RestService());
-            MainPage = new NavigationPage(new SignUp()) { BarBackgroundColor = Color.FromRgb(0, 0, 0) };
+            MainPage = new NavigationPage(new SignUp());
                         
         }
 
@@ -48,7 +48,7 @@ namespace Prototipo
         private void LoadUsers()
         {
             string[] names = { "Andrés", "Felipe", "Cristian", "Mónica", "Juan", "Renzo", "Jonathan", "Miguel", "Jeny", "Ginna" };
-            string[] surnames = { "Mejía", "Perry", "Hincapié", "Contreras", "Saravia", "Sesana", "Álvarez", "Acosta", "Beltrán", "Barrera" };
+            string[] surnames = { "Mejía", "Perry", "Hincapié", "Saravia", "Sesana", "Álvarez", "Acosta", "Beltrán", "Barrera" };
             Random r = new Random();
             for(int i=0; i<15; i++)
             {

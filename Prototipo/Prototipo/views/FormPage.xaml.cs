@@ -47,10 +47,10 @@ namespace Prototipo
             {
                 case 0:
                 default:
-                    user.gender = 'M';
+                    user.gender = "M";
                     break;
                 case 1:
-                    user.gender = 'F';
+                    user.gender = "F";
                     break;
             }
         }

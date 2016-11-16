@@ -83,6 +83,7 @@ namespace Prototipo
             sendContent.control.operation = Constants.SHOW_RANDOM_PRODS;
             var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
             PrepareClient();
+            Debug.WriteLine(sendContent.ToString());
             try
             {
                 var response = await client.PostAsync(uri, content);
@@ -92,6 +93,7 @@ namespace Prototipo
                     string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
                     Debug.WriteLine(result);
                     ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
+                    Debug.WriteLine(result);
                     Debug.WriteLine("********************************------------------------------------****************************");
                     Products = JsonConvert.DeserializeObject<List<Product>>(sr.data.ToString());
                 }
@@ -104,6 +106,7 @@ namespace Prototipo
             }
             catch (Exception ex)
             {
+                Debug.WriteLine("********************************------------------------------------****************************");
                 Debug.WriteLine(ex);
                 return new List<Product>();
             }
@@ -183,7 +186,7 @@ namespace Prototipo
             data.password = password;
             data.email = username;
             dynamic sendContent = CreateMessage(Constants.LOGIN, data);
-
+            Debug.WriteLine(sendContent.ToString());
             try
             {
                 var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
@@ -538,7 +541,10 @@ namespace Prototipo
 
         private void PrepareClient()
         {
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", LoggedUser.apikey);
+            if(LoggedUser != null)
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", LoggedUser.apikey);
+            else
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "11614066f1b101f695bf2479656da628");
         }
     }
 }
