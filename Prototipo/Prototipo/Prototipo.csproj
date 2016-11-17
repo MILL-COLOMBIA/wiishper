@@ -41,6 +41,8 @@
     <Compile Include="DAL\RESTManager.cs" />
     <Compile Include="DAL\RestService.cs" />
     <Compile Include="DAL\Taste.cs" />
+    <Compile Include="utils\BoolToColorConverter.cs" />
+    <Compile Include="utils\BoolToStringConverter.cs" />
     <Compile Include="utils\Constants.cs" />
     <Compile Include="utils\ProductViewModel.cs" />
     <Compile Include="utils\ServiceResult.cs" />
@@ -54,6 +56,9 @@
       <DependentUpon>FriendsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DAL\ISQLite.cs" />
+    <Compile Include="views\NotificationsPage.xaml.cs">
+      <DependentUpon>NotificationsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>
     </Compile>
@@ -144,6 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="views\ProductsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="views\NotificationsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -16,6 +16,7 @@ namespace Prototipo
         public FormPage(User user = null)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             notificator = DependencyService.Get<IToastNotificator>();
             if (user == null)
                 user = new User();
@@ -32,7 +33,7 @@ namespace Prototipo
             {
                 notificator.Notify(ToastNotificationType.Success, "Wiishper", "Bienvenido a wiishper", TimeSpan.FromSeconds(2));
                 RestService.LoggedUser = user;
-                await Navigation.PushAsync(new ProfilePage(user));
+                await Navigation.PushAsync(new ProductsPage());
             }
             else
             {
@@ -40,19 +41,15 @@ namespace Prototipo
             }
         }
 
+        private async void OnDismiss(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
+
         private void OnGenderChanged(object sender, EventArgs e)
         {
             user = (User)BindingContext;
-            switch(gender.SelectedIndex)
-            {
-                case 0:
-                default:
-                    user.gender = "M";
-                    break;
-                case 1:
-                    user.gender = "F";
-                    break;
-            }
+            user.gender = ((Switch)sender).IsToggled ? "F" : "M";
         }
     }
 }

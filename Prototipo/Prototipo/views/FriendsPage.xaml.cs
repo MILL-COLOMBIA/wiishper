@@ -18,7 +18,10 @@ namespace Prototipo
         public FriendsPage(List<User> list, bool friends)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             this.list = list;
+            list = new List<User>() { new User() { name = "Andrés Felipe", followers = 10, following = 20, wishcount = 230, isfriend=true },
+                                      new User() { name = "Juan Manuel", followers=230, following=229, wishcount=10, isfriend=false } };
             friendsView.ItemsSource = list;
             this.friends = friends;
         }
@@ -26,13 +29,8 @@ namespace Prototipo
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            if (!visited)
-                visited = true;
-            else
-            {
-                list = friends ? await App.Manager.GetFriends() : await App.Manager.ShowPeople();
-                friendsView.ItemsSource = list;
-            }
+            //list = friends ? await App.Manager.GetFriends() : await App.Manager.ShowPeople();
+            //friendsView.ItemsSource = list;
         }
 
         private async void OnProfile(object sender, EventArgs e)

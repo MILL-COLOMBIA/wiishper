@@ -1,31 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Prototipo;assembly=Prototipo"
              x:Class="Prototipo.FriendsPage"
-             BackgroundImage="shop_bg.png">
-  <Grid RowSpacing="0">
-    <Grid.RowDefinitions>
-      <RowDefinition Height=".9*"/>
-      <RowDefinition Height=".1*"/>
-    </Grid.RowDefinitions>
-    <ListView x:Name="friendsView" Grid.Row="0" ItemSelected="OnSelectUser">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <ViewCell.View>
-              <StackLayout Padding="20,0,20,0" Orientation="Horizontal">
-                <Image Source="{Binding profilepic}"/>
-                <StackLayout>
-                  <Label BackgroundColor="Transparent" TextColor="#0AF3E5" FontAttributes="Bold" Text="{Binding username}"/>
-                  <Label BackgroundColor="Transparent" TextColor="White" Text="{Binding name}"/>
+             BackgroundColor="#F2F2F2">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:BoolToColorConverter x:Key="colorConverter"/>
+      <local:BoolToStringConverter x:Key="stringConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.Content>
+    <StackLayout Orientation="Vertical" Spacing="0">
+      <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D">
+        <Image Source="wordlogo.png" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
+      </StackLayout>
+    <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
+    <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
+      <Button HeightRequest="48" WidthRequest="48" Image="search.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+      <Entry HeightRequest="48" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="#FEFEFE" TextColor="#BCBEC0" Placeholder="Buscar" FontSize="15"/>
+    </StackLayout>
+    <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
+    <BoxView Color="White" HeightRequest="10" HorizontalOptions="FillAndExpand"/>
+      <ScrollView Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal" BackgroundColor="White">
+          <StackLayout Orientation="Vertical" BackgroundColor="White">
+            <Button x:Name="pic1" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
+            <Button x:Name="name1" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
+          </StackLayout>
+          <StackLayout Orientation="Vertical" BackgroundColor="White">
+            <Button x:Name="pic2" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
+            <Button x:Name="name2" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
+          </StackLayout>
+          <StackLayout Orientation="Vertical" BackgroundColor="White">
+            <Button x:Name="pic3" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
+            <Button x:Name="name3" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
+          </StackLayout>
+          <StackLayout Orientation="Vertical" BackgroundColor="White">
+            <Button x:Name="pic4" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
+            <Button x:Name="name4" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
+          </StackLayout>
+          <StackLayout Orientation="Vertical" BackgroundColor="White">
+            <Button x:Name="pic5" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
+            <Button x:Name="name5" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
+          </StackLayout>
+      </StackLayout>
+      </ScrollView>
+      <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
+      <ListView x:Name="friendsView" RowHeight="70" ItemSelected="OnSelectUser">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <StackLayout Padding="15,0,15,0" Spacing="0" Orientation="Horizontal" BackgroundColor="White">
+                  <Button Image="{Binding profilepic}" BorderRadius="3" BackgroundColor="#A8A9AD" VerticalOptions="Center" HeightRequest="30" WidthRequest="30"/>
+                  <StackLayout Spacing="0" BackgroundColor="White" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand">
+                    <Label BackgroundColor="White" TextColor="Black" FontAttributes="Bold" Text="{Binding name}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start"/>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="White">
+                      <StackLayout Orientation="Vertical" BackgroundColor="White">
+                        <Label Text="Seguidores" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+                        <Label Text="{Binding followers}" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+                      </StackLayout>
+                      <StackLayout Orientation="Vertical" BackgroundColor="White">
+                        <Label Text="Siguiendo" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+                        <Label Text="{Binding following}" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+                      </StackLayout>
+                      <StackLayout Orientation="Vertical" BackgroundColor="White">
+                        <Label Text="Deseos" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+                        <Label Text="{Binding wishcount}" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+                      </StackLayout>
+                    </StackLayout>
+                  </StackLayout>
+                  <Button FontSize="8" TextColor="White" HeightRequest="30" WidthRequest="92" HorizontalOptions="End" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center"/>
                 </StackLayout>
-              </StackLayout>
-            </ViewCell.View>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
-    <Grid ColumnSpacing="0" Grid.Row="1">
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
+    <Grid ColumnSpacing="0" VerticalOptions="End" BackgroundColor="White">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width=".2*"/>
         <ColumnDefinition Width=".2*"/>
@@ -33,11 +87,12 @@
         <ColumnDefinition Width=".2*"/>
         <ColumnDefinition Width=".2*"/>
       </Grid.ColumnDefinitions>
-      <Button Grid.Column="0" Image="profile.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnProfile"/>
-      <Button Grid.Column="1" Image="shop.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-      <Button Grid.Column="2" Image="main.png" BackgroundColor="#00D6DE" HorizontalOptions="Fill"/>
-      <Button Grid.Column="3" Image="calendar.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-      <Button Grid.Column="4" Image="follow.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
+      <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill"/>
+      <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill"/>
+      <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill"/>
+      <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill"/>
+      <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill"/>
     </Grid>
-  </Grid>
+    </StackLayout>
+  </ContentPage.Content>
 </ContentPage>

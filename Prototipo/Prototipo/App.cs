@@ -26,7 +26,7 @@ namespace Prototipo
         public App()
         {
             Manager = new RESTManager(new RestService());
-            MainPage = new NavigationPage(new SignUp());
+            MainPage = new NavigationPage(new FriendsPage(null, false));
                         
         }
 

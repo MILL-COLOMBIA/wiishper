@@ -24,6 +24,10 @@ namespace Prototipo
         public string apikey { get; set;}
         public string password { get; set; }
         public string gender { get; set; }
+        public int followers { get; set; }
+        public int following { get; set; }
+        public int wishcount { get; set; }
+        public bool isfriend { get; set; }
 
         public override string ToString()
         {

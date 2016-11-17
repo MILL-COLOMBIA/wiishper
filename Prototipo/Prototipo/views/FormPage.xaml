@@ -3,10 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="Prototipo.FormPage"
-             BackgroundImage="shop_bg.png"
-             Title=" Datos Personales">
+             BackgroundColor="#F2F2F2">
   <ContentPage.Content>
-    <ScrollView>
+    <StackLayout Orientation="Vertical" Spacing="0">
+      <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D">
+        <Button HeightRequest="50" WidthRequest="50" Image="back.png" BackgroundColor="Transparent" HorizontalOptions="Start" Clicked="OnDismiss"/>
+        <Label Text="Ajustes" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand"/>
+        <Button HeightRequest="50" WidthRequest="50" Image="accept.png" BackgroundColor="Transparent" HorizontalOptions="End" Clicked="OnSave"/>
+      </StackLayout>
+      <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
+      <BoxView Color="#F2F2F2" HeightRequest="10" />
+      <Button BorderRadius="3" Image="{Binding image}" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="88" WidthRequest="88" />
+      <Button Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
+      <BoxView Color="#F2F2F2" HeightRequest="20" />
+      <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
+        <Button HeightRequest="48" WidthRequest="48" Image="nameicon.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+        <Entry Text="{Binding name}" HeightRequest="48" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" TextColor="#BCBEC0" Placeholder="nombres" FontSize="15"/>
+      </StackLayout>
+      <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
+        <Button HeightRequest="48" WidthRequest="48" Image="nameicon.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+        <Entry Text="{Binding surname}" HeightRequest="48" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" TextColor="#BCBEC0" Placeholder="apellidos" FontSize="15"/>
+      </StackLayout>
+      <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
+        <Button HeightRequest="48" WidthRequest="48" Image="emailicon.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+        <Entry Text="{Binding email}" HeightRequest="48" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" TextColor="#BCBEC0" Placeholder="correo electrónico" FontSize="15"/>
+      </StackLayout>
+      <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
+        <Button HeightRequest="48" WidthRequest="48" Image="nameicon.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Fecha nacimiento" BackgroundColor="White" TextColor="#808080" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" Margin="10, 0, 0, 0" FontSize="15"/>
+          <DatePicker Date="{Binding birthdate}" HorizontalOptions="FillAndExpand" x:Name="birthdateEntry" TextColor="#BCBEC0">
+            <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+            <DatePicker.MinimumDate>
+              <sys:DateTime x:FactoryMethod="Parse">
+                <x:Arguments>
+                  <x:String>Jan 1 1945</x:String>
+                </x:Arguments>
+              </sys:DateTime>
+            </DatePicker.MinimumDate>
+          </DatePicker>
+        </StackLayout>
+      </StackLayout>
+      <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
+        <Button HeightRequest="48" WidthRequest="48" Image="gendericon.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+        <Label Text="masculino" BackgroundColor="White" TextColor="#808080" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" Margin="10, 0, 0, 0" FontSize="15"/>
+        <Switch Toggled="OnGenderChanged"/>
+        <Label Text="femenino" BackgroundColor="White" TextColor="#808080" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" Margin="10, 0, 0, 0" FontSize="15"/>
+      </StackLayout>
+    </StackLayout>
+    <!--<ScrollView>
       <RelativeLayout>
         <BoxView Color="Transparent" HeightRequest="100" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
         <Button BorderRadius="55" x:Name="ProfilePic" BackgroundColor="White" HeightRequest="90" WidthRequest="90" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-45}" RelativeLayout.YConstraint=" {ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=50}" />
@@ -32,7 +77,7 @@
           <Button Text="Guardar" Clicked="OnSave"/>
         </StackLayout>
       </RelativeLayout>
-    </ScrollView>
+    </ScrollView>-->
   </ContentPage.Content>
  
 </ContentPage>

@@ -16,6 +16,7 @@ namespace Prototipo
         public ProfilePage(User user)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             notificator = DependencyService.Get<IToastNotificator>();
             this.user = user;
             this.BindingContext = user;
