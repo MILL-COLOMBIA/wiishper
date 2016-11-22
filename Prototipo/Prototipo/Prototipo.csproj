@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="DAL\IRestService.cs" />
+    <Compile Include="DAL\Notification.cs" />
     <Compile Include="DAL\Product.cs" />
     <Compile Include="DAL\RESTManager.cs" />
     <Compile Include="DAL\RestService.cs" />

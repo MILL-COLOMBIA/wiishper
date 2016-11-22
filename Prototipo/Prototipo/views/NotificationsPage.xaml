@@ -1,5 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Prototipo.NotificationsPage">
+             x:Class="Prototipo.NotificationsPage"
+             BackgroundColor="#F2F2F2">
+  <ContentPage.Content>
+    <StackLayout Orientation="Vertical" Spacing="0">
+        <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D">
+          <Image Source="wordlogo.png" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+        <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
+      <ListView x:Name="notifications" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <StackLayout Padding="15,1,15,1" Orientation="Vertical" BackgroundColor="White">
+                  <BoxView Color="#80BCBEC0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+                  <StackLayout  Spacing="0" Orientation="Horizontal" BackgroundColor="White">
+                    <Button Image="{Binding mainimage}" BorderRadius="3" BackgroundColor="#A8A9AD" VerticalOptions="Center" HeightRequest="40" WidthRequest="40"/>
+                    <StackLayout Spacing="0" BackgroundColor="White" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand">
+                      <Label BackgroundColor="White" TextColor="Black" FontAttributes="Bold" Text="{Binding subject}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start"/>
+                      <Label BackgroundColor="White" TextColor="Black" Text="{Binding action}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                    <Label BackgroundColor="White" TextColor="#BCBEC0" FontSize="8" Text="{Binding timestamp}" VerticalTextAlignment="Start" VerticalOptions="Start" HorizontalOptions="End"/>
+                  </StackLayout>
+                  <BoxView Color="#80BCBEC0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
+      <Grid ColumnSpacing="0" VerticalOptions="End" BackgroundColor="White">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width=".2*"/>
+          <ColumnDefinition Width=".2*"/>
+          <ColumnDefinition Width=".2*"/>
+          <ColumnDefinition Width=".2*"/>
+          <ColumnDefinition Width=".2*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
+        <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
+        <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
+        <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
+        <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
+      </Grid>
+    </StackLayout>
+  </ContentPage.Content>  
 </ContentPage>

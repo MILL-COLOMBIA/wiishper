@@ -64,68 +64,11 @@
         <ColumnDefinition Width=".2*"/>
         <ColumnDefinition Width=".2*"/>
       </Grid.ColumnDefinitions>
-      <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill"/>
-      <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill"/>
-      <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill"/>
-      <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill"/>
-      <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill"/>
+    <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
+    <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
+    <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
+    <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
+    <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
     </Grid>
-  <!--<Grid RowSpacing="0" x:Name="MainGrid">
-    <Grid.RowDefinitions>
-      <RowDefinition Height=".03*"/>
-      <RowDefinition Height=".1*"/>
-      <RowDefinition Height=".03*"/>
-      <RowDefinition Height=".5*"/>
-      <RowDefinition Height=".1*"/>
-      <RowDefinition Height=".05*"/>
-      <RowDefinition Height=".08*"/>
-      <RowDefinition Height=".03*"/>
-      <RowDefinition Height=".08*"/>
-    </Grid.RowDefinitions>
-    <StackLayout Grid.Row="1">
-      <Label Text="¡Descubre aquí lo que más te gusta!" TextColor="Black" BackgroundColor="Transparent" FontSize="18" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-    </StackLayout>
-    <cv:CarouselView Grid.Row="3" ItemsSource="{Binding Products}" x:Name="CarouselProducts">
-      <cv:CarouselView.ItemTemplate>
-        <DataTemplate>
-          <Grid>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="*"/>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Image Grid.RowSpan="2" Aspect="AspectFit" Source="{Binding image}"/>
-            <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
-              <Label TextColor="Black" Text="{Binding name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-            </StackLayout>
-          </Grid>
-        </DataTemplate>
-      </cv:CarouselView.ItemTemplate>
-    </cv:CarouselView>
-    <Grid Grid.Row="6">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-      </Grid.ColumnDefinitions>
-      <Button Text="X" TextColor="White" BackgroundColor="Red" Clicked="OnReject" Grid.Column="1" FontSize="20"/>
-      <Button Text="O" TextColor="White" BackgroundColor="Lime" Clicked="OnLike" Grid.Column="3" FontSize="20"/>
-    </Grid>
-    <Grid Grid.Row="8" ColumnSpacing="0">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-      </Grid.ColumnDefinitions>
-      <Button Grid.Column="0" Image="profile.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-      <Button Grid.Column="1" Image="friends.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowFriends"/>
-      <Button Grid.Column="2" Image="main.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowPeople"/>
-      <Button Grid.Column="3" Image="calendar.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-      <Button Grid.Column="4" Image="shop.png" BackgroundColor="#00D6DE" HorizontalOptions="Fill"/>    
-    </Grid>
-  </Grid>-->
 </Grid>
 </ContentPage>

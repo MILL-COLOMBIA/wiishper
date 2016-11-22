@@ -1,10 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:local="clr-namespace:Prototipo;assembly=Prototipo"
              x:Class="Prototipo.ProfilePage"
-             BackgroundImage="shop_bg.png">
+             BackgroundColor="#F2F2F2">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:BoolToColorConverter x:Key="colorConverter"/>
+      <local:BoolToStringConverter x:Key="stringConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" WinPhone="0, 0, 0, 0"/>
+  </ContentPage.Padding>
   <ContentPage.Content>
-    <Grid x:Name="MainGrid" RowSpacing="0">
+    <StackLayout Orientation="Vertical" Spacing="0" BackgroundColor="#F2F2F2">
+      <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D">
+        <Image Source="wordlogo.png" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
+      </StackLayout>
+      <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
+      <BoxView Color="White" HeightRequest="5" HorizontalOptions="FillAndExpand"/>
+      <StackLayout Orientation="Horizontal" BackgroundColor="White" Spacing="10">
+        <Button HeightRequest="88" WidthRequest="88" BackgroundColor="#A8A9AD" BorderRadius="3" HorizontalOptions="CenterAndExpand"/>
+        <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="CenterAndExpand">
+          <Label TextColor="Black" FontAttributes="Bold" Text="{Binding name}" HorizontalTextAlignment="Start" HorizontalOptions="Fill"/>
+          <StackLayout Orientation="Horizontal" BackgroundColor="White">
+            <Label Text="{Binding birthdate}" TextColor="#A8A9AD" HorizontalTextAlignment="Start" VerticalOptions="Start"/>
+            <Button FontSize="10" TextColor="White" HeightRequest="30" WidthRequest="100" HorizontalOptions="Center" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center"/>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal" BackgroundColor="White" Spacing="10">
+            <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="Start">
+              <Label Text="Seguidores" TextColor="#86CACD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+              <Label Text="{Binding followers}" TextColor="#86CACD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="Start">
+              <Label Text="Siguiendo" TextColor="#86CACD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+              <Label Text="{Binding following}" TextColor="#86CACD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="Start">
+              <Label Text="Deseos" TextColor="#86CACD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+              <Label Text="{Binding wishcount}" TextColor="#86CACD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
+            </StackLayout>
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+      <BoxView Color="White" HeightRequest="5" HorizontalOptions="FillAndExpand"/>
+      <flv:FlowListView FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="false" x:Name="ProductsView" HorizontalOptions="CenterAndExpand" FlowColumnMinWidth="140">
+        <flv:FlowListView.FlowColumnTemplate>
+          <DataTemplate>
+            <Grid Padding="3">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding image}" HeightRequest="140" WidthRequest="140"/>
+              <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
+                <Label TextColor="Black" Text="{Binding name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                <Label TextColor="Black" Text="{Binding price}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+              </StackLayout>
+            </Grid>
+          </DataTemplate>
+        </flv:FlowListView.FlowColumnTemplate>
+      </flv:FlowListView>
+    </StackLayout>
+    <!--<Grid x:Name="MainGrid" RowSpacing="0">
       <Grid.RowDefinitions>
         <RowDefinition Height=".65*"/>
         <RowDefinition Height=".15*"/>
@@ -62,6 +124,6 @@
         <Button Grid.Column="3" Image="calendar.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
         <Button Grid.Column="4" Image="shop.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowProducts"/>
         </Grid>
-    </Grid>
+    </Grid>-->
   </ContentPage.Content>
 </ContentPage>

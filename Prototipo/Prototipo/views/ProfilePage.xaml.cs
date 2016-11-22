@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Plugin.Toasts;
+using DLToolkit.Forms;
 
 namespace Prototipo
 {
@@ -13,6 +14,7 @@ namespace Prototipo
     {
         private User user;
         private IToastNotificator notificator;
+        private List<Product> products;
         public ProfilePage(User user)
         {
             InitializeComponent();
@@ -25,34 +27,62 @@ namespace Prototipo
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            if (RestService.LoggedUser != null)
+            products = new List<Product>()
             {
-                if (this.user.email == RestService.LoggedUser.email)
+                new Product()
                 {
-                    Button btnEdit = new Button() { Text = "Editar Perfil" };
-                    btnEdit.Clicked += OnEdit;
-                    MainGrid.Children.Add(btnEdit, 0, 2);
-                    List<Product> products = await App.Manager.ShowLikedProducts(-1);
-                    ProductsView.ItemsSource = products;
-                }
-                else
+                    name = "LED 65\" 4K Ultra HD Smart Webos",
+                    price = "$6.299.900",
+                    image = "http://falabella.scene7.com/is/image/FalabellaCO/2696832?$lista160$"
+                },
+                new Product()
                 {
-                    if (await App.Manager.IsFriend(this.user.idusers))
-                    {
-                        Button btnUnfriend = new Button() { Text = "Eliminar amigo" };
-                        btnUnfriend.Clicked += OnUnfriend;
-                        MainGrid.Children.Add(btnUnfriend, 0, 2);
-                        List<Product> products = await App.Manager.ShowLikedProducts(this.user.idusers);
-                        ProductsView.ItemsSource = products;
-                    }
-                    else
-                    {
-                        Button btnAddFriend = new Button() { Text = "Agregar amigo" };
-                        btnAddFriend.Clicked += OnAddFriend;
-                        MainGrid.Children.Add(btnAddFriend, 0, 2);
-                    }
+                    name = "Videojuego Super Mario Maker",
+                    price = "$239.900",
+                    image = "http://falabella.scene7.com/is/image/FalabellaCO/2522790?$lista160$"
+                },
+                new Product()
+                {
+                    name = "Galaxy S6 Edge Plus Dorado Celular",
+                    price = "$2.879.900",
+                    image = "http://falabella.scene7.com/is/image/FalabellaCO/2652354?$lista160$"
+                },
+                new Product()
+                {
+                    name = "Notebook 13,3\" 4GB 500GB Ci5 ",
+                    price = "$2.199.900",
+                    image = "http://falabella.scene7.com/is/image/FalabellaCO/2674749?$lista160$"
                 }
-            }
+            };
+            ProductsView.FlowItemsSource = products;
+            //if (RestService.LoggedUser != null)
+            //{
+            //    if (this.user.email == RestService.LoggedUser.email)
+            //    {
+            //        Button btnEdit = new Button() { Text = "Editar Perfil" };
+            //        btnEdit.Clicked += OnEdit;
+            //        //MainGrid.Children.Add(btnEdit, 0, 2);
+            //        List<Product> products = await App.Manager.ShowLikedProducts(-1);
+            //        //ProductsView.ItemsSource = products;
+            //    }
+            //    else
+            //    {
+            //        if (await App.Manager.IsFriend(this.user.idusers))
+            //        {
+            //            Button btnUnfriend = new Button() { Text = "Eliminar amigo" };
+            //            btnUnfriend.Clicked += OnUnfriend;
+            //            //MainGrid.Children.Add(btnUnfriend, 0, 2);
+            //            List<Product> products = await App.Manager.ShowLikedProducts(this.user.idusers);
+            //            //ProductsView.ItemsSource = products;
+            //        }
+            //        else
+            //        {
+            //            Button btnAddFriend = new Button() { Text = "Agregar amigo" };
+            //            btnAddFriend.Clicked += OnAddFriend;
+            //            //MainGrid.Children.Add(btnAddFriend, 0, 2);
+            //        }
+            //    }
+            //}
         }
 
         async private void OnEdit(object sender, EventArgs e)
