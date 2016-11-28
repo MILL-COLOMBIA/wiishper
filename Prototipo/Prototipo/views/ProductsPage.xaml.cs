@@ -67,44 +67,99 @@ namespace Prototipo
                 else
                 {
                     notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(2));
-                    ((List<Product>)CarouselProducts.ItemsSource).Remove((Product)CarouselProducts.Item);
                 }
             }
             else
             {
                 App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = new DateTime(), liked = true });
                 notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(2));
-                ((List<Product>)CarouselProducts.ItemsSource).Remove((Product)CarouselProducts.Item);
             }
         }
 
-        private async void OnShowPeople(object sender, EventArgs e)
+        private async void OnNewsfeed(object sender, EventArgs e)
         {
-            List<User> people = await App.Manager.ShowPeople();
-
-            if (people != null)
+            if (RestService.LoggedUser == null)
             {
-                await Navigation.PushAsync(new FriendsPage(people, false));
+                Navigation.InsertPageBefore(new SignUp(), this);
             }
             else
             {
-                await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ocurrió un error al desplegar la información de personas", TimeSpan.FromSeconds(2));
+                Navigation.InsertPageBefore(new NotificationsPage(), this);
             }
+            await Navigation.PopAsync();
         }
 
-        private async void OnShowFriends(object sender, EventArgs e)
+        private async void OnFriends(object sender, EventArgs e)
         {
-            List<User> friends = await App.Manager.GetFriends();
-
-            if (friends != null)
+            if (RestService.LoggedUser == null)
             {
-                await Navigation.PushAsync(new FriendsPage(friends, true));
+                Navigation.InsertPageBefore(new SignUp(), this);
             }
             else
             {
-                await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ocurrió un error al desplegar la información de amigos", TimeSpan.FromSeconds(2));
+                Navigation.InsertPageBefore(new FriendsPage(), this);
             }
+            await Navigation.PopAsync();
         }
+
+        private async void OnProducts(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void OnActivity(object sender, EventArgs e)
+        {
+            if (RestService.LoggedUser == null)
+            {
+                Navigation.InsertPageBefore(new SignUp(), this);
+            }
+            else
+            {
+                Navigation.InsertPageBefore(new ActivityPage(), this);
+            }
+            await Navigation.PopAsync();
+        }
+
+        private async void OnProfile(object sender, EventArgs e)
+        {
+            if (RestService.LoggedUser == null)
+            {
+                Navigation.InsertPageBefore(new SignUp(), this);
+            }
+            else
+            {
+                Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
+            }
+            await Navigation.PopAsync();
+        }
+
+        //private async void OnShowPeople(object sender, EventArgs e)
+        //{
+        //    //List<User> people = await App.Manager.ShowPeople();
+
+        //    if (people != null)
+        //    {
+        //        await Navigation.PushAsync(new FriendsPage());
+        //    }
+        //    else
+        //    {
+        //        await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ocurrió un error al desplegar la información de personas", TimeSpan.FromSeconds(2));
+        //    }
+        //}
+
+        //private async void OnShowFriends(object sender, EventArgs e)
+        //{
+        //    List<User> friends = await App.Manager.GetFriends();
+
+        //    if (friends != null)
+        //    {
+        //        await Navigation.PushAsync(new FriendsPage());
+        //    }
+        //    else
+        //    {
+        //        await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ocurrió un error al desplegar la información de amigos", TimeSpan.FromSeconds(2));
+        //    }
+        //}
 
 
     }

@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Plugin.Toasts;
 using Foundation;
 using UIKit;
+using FFImageLoading.Forms.Touch;
 
 namespace Prototipo.iOS
 {
@@ -27,7 +28,7 @@ namespace Prototipo.iOS
 
             DependencyService.Register<ToastNotificatorImplementation>();
             ToastNotificatorImplementation.Init();
-
+            CachedImageRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

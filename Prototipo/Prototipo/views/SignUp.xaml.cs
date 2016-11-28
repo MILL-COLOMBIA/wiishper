@@ -30,7 +30,8 @@ namespace Prototipo
             User user = await App.Manager.Login(username.Text, password.Text);
             if (user != null)
             {
-                await Navigation.PushAsync(new ProfilePage(user));
+                Navigation.InsertPageBefore(new ProfilePage(user), this);
+                await Navigation.PopAsync();
             }
             else
             {
@@ -46,6 +47,12 @@ namespace Prototipo
         private async void OnTwitterSignUp(object sender, EventArgs e)
         {
             await notificator.Notify(ToastNotificationType.Info, "Wiishper", "Estamos trabajando en esta funcionalidad", TimeSpan.FromSeconds(2));
+        }
+
+        private async void OnExit(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new ProductsPage(), this);
+            await Navigation.PopAsync();
         }
 
         private async void OnGoogleSignUp(object sender, EventArgs e)

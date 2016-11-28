@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="Prototipo.FormPage"
-             BackgroundColor="#F2F2F2">
+             BackgroundColor="White">
   <ContentPage.Content>
     <StackLayout Orientation="Vertical" Spacing="0">
       <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D">
@@ -13,11 +13,11 @@
       </StackLayout>
       <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
       <BoxView Color="#F2F2F2" HeightRequest="10" />
-      <Button BorderRadius="3" Image="{Binding image}" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="88" WidthRequest="88" />
-      <Button Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
+      <Button BorderRadius="3" Image="{Binding image, Mode=TwoWay}" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="88" WidthRequest="88" />
+      <Button Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center" Clicked="OnPickPhoto"/>
       <BoxView Color="#F2F2F2" HeightRequest="20" />
       <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
-        <Button HeightRequest="48" WidthRequest="48" Image="nameicon.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+        <Button HeightRequest="48" WidthRequest="48" Image="emailicon.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
         <Entry Text="{Binding name}" HeightRequest="48" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" TextColor="#BCBEC0" Placeholder="nombres" FontSize="15"/>
       </StackLayout>
       <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
@@ -25,11 +25,15 @@
         <Entry Text="{Binding surname}" HeightRequest="48" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" TextColor="#BCBEC0" Placeholder="apellidos" FontSize="15"/>
       </StackLayout>
       <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
-        <Button HeightRequest="48" WidthRequest="48" Image="emailicon.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+        <Button HeightRequest="48" WidthRequest="48" Image="email.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
         <Entry Text="{Binding email}" HeightRequest="48" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" TextColor="#BCBEC0" Placeholder="correo electrónico" FontSize="15"/>
       </StackLayout>
       <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
-        <Button HeightRequest="48" WidthRequest="48" Image="nameicon.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+        <Button HeightRequest="48" WidthRequest="48" Image="password.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+        <Entry Text="{Binding password}" HeightRequest="48" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" TextColor="#BCBEC0" Placeholder="correo electrónico" FontSize="15" IsPassword="True"/>
+      </StackLayout>
+      <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
+        <Button HeightRequest="48" WidthRequest="48" Image="birthdate.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
         <StackLayout Orientation="Horizontal">
           <Label Text="Fecha nacimiento" BackgroundColor="White" TextColor="#808080" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" Margin="10, 0, 0, 0" FontSize="15"/>
           <DatePicker Date="{Binding birthdate}" HorizontalOptions="FillAndExpand" x:Name="birthdateEntry" TextColor="#BCBEC0">

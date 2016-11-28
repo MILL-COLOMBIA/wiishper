@@ -40,11 +40,11 @@
           <ColumnDefinition Width=".2*"/>
           <ColumnDefinition Width=".2*"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-        <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-        <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-        <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-        <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
+        <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnNewsfeed"/>
+        <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnFriends"/>
+        <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProducts"/>
+        <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnActivity"/>
+        <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProfile"/>
       </Grid>
     </StackLayout>
   </ContentPage.Content>  

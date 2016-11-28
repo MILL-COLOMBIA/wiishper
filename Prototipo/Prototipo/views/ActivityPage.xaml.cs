@@ -9,23 +9,58 @@ using Plugin.Toasts;
 
 namespace Prototipo
 {
-    public partial class NotificationsPage : ContentPage
+    public partial class ActivityPage : ContentPage
     {
-
         IToastNotificator notificator;
-        public NotificationsPage()
+        public ActivityPage()
         {
             InitializeComponent();
             notificator = DependencyService.Get<IToastNotificator>();
             NavigationPage.SetHasNavigationBar(this, false);
-            notifications.ItemsSource = new List<Notification>() {
-                new Notification() { subject="Juan", action="ingresó a wiishper", timestamp= new DateTime(2016, 11, 15) },
-                new Notification() {subject="Andrés Felipe", action="agregó 5 productos a su wiishlist", timestamp=new DateTime(2016, 11, 16) } };
+        }
+
+        private void OnMonth(object sender, EventArgs e)
+        {
+            switch (((Button)sender).Text)
+            {
+                case "Enero":
+                    break;
+                case "Febrero":
+                    break;
+                case "Marzo":
+                    break;
+                case "Abril":
+                    break;
+                case "Mayo":
+                    break;
+                case "Junio":
+                    break;
+                case "Julio":
+                    break;
+                case "Agosto":
+                    break;
+                case "Septiembre":
+                    break;
+                case "Octubre":
+                    break;
+                case "Noviembre":
+                    break;
+                case "Diciembre":
+                    break;
+            }
         }
 
         private async void OnNewsfeed(object sender, EventArgs e)
         {
-            
+            if (RestService.LoggedUser == null)
+            {
+                Navigation.InsertPageBefore(new SignUp(), this);
+            }
+            else
+            {
+                Navigation.InsertPageBefore(new NotificationsPage(), this);
+            }
+            await Navigation.PopAsync();
         }
 
         private async void OnFriends(object sender, EventArgs e)
@@ -37,7 +72,7 @@ namespace Prototipo
             else
             {
                 Navigation.InsertPageBefore(new FriendsPage(), this);
-            }
+            }            
             await Navigation.PopAsync();
         }
 
@@ -49,15 +84,7 @@ namespace Prototipo
 
         private async void OnActivity(object sender, EventArgs e)
         {
-            if (RestService.LoggedUser == null)
-            {
-                Navigation.InsertPageBefore(new SignUp(), this);
-            }
-            else
-            {
-                Navigation.InsertPageBefore(new ActivityPage(), this);
-            }
-            await Navigation.PopAsync();
+            
         }
 
         private async void OnProfile(object sender, EventArgs e)
@@ -73,5 +100,5 @@ namespace Prototipo
             await Navigation.PopAsync();
         }
     }
-
+    
 }

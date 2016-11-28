@@ -23,8 +23,8 @@
     <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
     <BoxView Color="White" HeightRequest="10" HorizontalOptions="FillAndExpand"/>
       <ScrollView Orientation="Horizontal">
-        <StackLayout Orientation="Horizontal" BackgroundColor="White">
-          <StackLayout Orientation="Vertical" BackgroundColor="White">
+        <StackLayout Orientation="Horizontal" BackgroundColor="White" x:Name="friendsStack">
+          <!--<StackLayout Orientation="Vertical" BackgroundColor="White">
             <Button x:Name="pic1" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
             <Button x:Name="name1" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
           </StackLayout>
@@ -43,11 +43,11 @@
           <StackLayout Orientation="Vertical" BackgroundColor="White">
             <Button x:Name="pic5" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
             <Button x:Name="name5" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
-          </StackLayout>
+          </StackLayout>-->
       </StackLayout>
       </ScrollView>
       <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
-      <ListView x:Name="friendsView" RowHeight="70" ItemSelected="OnSelectUser">
+      <ListView x:Name="friendsView" RowHeight="70" ItemSelected="OnSelectUser" VerticalOptions="CenterAndExpand">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
@@ -71,7 +71,7 @@
                       </StackLayout>
                     </StackLayout>
                   </StackLayout>
-                  <Button FontSize="8" TextColor="White" HeightRequest="30" WidthRequest="92" HorizontalOptions="End" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center"/>
+                  <Button CommandParameter="{Binding idusers}" FontSize="8" TextColor="White" HeightRequest="30" WidthRequest="92" HorizontalOptions="End" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center" Clicked="OnAddFriend"/>
                 </StackLayout>
               </ViewCell.View>
             </ViewCell>
@@ -79,7 +79,12 @@
         </ListView.ItemTemplate>
       </ListView>
       <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
-    <Grid ColumnSpacing="0" VerticalOptions="End" BackgroundColor="White">
+      <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="White">
+        <Button Image="people.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
+        <Button Image="main.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
+        <Button Image="profile.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
+      </StackLayout>
+    <!--<Grid ColumnSpacing="0" VerticalOptions="End" BackgroundColor="White">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width=".2*"/>
         <ColumnDefinition Width=".2*"/>
@@ -87,12 +92,12 @@
         <ColumnDefinition Width=".2*"/>
         <ColumnDefinition Width=".2*"/>
       </Grid.ColumnDefinitions>
-      <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-      <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-      <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-      <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-      <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-    </Grid>
+      <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnNewsfeed"/>
+      <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnFriends"/>
+      <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProducts"/>
+      <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnActivity"/>
+      <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProfile"/>
+    </Grid>-->
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

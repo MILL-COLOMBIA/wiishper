@@ -8,6 +8,8 @@ using Android.Widget;
 using Android.OS;
 using Xamarin.Forms;
 using Plugin.Toasts;
+using FFImageLoading.Forms.Droid;
+using Plugin.Permissions;
 
 namespace Prototipo.Droid
 {
@@ -21,7 +23,13 @@ namespace Prototipo.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             DependencyService.Register<ToastNotificatorImplementation>();
             ToastNotificatorImplementation.Init(this);
+            CachedImageRenderer.Init();
             LoadApplication(new App());
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

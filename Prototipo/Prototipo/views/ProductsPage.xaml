@@ -22,7 +22,9 @@
       <RowDefinition Height=".0026*"/>
       <RowDefinition Height=".1*"/>
     </Grid.RowDefinitions>
-  <BoxView Color="#5D5D5D" Grid.Row="0"/>
+    <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D" Grid.Row="0">
+      <Image Source="wordlogo.png" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
+    </StackLayout>
   <BoxView Color="#74C7CD" Grid.Row="1"/>
   <BoxView Color="#DEDEDE" Grid.Row="3"/>
     <cv:CarouselView Grid.Row="4" ItemsSource="{Binding Products}" x:Name="CarouselProducts">
@@ -56,19 +58,24 @@
       <Button Grid.Column="1" Image="dislike.png" Clicked="OnReject"/>
     </Grid>
     <BoxView Color="#DEDEDE" Grid.Row="9"/>
-  <Grid ColumnSpacing="0" Grid.Row="10">
+    <StackLayout Grid.Row="10" Orientation="Horizontal">
+      <Button Image="people.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
+      <Button Image="main.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
+      <Button Image="profile.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
+    </StackLayout>
+  <!--<Grid ColumnSpacing="0" Grid.Row="10">
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
         <ColumnDefinition Width=".2*"/>
         <ColumnDefinition Width=".2*"/>
       </Grid.ColumnDefinitions>
-    <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-    <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-    <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-    <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-    <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0"/>
-    </Grid>
+    <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnNewsfeed"/>
+    <Button Grid.Column="0" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnFriends"/>
+    <Button Grid.Column="1" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProducts"/>
+    <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnActivity"/>
+    <Button Grid.Column="2" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProfile"/>
+    </Grid>-->
 </Grid>
 </ContentPage>

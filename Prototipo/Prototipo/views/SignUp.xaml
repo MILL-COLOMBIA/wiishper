@@ -9,10 +9,11 @@
   </ContentPage.Padding>
   <ContentPage.Content>
     <RelativeLayout>
+      <Button Image="exit.png" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.9 }" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}" Clicked="OnExit" BackgroundColor="White"/>
       <Image x:Name="logo" Source="logo.png" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=72}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-122}"/>
       <StackLayout Orientation="Vertical" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=logo, Property=Height, Factor=1, Constant=102}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}" Spacing="8">
-        <Entry x:Name="username"  HorizontalOptions="Fill" VerticalOptions="Center" Placeholder="correo electrónico" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="#909090"/>
-        <Entry x:Name="password" HorizontalOptions="Fill" VerticalOptions="Center" IsPassword="true" Placeholder="contraseña" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="#909090"/>
+        <Entry x:Name="username"  HorizontalOptions="Fill" VerticalOptions="Center" Placeholder="correo electrónico" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="White"/>
+        <Entry x:Name="password" HorizontalOptions="Fill" VerticalOptions="Center" IsPassword="true" Placeholder="contraseña" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="White"/>
         <Button x:Name="login" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#F2F2F2" Text="Ingresa" WidthRequest="174"  HeightRequest="35" FontSize="14" FontAttributes="Bold" TextColor="#87888A" Clicked="OnLogin"/>
         <Button x:Name="forgot" HorizontalOptions="Center" HeightRequest="35" BackgroundColor="White" TextColor="#BCBEC0" Text="¿Olvidó su contraseña?" FontSize="14"/>
         <BoxView Color="White" HeightRequest="5" />

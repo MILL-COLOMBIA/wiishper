@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:local="clr-namespace:Prototipo;assembly=Prototipo"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Prototipo.ProfilePage"
              BackgroundColor="#F2F2F2">
   <ContentPage.Resources>
@@ -16,7 +17,7 @@
   </ContentPage.Padding>
   <ContentPage.Content>
     <StackLayout Orientation="Vertical" Spacing="0" BackgroundColor="#F2F2F2">
-      <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D">
+      <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D" x:Name="mainbar">
         <Image Source="wordlogo.png" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
       </StackLayout>
       <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
@@ -46,7 +47,7 @@
         </StackLayout>
       </StackLayout>
       <BoxView Color="White" HeightRequest="5" HorizontalOptions="FillAndExpand"/>
-      <flv:FlowListView FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="false" x:Name="ProductsView" HorizontalOptions="CenterAndExpand" FlowColumnMinWidth="140">
+      <flv:FlowListView FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="true" x:Name="ProductsView" HorizontalOptions="CenterAndExpand" FlowColumnMinWidth="140">
         <flv:FlowListView.FlowColumnTemplate>
           <DataTemplate>
             <Grid Padding="3">
@@ -56,61 +57,21 @@
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
               </Grid.ColumnDefinitions>
-              <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding image}" HeightRequest="140" WidthRequest="140"/>
-              <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
-                <Label TextColor="Black" Text="{Binding name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-                <Label TextColor="Black" Text="{Binding price}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-              </StackLayout>
+              <ffimageloading:CachedImage HeightRequest="140" Aspect="Fill" DownsampleHeight="140" DownsampleUseDipUnits="false" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" Source="{Binding image}"/>
+              <Label BackgroundColor="#80000000" TextColor="Black" Text="{Binding name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="End"/>
+              <Label BackgroundColor="#80000000" TextColor="Black" Text="{Binding price}" FontSize="16" HorizontalOptions="Center" VerticalOptions="End"/>
+              
             </Grid>
           </DataTemplate>
         </flv:FlowListView.FlowColumnTemplate>
       </flv:FlowListView>
-    </StackLayout>
-    <!--<Grid x:Name="MainGrid" RowSpacing="0">
-      <Grid.RowDefinitions>
-        <RowDefinition Height=".65*"/>
-        <RowDefinition Height=".15*"/>
-        <RowDefinition Height=".1*"/>
-        <RowDefinition Height=".1*"/>
-      </Grid.RowDefinitions>
-      <ScrollView Grid.Row="0">
-        <RelativeLayout x:Name="Pane" >
-          <BoxView Color="Transparent" HeightRequest="100" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
-          <Button BorderRadius="45" x:Name="ProfilePic" BackgroundColor="White" HeightRequest="90" WidthRequest="90" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-45}" RelativeLayout.YConstraint=" {ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=20}" />
-          <Button BorderRadius="40" BackgroundColor="Aqua" HeightRequest="80" WidthRequest="80" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfilePic, Property=X, Factor=1, Constant=5}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=25 }" />
-          <Label Text="{Binding username}" BackgroundColor="Transparent" TextColor="White" FontAttributes="Bold" FontSize="26" HorizontalTextAlignment="Center" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=140}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" x:Name="usernameEntry"/>
-          <StackLayout RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=200}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
-            <Label BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding email}" />
-            <Label BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding name}" />
-            <Label BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding surname}"/>
-            <Label BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding gender}"/>
-            <StackLayout Orientation="Horizontal">
-              <Label Text="Fecha nacimiento" BackgroundColor="Transparent" TextColor="White" HorizontalOptions="FillAndExpand"/>
-              <DatePicker Date="{Binding birthdate}" HorizontalOptions="FillAndExpand" IsEnabled="false">
-                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-              </DatePicker>
-            </StackLayout>
-          </StackLayout>
-        </RelativeLayout>
-      </ScrollView>
-      <ListView x:Name="ProductsView" Grid.Row="1">
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <ViewCell>
-              <ViewCell.View>
-                <StackLayout Padding="20,0,20,0" Orientation="Horizontal">
-                  <Image Source="{Binding image}"/>
-                  <StackLayout>
-                    <Label BackgroundColor="Transparent" TextColor="#0AF3E5" FontAttributes="Bold" Text="{Binding name}"/>
-                    <Label BackgroundColor="Transparent" TextColor="White" Text="{Binding price}"/>
-                  </StackLayout>
-                </StackLayout>
-              </ViewCell.View>
-            </ViewCell>
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </ListView>        
-      <Grid ColumnSpacing="0" Grid.Row="3">
+      <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
+      <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="White">
+        <Button Image="people.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
+        <Button Image="main.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
+        <Button Image="profile.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
+      </StackLayout>
+      <!--<Grid ColumnSpacing="0" VerticalOptions="End" BackgroundColor="White">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width=".2*"/>
           <ColumnDefinition Width=".2*"/>
@@ -118,12 +79,12 @@
           <ColumnDefinition Width=".2*"/>
           <ColumnDefinition Width=".2*"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Image="profile.png" BackgroundColor="#00D6DE" HorizontalOptions="Fill"/>
-        <Button Grid.Column="1" Image="friends.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowFriends"/>
-        <Button Grid.Column="2" Image="main.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowPeople"/>
-        <Button Grid.Column="3" Image="calendar.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill"/>
-        <Button Grid.Column="4" Image="shop.png" BackgroundColor="#F5F5F5" HorizontalOptions="Fill" Clicked="OnShowProducts"/>
-        </Grid>
-    </Grid>-->
+        <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnNewsfeed"/>
+        <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnFriends"/>
+        <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProducts"/>
+        <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnActivity"/>
+        <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProfile"/>
+      </Grid>-->
+    </StackLayout>
   </ContentPage.Content>
 </ContentPage>
