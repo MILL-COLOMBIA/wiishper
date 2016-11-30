@@ -26,13 +26,20 @@ namespace Prototipo
                 mainbar.Children.Insert(0, back);
                 mainbar.Children.Add(new Button() { BackgroundColor = Color.Transparent, HeightRequest = 50, WidthRequest = 50 });
             }
+            else
+            {
+                Button settings = new Button() { BackgroundColor = Color.Transparent, Image = "settings.png", HorizontalOptions = LayoutOptions.Start, HeightRequest = 50, WidthRequest = 50 };
+                settings.Clicked += OnSettings;
+                mainbar.Children.Insert(0, new Button() { BackgroundColor = Color.Transparent, HeightRequest = 50, WidthRequest = 50 });
+                mainbar.Children.Add(settings);
+            }
             this.BindingContext = user == null ? RestService.LoggedUser : user;
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            products = await App.Manager.ShowLikedProducts(((User)this.BindingContext).idusers);
+            products = await App.Manager.ShowLikedProducts(((User)BindingContext).idusers);
             //products = new List<Product>()
             //{
             //    new Product()
@@ -212,6 +219,11 @@ namespace Prototipo
         private async void OnProfile(object sender, EventArgs e)
         {
             
+        }
+
+        private async void OnSettings(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FormPage(BindingContext as User));
         }
     }
 }

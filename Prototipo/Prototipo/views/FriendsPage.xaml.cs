@@ -38,7 +38,7 @@ namespace Prototipo
                 foreach(User u in friends)
                 {
                     StackLayout layout = new StackLayout() { Orientation = StackOrientation.Vertical, BackgroundColor = Color.White };
-                    CachedImage pic = new CachedImage() { BackgroundColor= Color.FromHex("#A8A9AD"), HeightRequest = 61, Aspect = Aspect.Fill, DownsampleHeight = 61, DownsampleUseDipUnits = false, LoadingPlaceholder = "image_loading.png", ErrorPlaceholder = "image_error.png", Source = u.profilepic };
+                    CachedImage pic = new CachedImage() { BackgroundColor= Color.White, HeightRequest = 61, Aspect = Aspect.Fill, DownsampleHeight = 61, DownsampleUseDipUnits = false, LoadingPlaceholder = "image_loading.png", ErrorPlaceholder = "image_error.png", Source = u.profilepic };
                     Button name = new Button() { Text=u.name, HeightRequest=30, FontSize=10, TextColor=Color.FromHex("#A8A9AD"), BackgroundColor=Color.Transparent, HorizontalOptions=LayoutOptions.Center, BindingContext=u};
                     name.Clicked += async (sender, e) => { await Navigation.PushAsync(new ProfilePage(((Button)sender).BindingContext as User)); };
                     layout.Children.Add(pic);

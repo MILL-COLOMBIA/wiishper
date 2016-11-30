@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Prototipo.FormPage"
              BackgroundColor="White">
   <ContentPage.Content>
@@ -12,8 +13,8 @@
         <Button HeightRequest="50" WidthRequest="50" Image="accept.png" BackgroundColor="Transparent" HorizontalOptions="End" Clicked="OnSave"/>
       </StackLayout>
       <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
-      <BoxView Color="#F2F2F2" HeightRequest="10" />
-      <Button BorderRadius="3" Image="{Binding image, Mode=TwoWay}" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="88" WidthRequest="88" />
+      <BoxView Color="White" HeightRequest="10" />
+      <ffimageloading:CachedImage x:Name="picture" Source="{Binding profilepic, Mode=TwoWay}" BackgroundColor="White" HorizontalOptions="Center" HeightRequest="88" WidthRequest="88" ErrorPlaceholder="image_error.png" LoadingPlaceholder="image_loading.png" DownsampleHeight="88" DownsampleUseDipUnits="False"/>
       <Button Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center" Clicked="OnPickPhoto"/>
       <BoxView Color="#F2F2F2" HeightRequest="20" />
       <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
@@ -30,7 +31,7 @@
       </StackLayout>
       <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
         <Button HeightRequest="48" WidthRequest="48" Image="password.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
-        <Entry Text="{Binding password}" HeightRequest="48" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" TextColor="#BCBEC0" Placeholder="correo electrónico" FontSize="15" IsPassword="True"/>
+        <Entry Text="{Binding password}" HeightRequest="48" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" TextColor="#BCBEC0" Placeholder="contraseña" FontSize="15" IsPassword="True" TextChanged="OnPasswordChanged"/>
       </StackLayout>
       <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
         <Button HeightRequest="48" WidthRequest="48" Image="birthdate.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>

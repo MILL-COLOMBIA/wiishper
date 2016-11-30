@@ -85,5 +85,10 @@ namespace Prototipo
         {
             return restService.ShowRejectedProducts(id);
         }
+    
+        public Task<string> UpdateUser(User user)
+        {
+            return restService.Update(user);
+        }
     }
 }

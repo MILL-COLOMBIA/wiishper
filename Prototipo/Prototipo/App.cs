@@ -27,7 +27,7 @@ namespace Prototipo
         {
             Manager = new RESTManager(new RestService());
             //MainPage = new NavigationPage(new ProfilePage(new User() { name = "Andrés Felipe", birthdate = new DateTime(1987, 5, 19), followers = 10, following = 20, wishcount = 15, isfriend = false }));
-            MainPage = new NavigationPage(new FormPage());
+            MainPage = new NavigationPage(new ProductsPage());
         }
 
         protected override void OnStart()

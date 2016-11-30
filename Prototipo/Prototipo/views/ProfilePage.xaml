@@ -18,12 +18,14 @@
   <ContentPage.Content>
     <StackLayout Orientation="Vertical" Spacing="0" BackgroundColor="#F2F2F2">
       <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D" x:Name="mainbar">
+        <!--<Button HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent" HorizontalOptions="Start"/>-->
         <Image Source="wordlogo.png" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
+        <!--<Button HeightRequest="50" WidthRequest="50" Image="settings.png" BackgroundColor="Transparent" HorizontalOptions="End" Clicked="OnSettings"/>-->
       </StackLayout>
       <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
       <BoxView Color="White" HeightRequest="5" HorizontalOptions="FillAndExpand"/>
       <StackLayout Orientation="Horizontal" BackgroundColor="White" Spacing="10">
-        <Button HeightRequest="88" WidthRequest="88" BackgroundColor="#A8A9AD" BorderRadius="3" HorizontalOptions="CenterAndExpand"/>
+        <ffimageloading:CachedImage Aspect="Fill" DownsampleHeight="88" DownsampleUseDipUnits="false" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" HeightRequest="88" WidthRequest="88" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Source="{Binding profilepic}"/>
         <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="CenterAndExpand">
           <Label TextColor="Black" FontAttributes="Bold" Text="{Binding name}" HorizontalTextAlignment="Start" HorizontalOptions="Fill"/>
           <StackLayout Orientation="Horizontal" BackgroundColor="White">

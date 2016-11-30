@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Prototipo;assembly=Prototipo"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Prototipo.FriendsPage"
              BackgroundColor="#F2F2F2">
   <ContentPage.Resources>
@@ -53,7 +54,7 @@
             <ViewCell>
               <ViewCell.View>
                 <StackLayout Padding="15,0,15,0" Spacing="0" Orientation="Horizontal" BackgroundColor="White">
-                  <Button Image="{Binding profilepic}" BorderRadius="3" BackgroundColor="#A8A9AD" VerticalOptions="Center" HeightRequest="30" WidthRequest="30"/>
+                  <ffimageloading:CachedImage DownsampleHeight="44" DownsampleUseDipUnits="False" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" Aspect="AspectFill" Source="{Binding profilepic}" BackgroundColor="White" VerticalOptions="Center" HeightRequest="44" WidthRequest="44"/>
                   <StackLayout Spacing="0" BackgroundColor="White" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand">
                     <Label BackgroundColor="White" TextColor="Black" FontAttributes="Bold" Text="{Binding name}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start"/>
                     <StackLayout Orientation="Horizontal" BackgroundColor="White">

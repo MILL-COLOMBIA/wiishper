@@ -16,7 +16,7 @@ namespace Prototipo
         HttpClient client;
 
         dynamic sendContent;
-
+        public static string userpass { get; set; }
         public List<User> Friends { get; private set; }
         public static List<Product> Products { get; private set; }
         public static User LoggedUser { get; set; }
@@ -121,6 +121,7 @@ namespace Prototipo
             dynamic sendContent = CreateMessage(Constants.SIGNUP, data);
             sendContent.data = JsonConvert.SerializeObject(user);
             Debug.WriteLine(sendContent.ToString());
+            userpass = user.password;
             try
             {
                 var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
@@ -133,6 +134,45 @@ namespace Prototipo
                     byte[] buffer = await response.Content.ReadAsByteArrayAsync();
                     string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
                     Debug.WriteLine(result);
+                    //App.Database.SaveUser(user);
+                    return result;
+                }
+                else
+                {
+                    byte[] buffer = await response.Content.ReadAsByteArrayAsync();
+                    string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                    Debug.WriteLine(result);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<string> Update(User user)
+        {
+            var uri = new Uri(Constants.RestURL);
+            var data = JsonConvert.SerializeObject(user);
+            dynamic sendContent = CreateMessage(Constants.UPDATE_USER, data);
+            sendContent.data = JsonConvert.SerializeObject(user);
+            Debug.WriteLine(sendContent.ToString());
+            try
+            {
+                var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
+                HttpResponseMessage response = null;
+
+                response = await client.PostAsync(uri, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    byte[] buffer = await response.Content.ReadAsByteArrayAsync();
+                    string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                    Debug.WriteLine(result);
+                    LoggedUser = user;
                     //App.Database.SaveUser(user);
                     return result;
                 }
@@ -187,6 +227,7 @@ namespace Prototipo
             data.email = username;
             dynamic sendContent = CreateMessage(Constants.LOGIN, data);
             Debug.WriteLine(sendContent.ToString());
+            userpass = password;
             try
             {
                 var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
@@ -545,6 +586,11 @@ namespace Prototipo
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", LoggedUser.apikey);
             else
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "11614066f1b101f695bf2479656da628");
+        }
+
+        public static bool IsUserLogged()
+        {
+            return LoggedUser != null;
         }
     }
 }

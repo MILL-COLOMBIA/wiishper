@@ -11,6 +11,7 @@ namespace Prototipo
         Task<List<User>> GetFriends();
         Task<List<Product>> GetProducts();
         Task<string> SignUp(User user);
+        Task<string> Update(User user);
         Task<List<User>> GetUsers();
         Task<User> Login(string username, string password);
         Task<List<User>> ShowPeople();

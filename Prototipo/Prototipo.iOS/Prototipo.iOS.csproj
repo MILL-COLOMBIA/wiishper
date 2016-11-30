@@ -190,34 +190,64 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\background.png" />
+    <BundleResource Include="Resources\accept.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\calendar.png" />
+    <BundleResource Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\birthdate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dislike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\emailicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\exit.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\facebook.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\facebook_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\fb_smaller.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\follow.png" />
+    <BundleResource Include="Resources\gendericon.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\image_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\image_loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\like.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\logo1.jpg" />
+    <BundleResource Include="Resources\main.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\main.png" />
+    <BundleResource Include="Resources\nameicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\newsfeed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\notifications.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\people.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\profile.png" />
@@ -226,10 +256,19 @@
     <BundleResource Include="Resources\profilepic.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\shop.png" />
+    <BundleResource Include="Resources\search.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\shop_bg.png" />
+    <BundleResource Include="Resources\separator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\twitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\wordlogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
