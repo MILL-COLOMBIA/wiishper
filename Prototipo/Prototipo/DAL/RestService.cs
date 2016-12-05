@@ -559,7 +559,7 @@ namespace Prototipo
             dynamic message = new JObject();
             message.control = new JObject();
             message.data = new JObject();
-
+            message.control.operation = new JObject();
             message.control.operation = operation;
             message.data = data;
 
