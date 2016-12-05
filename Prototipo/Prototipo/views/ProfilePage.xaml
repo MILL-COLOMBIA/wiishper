@@ -29,8 +29,8 @@
         <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="CenterAndExpand">
           <Label TextColor="Black" FontAttributes="Bold" Text="{Binding name}" HorizontalTextAlignment="Start" HorizontalOptions="Fill"/>
           <StackLayout Orientation="Horizontal" BackgroundColor="White">
-            <Label Text="{Binding birthdate}" TextColor="#A8A9AD" HorizontalTextAlignment="Start" VerticalOptions="Start"/>
-            <Button FontSize="10" TextColor="White" HeightRequest="30" WidthRequest="100" HorizontalOptions="Center" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center"/>
+            <Label Text="{Binding birthdate, StringFormat='{0:MMMM d, yyyy}'}" TextColor="#A8A9AD" HorizontalTextAlignment="Start" VerticalOptions="Start"/>
+            <Button FontSize="10" TextColor="White" HeightRequest="30" WidthRequest="100" HorizontalOptions="Center" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center" x:Name="btnFollow"/>
           </StackLayout>
           <StackLayout Orientation="Horizontal" BackgroundColor="White" Spacing="10">
             <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="Start">

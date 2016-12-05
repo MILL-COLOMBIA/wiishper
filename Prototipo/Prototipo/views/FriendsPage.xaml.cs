@@ -67,15 +67,34 @@ namespace Prototipo
 
         private async void OnAddFriend(object sender, EventArgs e)
         {
-            Button button = sender as Button;
-            string result = await App.Manager.AddFriend((int) button.CommandParameter);
-            if (result.Equals("FAIL"))
+            Button button = sender as Button;   
+            if (button.Text.Equals("Seguir"))
             {
-                await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al agregar amigo", TimeSpan.FromSeconds(2));
+                string result = await App.Manager.AddFriend((int)button.CommandParameter);
+                if (result.Equals("FAIL"))
+                {
+                    await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al agregar amigo", TimeSpan.FromSeconds(2));
+                }
+                else
+                {
+                    button.BackgroundColor = Color.FromHex("74C7CD");
+                    button.Text = "Dejar de seguir";
+                    await notificator.Notify(ToastNotificationType.Success, "Wiishper", "Amigo agregado", TimeSpan.FromSeconds(2));
+                }
             }
             else
             {
-                await notificator.Notify(ToastNotificationType.Success, "Wiishper", "Amigo agregado", TimeSpan.FromSeconds(2));
+                string result = await App.Manager.Unfriend((int)button.CommandParameter);
+                if (result.Equals("FAIL"))
+                {
+                    await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al agregar amigo", TimeSpan.FromSeconds(2));
+                }
+                else
+                {
+                    button.BackgroundColor = Color.FromHex("BCBDC1");
+                    button.Text = "Seguir";
+                    await notificator.Notify(ToastNotificationType.Success, "Wiishper", "Amigo eliminado", TimeSpan.FromSeconds(2));
+                }
             }
         }
 

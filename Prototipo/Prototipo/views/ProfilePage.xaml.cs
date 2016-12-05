@@ -32,6 +32,8 @@ namespace Prototipo
                 settings.Clicked += OnSettings;
                 mainbar.Children.Insert(0, new Button() { BackgroundColor = Color.Transparent, HeightRequest = 50, WidthRequest = 50 });
                 mainbar.Children.Add(settings);
+                btnFollow.IsEnabled = false;
+                btnFollow.IsVisible = false;
             }
             this.BindingContext = user == null ? RestService.LoggedUser : user;
         }

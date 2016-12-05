@@ -24,27 +24,7 @@
     <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
     <BoxView Color="White" HeightRequest="10" HorizontalOptions="FillAndExpand"/>
       <ScrollView Orientation="Horizontal">
-        <StackLayout Orientation="Horizontal" BackgroundColor="White" x:Name="friendsStack">
-          <!--<StackLayout Orientation="Vertical" BackgroundColor="White">
-            <Button x:Name="pic1" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
-            <Button x:Name="name1" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
-          </StackLayout>
-          <StackLayout Orientation="Vertical" BackgroundColor="White">
-            <Button x:Name="pic2" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
-            <Button x:Name="name2" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
-          </StackLayout>
-          <StackLayout Orientation="Vertical" BackgroundColor="White">
-            <Button x:Name="pic3" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
-            <Button x:Name="name3" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
-          </StackLayout>
-          <StackLayout Orientation="Vertical" BackgroundColor="White">
-            <Button x:Name="pic4" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
-            <Button x:Name="name4" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
-          </StackLayout>
-          <StackLayout Orientation="Vertical" BackgroundColor="White">
-            <Button x:Name="pic5" BorderRadius="3" BackgroundColor="#A8A9AD" HorizontalOptions="Center" HeightRequest="61" WidthRequest="61" />
-            <Button x:Name="name5" Text="Cambiar foto" HeightRequest="30" FontSize="10" TextColor="#A8A9AD" BackgroundColor="Transparent" HorizontalOptions="Center"/>
-          </StackLayout>-->
+        <StackLayout Orientation="Horizontal" BackgroundColor="White" x:Name="friendsStack">          
       </StackLayout>
       </ScrollView>
       <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
@@ -72,7 +52,7 @@
                       </StackLayout>
                     </StackLayout>
                   </StackLayout>
-                  <Button CommandParameter="{Binding idusers}" FontSize="8" TextColor="White" HeightRequest="30" WidthRequest="92" HorizontalOptions="End" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center" Clicked="OnAddFriend"/>
+                  <Button InputTransparent="True" CommandParameter="{Binding idusers}" FontSize="8" TextColor="White" HeightRequest="30" WidthRequest="92" HorizontalOptions="End" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center" Clicked="OnAddFriend"/>
                 </StackLayout>
               </ViewCell.View>
             </ViewCell>
