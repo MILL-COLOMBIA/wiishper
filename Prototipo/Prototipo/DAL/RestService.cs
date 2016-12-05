@@ -556,12 +556,16 @@ namespace Prototipo
 
         private dynamic CreateMessage(int operation, dynamic data)
         {
-            dynamic message = new JObject();
-            message.control = new JObject();
-            message.data = new JObject();
-            message.control.operation = new JObject();
-            message.control.operation = operation;
-            message.data = data;
+            JObject message = new JObject();
+            JObject control = new JObject();
+            control.Add("operation", operation);
+            message.Add("control", control);
+            message.Add("data", data);
+            //message.control = new JObject();
+            //message.data = new JObject();
+            //message.control.operation = new JObject();
+            //message.control.operation = operation;
+            //message.data = data;
 
             return message;
         }
