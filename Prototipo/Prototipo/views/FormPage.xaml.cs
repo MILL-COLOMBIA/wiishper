@@ -45,63 +45,11 @@ namespace Prototipo
             user = BindingContext as User;
             if (RestService.IsUserLogged())
             {
-                user.apikey = RestService.LoggedUser.apikey;
-                user.password = passChanged ? user.password : RestService.userpass;
-                if (picChanged)
-                {
-                    var imageStream = new MemoryStream();
-                    StreamImageSource streamImageSource = (StreamImageSource)picture.Source;
-                    System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
-                    Task<Stream> task = streamImageSource.Stream(cancellationToken);
-                    Stream stream = task.Result;
-                    stream.CopyTo(imageStream);
-                    bool uploaded = await ImageUploader.UploadPic(imageStream.ToArray(), user.idusers + ".png");
-                    user.profilepic = uploaded ? "http://wiishper.com/profilepics/" + RestService.LoggedUser.idusers + ".png" : "http://wiishper.com/profilepics/main.png";
-                }
-                else
-                {
-                    user.profilepic = user.profilepic == null ? "http://wiishper.com/profilepics/main.png" : user.profilepic;
-                }
-                var response = await App.Manager.UpdateUser(user);
-                if(response != null)
-                {
-                    notificator.Notify(ToastNotificationType.Success, "Wiishper", "Bienvenido a Wiishper", TimeSpan.FromSeconds(2));
-                    Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
-                    await Navigation.PopAsync();
-                }
-                else
-                {
-                    await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, ocurrió un error en el registro", TimeSpan.FromSeconds(2));
-                }
+                SaveExistingUser(user);
             }
             else
             {
-                if (picChanged)
-                {
-                    var imageStream = new MemoryStream();
-                    StreamImageSource streamImageSource = (StreamImageSource)picture.Source;
-                    System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
-                    Task<Stream> task = streamImageSource.Stream(cancellationToken);
-                    Stream stream = task.Result;
-                    stream.CopyTo(imageStream);
-                    bool uploaded = await ImageUploader.UploadPic(imageStream.ToArray(), user.idusers + ".png");
-                    user.profilepic = uploaded ? "http://wiishper.com/profilepics/" + RestService.LoggedUser.idusers + ".png" : "http://wiishper.com/profilepics/main.png";
-                }
-                else
-                {
-                    user.profilepic = user.profilepic == null ? "http://wiishper.com/profilepics/main.png" : user.profilepic;
-                }
-                var response = await App.Manager.SignUp(user);
-                if (response != null)
-                {
-                    notificator.Notify(ToastNotificationType.Success, "Wiishper", "Bienvenido a Wiishper", TimeSpan.FromSeconds(2));
-                    Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
-                    await Navigation.PopAsync();
-                }
-                else
-                {
-                    await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, ocurrió un error en el registro", TimeSpan.FromSeconds(2));
-                }
+                SaveNewUser(user);
             }
             //user = (User)BindingContext;
             //string response;
@@ -157,6 +105,76 @@ namespace Prototipo
             //{
             //    await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, ocurrió un error en el registro", TimeSpan.FromSeconds(2));
             //}
+        }
+
+        private async void SaveExistingUser(User user)
+        {
+            user.apikey = RestService.LoggedUser.apikey;
+            user.password = passChanged ? user.password : RestService.userpass;
+            if (picChanged)
+            {
+                var imageStream = new MemoryStream();
+                StreamImageSource streamImageSource = (StreamImageSource)picture.Source;
+                System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
+                Task<Stream> task = streamImageSource.Stream(cancellationToken);
+                Stream stream = task.Result;
+                stream.CopyTo(imageStream);
+                bool uploaded = await ImageUploader.UploadPic(imageStream.ToArray(), user.idusers + ".png");
+                user.profilepic = uploaded ? "http://wiishper.com/profilepics/" + RestService.LoggedUser.idusers + ".png" : "http://wiishper.com/profilepics/main.png";
+            }
+            else
+            {
+                user.profilepic = user.profilepic == null ? "http://wiishper.com/profilepics/main.png" : user.profilepic;
+            }
+            var response = await App.Manager.UpdateUser(user);
+            if (response != null)
+            {
+                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Bienvenido a Wiishper", TimeSpan.FromSeconds(2));
+                Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
+                await Navigation.PopAsync();
+            }
+            else
+            {
+                await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, ocurrió un error en el registro", TimeSpan.FromSeconds(2));
+            }
+        }
+
+        private async void SaveNewUser(User user)
+        {
+            var response = await App.Manager.SignUp(user);
+            if (response != null)
+            {
+                await App.Manager.Login(user.email, user.password);
+                user.apikey = RestService.LoggedUser.apikey;
+                user.idusers = RestService.LoggedUser.idusers;
+                user.password = RestService.userpass;
+                if (picChanged)
+                {
+                    var imageStream = new MemoryStream();
+                    StreamImageSource streamImageSource = (StreamImageSource)picture.Source;
+                    System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
+                    Task<Stream> task = streamImageSource.Stream(cancellationToken);
+                    Stream stream = task.Result;
+                    stream.CopyTo(imageStream);
+                    bool uploaded = await ImageUploader.UploadPic(imageStream.ToArray(), user.idusers + ".png");
+                    user.profilepic = uploaded ? "http://wiishper.com/profilepics/" + user.idusers + ".png" : "http://wiishper.com/profilepics/main.png";
+                }
+                else
+                {
+                    user.profilepic = user.profilepic == null ? "http://wiishper.com/profilepics/main.png" : user.profilepic;
+                }
+            }
+            response = await App.Manager.UpdateUser(user);
+            if (response != null)
+            {
+                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Tus datos fueron actualizados", TimeSpan.FromSeconds(2));
+                Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
+                await Navigation.PopAsync();
+            }
+            else
+            {
+                await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, ocurrió un error en el registro", TimeSpan.FromSeconds(2));
+            }
         }
 
         private async void OnDismiss(object sender, EventArgs e)
