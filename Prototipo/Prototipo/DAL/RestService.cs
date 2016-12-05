@@ -42,7 +42,6 @@ namespace Prototipo
             dynamic sendContent = CreateMessage(Constants.SHOW_FRIENDS, data);
             List<User> people = new List<User>();
             PrepareClient();
-            Debug.WriteLine(sendContent.ToString());
 
             try
             {
@@ -79,11 +78,9 @@ namespace Prototipo
             Products = new List<Product>();
 
             var uri = new Uri(Constants.RestURL);
-            dynamic sentjson = new JObject();
-            sendContent.control.operation = Constants.SHOW_RANDOM_PRODS;
+            dynamic sendContent = CreateMessage(Constants.SHOW_RANDOM_PRODS, null);
             var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
             PrepareClient();
-            Debug.WriteLine(sendContent.ToString());
             try
             {
                 var response = await client.PostAsync(uri, content);
@@ -120,7 +117,6 @@ namespace Prototipo
             var data = JsonConvert.SerializeObject(user);
             dynamic sendContent = CreateMessage(Constants.SIGNUP, data);
             sendContent.data = JsonConvert.SerializeObject(user);
-            Debug.WriteLine(sendContent.ToString());
             userpass = user.password;
             try
             {
@@ -159,7 +155,6 @@ namespace Prototipo
             var data = JsonConvert.SerializeObject(user);
             dynamic sendContent = CreateMessage(Constants.UPDATE_USER, data);
             sendContent.data = JsonConvert.SerializeObject(user);
-            Debug.WriteLine(sendContent.ToString());
             try
             {
                 var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
@@ -226,7 +221,6 @@ namespace Prototipo
             data.password = password;
             data.email = username;
             dynamic sendContent = CreateMessage(Constants.LOGIN, data);
-            Debug.WriteLine(sendContent.ToString());
             userpass = password;
             try
             {
@@ -266,7 +260,6 @@ namespace Prototipo
             dynamic sendContent = CreateMessage(Constants.SEARCH_PEOPLE, data);
             List<User> people =  new List<User>();
             PrepareClient();
-            Debug.WriteLine(sendContent.ToString());
             try
             {
                 var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
@@ -303,7 +296,6 @@ namespace Prototipo
             data.friendee = id;
             dynamic sendContent = CreateMessage(Constants.IS_FRIEND, data);
             PrepareClient();
-            Debug.WriteLine(sendContent.ToString());
             bool answer;
             try
             {
@@ -342,7 +334,6 @@ namespace Prototipo
             dynamic sendContent = CreateMessage(Constants.ADD_FRIEND, data);
             PrepareClient();
             string answer;
-            Debug.WriteLine(sendContent.ToString());
             try
             {
                 var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
@@ -384,7 +375,6 @@ namespace Prototipo
             dynamic sendContent = CreateMessage(Constants.UNFRIEND, data);
             PrepareClient();
             string answer;
-            Debug.WriteLine(sendContent.ToString());
             try
             {
                 var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
@@ -426,7 +416,6 @@ namespace Prototipo
             data.liked = 1;
             dynamic sendContent = CreateMessage(Constants.LIKE_PROD, data);
             PrepareClient();
-            Debug.WriteLine(sendContent.ToString());
 
             try
             {
@@ -462,7 +451,6 @@ namespace Prototipo
             data.liked = 0;
             dynamic sendContent = CreateMessage(Constants.REJECT_PROD, data);
             PrepareClient();
-            Debug.WriteLine(sendContent.ToString());
 
             try
             {
@@ -499,7 +487,6 @@ namespace Prototipo
                 data.userid = userid;
             dynamic sendContent = CreateMessage(Constants.SHOW_LIKED_PRODS , data);
             PrepareClient();
-            Debug.WriteLine(sendContent.ToString());
 
             try
             {
@@ -538,7 +525,6 @@ namespace Prototipo
                 data.userid = userid;
             dynamic sendContent = CreateMessage(Constants.SHOW_REJECTED_PRODS , data);
             PrepareClient();
-            Debug.WriteLine(sendContent.ToString());
 
             try
             {
