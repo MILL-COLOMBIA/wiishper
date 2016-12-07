@@ -15,7 +15,7 @@
         <Entry x:Name="username"  HorizontalOptions="Fill" VerticalOptions="Center" Placeholder="correo electrónico" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="White"/>
         <Entry x:Name="password" HorizontalOptions="Fill" VerticalOptions="Center" IsPassword="true" Placeholder="contraseña" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="White"/>
         <Button x:Name="login" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#F2F2F2" Text="Ingresa" WidthRequest="174"  HeightRequest="35" FontSize="14" FontAttributes="Bold" TextColor="#87888A" Clicked="OnLogin"/>
-        <Button x:Name="forgot" HorizontalOptions="Center" HeightRequest="35" BackgroundColor="White" TextColor="#BCBEC0" Text="¿Olvidó su contraseña?" FontSize="14"/>
+        <Button x:Name="forgot" HorizontalOptions="Center" HeightRequest="35" BackgroundColor="White" TextColor="#BCBEC0" Text="¿Olvidaste tu contraseña?" FontSize="14"/>
         <BoxView Color="White" HeightRequest="5" />
         <Image HorizontalOptions="Center" Source="separator.png"/>
         <BoxView Color="White" HeightRequest="5" />

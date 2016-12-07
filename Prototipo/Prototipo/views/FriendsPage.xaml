@@ -33,10 +33,12 @@
           <DataTemplate>
             <ViewCell>
               <ViewCell.View>
-                <StackLayout Padding="15,0,15,0" Spacing="0" Orientation="Horizontal" BackgroundColor="White">
+                <StackLayout Padding="15,10,15,0" Spacing="0" Orientation="Horizontal" BackgroundColor="White">
                   <ffimageloading:CachedImage DownsampleHeight="44" DownsampleUseDipUnits="False" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" Aspect="AspectFill" Source="{Binding profilepic}" BackgroundColor="White" VerticalOptions="Center" HeightRequest="44" WidthRequest="44"/>
                   <StackLayout Spacing="0" BackgroundColor="White" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand">
-                    <Label BackgroundColor="White" TextColor="Black" FontAttributes="Bold" Text="{Binding name}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start"/>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="White">
+                      <Label BackgroundColor="White" TextColor="Black" FontAttributes="Bold" Text="{Binding completename}" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
                     <StackLayout Orientation="Horizontal" BackgroundColor="White">
                       <StackLayout Orientation="Vertical" BackgroundColor="White">
                         <Label Text="Seguidores" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>

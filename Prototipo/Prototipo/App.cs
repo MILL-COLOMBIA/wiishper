@@ -15,6 +15,8 @@ namespace Prototipo
         static UserDatabase database;
         public static bool IsLoggedIn { get; set; }
         public static string ApiKey { get; set; }
+
+        private bool firstTime = true;
         public static UserDatabase Database
         {
             get
@@ -26,8 +28,13 @@ namespace Prototipo
         public App()
         {
             Manager = new RESTManager(new RestService());
-            //MainPage = new NavigationPage(new ProfilePage(new User() { name = "Andrés Felipe", birthdate = new DateTime(1987, 5, 19), followers = 10, following = 20, wishcount = 15, isfriend = false }));
-            MainPage = new NavigationPage(new ProductsPage());
+            if (firstTime)
+            {
+                MainPage = new NavigationPage(new TutorialPage());
+                firstTime = false;
+            }
+            else
+                MainPage = new NavigationPage(new ProductsPage());
         }
 
         protected override void OnStart()

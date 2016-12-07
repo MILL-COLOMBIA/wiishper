@@ -18,19 +18,21 @@
   <ContentPage.Content>
     <StackLayout Orientation="Vertical" Spacing="0" BackgroundColor="#F2F2F2">
       <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D" x:Name="mainbar">
-        <!--<Button HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent" HorizontalOptions="Start"/>-->
         <Image Source="wordlogo.png" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
-        <!--<Button HeightRequest="50" WidthRequest="50" Image="settings.png" BackgroundColor="Transparent" HorizontalOptions="End" Clicked="OnSettings"/>-->
       </StackLayout>
       <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
       <BoxView Color="White" HeightRequest="5" HorizontalOptions="FillAndExpand"/>
       <StackLayout Orientation="Horizontal" BackgroundColor="White" Spacing="10">
         <ffimageloading:CachedImage Aspect="Fill" DownsampleHeight="88" DownsampleUseDipUnits="false" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" HeightRequest="88" WidthRequest="88" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Source="{Binding profilepic}"/>
         <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="CenterAndExpand">
-          <Label TextColor="Black" FontAttributes="Bold" Text="{Binding name}" HorizontalTextAlignment="Start" HorizontalOptions="Fill"/>
           <StackLayout Orientation="Horizontal" BackgroundColor="White">
-            <Label Text="{Binding birthdate, StringFormat='{0:MMMM d, yyyy}'}" TextColor="#A8A9AD" HorizontalTextAlignment="Start" VerticalOptions="Start"/>
-            <Button FontSize="10" TextColor="White" HeightRequest="30" WidthRequest="100" HorizontalOptions="Center" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center" x:Name="btnFollow"/>
+          <Label TextColor="Black" FontSize="16" FontAttributes="Bold" Text="{Binding name}" HorizontalTextAlignment="Start" HorizontalOptions="Fill"/>
+          <Label TextColor="Black" FontSize="16" FontAttributes="Bold" Text="{Binding surname}" HorizontalTextAlignment="Start" HorizontalOptions="Fill"/>
+        </StackLayout>
+          <StackLayout Orientation="Horizontal" BackgroundColor="White">
+            <Button HeightRequest="30" WidthRequest="30" Image="cake.png" BackgroundColor="White" HorizontalOptions="Start"/>
+            <Label Text="{Binding birthdate, StringFormat='{0:MMMM d}'}" TextColor="#A8A9AD" HorizontalTextAlignment="Start" VerticalOptions="Center"/>
+            <Button FontSize="10" TextColor="White" HeightRequest="30" WidthRequest="100" HorizontalOptions="Center" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center" x:Name="btnFollow" Clicked="OnFollow"/>
           </StackLayout>
           <StackLayout Orientation="Horizontal" BackgroundColor="White" Spacing="10">
             <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="Start">
@@ -60,9 +62,10 @@
                 <ColumnDefinition Width="*"/>
               </Grid.ColumnDefinitions>
               <ffimageloading:CachedImage HeightRequest="140" Aspect="Fill" DownsampleHeight="140" DownsampleUseDipUnits="false" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" Source="{Binding image}"/>
-              <Label BackgroundColor="#80000000" TextColor="Black" Text="{Binding name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="End"/>
-              <Label BackgroundColor="#80000000" TextColor="Black" Text="{Binding price}" FontSize="16" HorizontalOptions="Center" VerticalOptions="End"/>
-              
+              <StackLayout BackgroundColor="#26CAD3" HorizontalOptions="Fill" VerticalOptions="End">
+              <Label BackgroundColor="#26CAD3" TextColor="#4E4E4E" Text="{Binding name}" FontAttributes="Bold" HorizontalTextAlignment="Start" FontSize="12" HorizontalOptions="Start" VerticalOptions="End"/>
+              <Label BackgroundColor="#26CAD3" TextColor="#4E4E4E" Text="{Binding price}" FontSize="10" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalOptions="End"/>
+              </StackLayout>
             </Grid>
           </DataTemplate>
         </flv:FlowListView.FlowColumnTemplate>

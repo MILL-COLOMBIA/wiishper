@@ -8,7 +8,6 @@ using System.Diagnostics;
 using Xamarin.Forms;
 using Plugin.Toasts;
 using FFImageLoading.Forms;
-using System.Diagnostics;
 
 namespace Prototipo
 {

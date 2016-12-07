@@ -30,6 +30,7 @@ namespace Prototipo
             User user = await App.Manager.Login(username.Text, password.Text);
             if (user != null)
             {
+                App.Database.PrintTastes();
                 Navigation.InsertPageBefore(new ProfilePage(user), this);
                 await Navigation.PopAsync();
             }

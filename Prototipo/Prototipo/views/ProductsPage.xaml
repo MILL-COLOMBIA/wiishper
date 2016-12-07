@@ -8,7 +8,7 @@
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" WinPhone="0, 0, 0, 0"/>
   </ContentPage.Padding>
-  <Grid RowSpacing="0" x:Name="MainGrid">
+  <!--<Grid RowSpacing="0" x:Name="MainGrid">
     <Grid.RowDefinitions>
       <RowDefinition Height=".0705*"/>
       <RowDefinition Height=".0026*"/>
@@ -26,8 +26,8 @@
       <Image Source="wordlogo.png" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
     </StackLayout>
   <BoxView Color="#74C7CD" Grid.Row="1"/>
-  <BoxView Color="#DEDEDE" Grid.Row="3"/>
-    <cv:CarouselView Grid.Row="4" ItemsSource="{Binding Products}" x:Name="CarouselProducts">
+  <BoxView Color="#DEDEDE" Grid.Row="3"/>-->
+    <!--<cv:CarouselView Grid.Row="4" ItemsSource="{Binding Products}" x:Name="CarouselProducts">
       <cv:CarouselView.ItemTemplate>
         <DataTemplate>
           <Grid>
@@ -35,15 +35,16 @@
               <RowDefinition Height="*"/>
               <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Image Grid.RowSpan="2" Aspect="AspectFit" Source="{Binding image}"/>
-            <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
-              <Label TextColor="Black" Text="{Binding name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+            <Image HeightRequest="160" WidthRequest="160" Grid.RowSpan="2" Aspect="Fill" Source="{Binding image}"/>
+            <StackLayout Grid.Row="1" BackgroundColor="#26CAD3" Padding="12">
+              <Label TextColor="#4E4E4E" Text="{Binding name}" FontAttributes="Bold" FontSize="16" HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"/>
+              <Label TextColor="#4E4E4E" Text="{Binding price}" FontSize="12" HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
           </Grid>
         </DataTemplate>
       </cv:CarouselView.ItemTemplate>
-    </cv:CarouselView>
-    <BoxView Color="#DEDEDE" Grid.Row="5"/>
+    </cv:CarouselView>-->
+    <!--<BoxView Color="#DEDEDE" Grid.Row="5"/>
     <Grid Grid.Row="7">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width=".1484*"/>
@@ -54,15 +55,15 @@
         <ColumnDefinition Width=".2032*"/>
         <ColumnDefinition Width=".1484*"/>
       </Grid.ColumnDefinitions>
-      <Button Grid.Column="5" Image="like.png" Clicked="OnLike"/>
-      <Button Grid.Column="1" Image="dislike.png" Clicked="OnReject"/>
+      <Button BackgroundColor="White" Grid.Column="5" Image="like.png" Clicked="OnLike"/>
+      <Button BackgroundColor="White" Grid.Column="1" Image="dislike.png" Clicked="OnReject"/>
     </Grid>
     <BoxView Color="#DEDEDE" Grid.Row="9"/>
     <StackLayout Grid.Row="10" Orientation="Horizontal">
       <Button Image="people.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
       <Button Image="main.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
       <Button Image="profile.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
-    </StackLayout>
+    </StackLayout>-->
   <!--<Grid ColumnSpacing="0" Grid.Row="10">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto"/>
@@ -77,5 +78,5 @@
     <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnActivity"/>
     <Button Grid.Column="2" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProfile"/>
     </Grid>-->
-</Grid>
+<!--</Grid>-->
 </ContentPage>

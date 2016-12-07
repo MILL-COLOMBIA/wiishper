@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace Prototipo
 {
@@ -79,6 +80,16 @@ namespace Prototipo
                 {
                     return database.Insert(taste);
                 }
+            }
+        }
+
+        public void PrintTastes()
+        {
+            Debug.WriteLine("**********************||||||||||||||||||||||||||||||***************************");
+            List<Taste> tastes = (from taste in database.Table<Taste>() select taste).ToList();
+            foreach( Taste t in tastes)
+            {
+                Debug.WriteLine(t.idproducts);
             }
         }
     }

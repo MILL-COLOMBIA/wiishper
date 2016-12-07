@@ -28,6 +28,7 @@ namespace Prototipo
         public int following { get; set; }
         public int wishcount { get; set; }
         public bool isfriend { get; set; }
+        public string completename { get { return name + " " + surname; } }
 
         public override string ToString()
         {
