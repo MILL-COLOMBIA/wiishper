@@ -18,8 +18,10 @@ namespace Prototipo
         public UserDatabase()
         {
             database = DependencyService.Get<ISQLite>().GetConnection();
+            
             database.CreateTable<User>();
             database.CreateTable<Taste>();
+            database.DeleteAll<Taste>();
         }
 
         public User GetUser(int id)
@@ -42,6 +44,11 @@ namespace Prototipo
         {
             lock (locker)
             {
+                User u = GetUser(user.idusers);
+                if (u == null)
+                    return database.Insert(user);
+                else
+                    return database.Update(user);
                 if(user.idusers != 0)
                 {
                     database.Update(user);
@@ -67,20 +74,34 @@ namespace Prototipo
             return (from user in database.Table<User>() select user).ToList();
         }
 
+        public Taste GetProduct(int idproducts)
+        {
+            lock (locker)
+            {
+                return database.Table<Taste>().FirstOrDefault(x => x.idproducts == idproducts);
+            }
+        }
+
         public int SaveProduct(Taste taste)
         {
             lock(locker)
             {
-                if(taste.idproducts != 0)
-                {
-                    database.Update(taste);
-                    return taste.idproducts;
-                }
-                else
-                {
+                Taste t = GetProduct(taste.idproducts);
+                if (t == null)
                     return database.Insert(taste);
-                }
+                else
+                    return database.Update(taste);
             }
+        }
+
+        public void CleanProducts()
+        {
+            database.DeleteAll<Taste>();
+        }
+
+        public IEnumerable<Taste> GetProducts()
+        {
+            return (from taste in database.Table<Taste>() select taste).ToList();
         }
 
         public void PrintTastes()

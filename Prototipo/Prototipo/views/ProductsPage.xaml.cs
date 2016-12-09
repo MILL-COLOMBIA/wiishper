@@ -323,17 +323,17 @@ namespace Prototipo
                 string result = await App.Manager.RejectProduct(idproduct);
                 if (result.Equals("FAIL"))
                 {
-                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al rechazar el producto", TimeSpan.FromSeconds(2));
+                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al rechazar el producto", TimeSpan.FromSeconds(1));
                 }
                 else
                 {
-                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(2));
+                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(1));
                 }
             }
             else
             {
-                App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = new DateTime(), liked = false });
-                notificator.Notify(ToastNotificationType.Error, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(2));
+                App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = DateTime.Today, liked = false });
+                notificator.Notify(ToastNotificationType.Error, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(1));
             }
         }
 
@@ -345,17 +345,17 @@ namespace Prototipo
                 string result = await App.Manager.LikeProduct(idproduct);
                 if (result.Equals("FAIL"))
                 {
-                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al agregar el producto", TimeSpan.FromSeconds(2));
+                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al agregar el producto", TimeSpan.FromSeconds(1));
                 }
                 else
                 {
-                    notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(2));
+                    notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(1));
                 }
             }
             else
             {
-                App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = new DateTime(), liked = true });
-                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(2));
+                App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = DateTime.Today, liked = true });
+                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(1));
             }
         }
 

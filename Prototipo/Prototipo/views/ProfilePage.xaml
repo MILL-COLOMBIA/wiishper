@@ -23,7 +23,7 @@
       <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
       <BoxView Color="White" HeightRequest="5" HorizontalOptions="FillAndExpand"/>
       <StackLayout Orientation="Horizontal" BackgroundColor="White" Spacing="10">
-        <ffimageloading:CachedImage Aspect="Fill" DownsampleHeight="88" DownsampleUseDipUnits="false" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" HeightRequest="88" WidthRequest="88" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Source="{Binding profilepic}"/>
+        <ffimageloading:CachedImage DownsampleHeight="88" DownsampleUseDipUnits="false" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" HeightRequest="88" WidthRequest="88" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Source="{Binding profilepic}"/>
         <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="CenterAndExpand">
           <StackLayout Orientation="Horizontal" BackgroundColor="White">
           <Label TextColor="Black" FontSize="16" FontAttributes="Bold" Text="{Binding name}" HorizontalTextAlignment="Start" HorizontalOptions="Fill"/>

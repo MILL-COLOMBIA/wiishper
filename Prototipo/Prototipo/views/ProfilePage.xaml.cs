@@ -35,12 +35,13 @@ namespace Prototipo
                 btnFollow.IsEnabled = false;
                 btnFollow.IsVisible = false;
             }
-            this.BindingContext = user; ;
+            this.BindingContext = user;
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+
             products = await App.Manager.ShowLikedProducts(((User)BindingContext).idusers);
             ProductsView.FlowItemsSource = products;            
         }

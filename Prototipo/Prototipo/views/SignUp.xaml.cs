@@ -30,7 +30,15 @@ namespace Prototipo
             User user = await App.Manager.Login(username.Text, password.Text);
             if (user != null)
             {
-                App.Database.PrintTastes();
+                List<Taste> tastes = App.Database.GetProducts().ToList();
+                foreach(Taste t in tastes)
+                {
+                    if (t.liked)
+                        App.Manager.LikeProduct(t.idproducts);
+                    else
+                        App.Manager.RejectProduct(t.idproducts);
+                }
+                App.Database.CleanProducts();
                 Navigation.InsertPageBefore(new ProfilePage(user), this);
                 await Navigation.PopAsync();
             }

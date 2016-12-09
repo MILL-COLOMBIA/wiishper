@@ -2267,8 +2267,8 @@ namespace Prototipo.Droid
 			// aapt resource value: 0x7f0200b3
 			public const int newsfeed = 2130837683;
 			
-			// aapt resource value: 0x7f0200c4
-			public const int notification_template_icon_bg = 2130837700;
+			// aapt resource value: 0x7f0200c6
+			public const int notification_template_icon_bg = 2130837702;
 			
 			// aapt resource value: 0x7f0200b4
 			public const int notifications = 2130837684;
@@ -2310,13 +2310,19 @@ namespace Prototipo.Droid
 			public const int success = 2130837696;
 			
 			// aapt resource value: 0x7f0200c1
-			public const int twitter = 2130837697;
+			public const int tutorial_1 = 2130837697;
 			
 			// aapt resource value: 0x7f0200c2
-			public const int warning = 2130837698;
+			public const int tutorial_2 = 2130837698;
 			
 			// aapt resource value: 0x7f0200c3
-			public const int wordlogo = 2130837699;
+			public const int twitter = 2130837699;
+			
+			// aapt resource value: 0x7f0200c4
+			public const int warning = 2130837700;
+			
+			// aapt resource value: 0x7f0200c5
+			public const int wordlogo = 2130837701;
 			
 			static Drawable()
 			{

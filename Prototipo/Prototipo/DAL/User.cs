@@ -11,7 +11,7 @@ namespace Prototipo
 
         }
 
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int idusers { get; set; }
         public string name { get; set; }
         public string surname { get; set; }
@@ -29,6 +29,7 @@ namespace Prototipo
         public int wishcount { get; set; }
         public bool isfriend { get; set; }
         public string completename { get { return name + " " + surname; } }
+        public bool firsttime { get; set; }
 
         public override string ToString()
         {

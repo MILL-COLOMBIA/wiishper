@@ -208,7 +208,6 @@ namespace Prototipo
             {
                 Debug.WriteLine(ex);
                 Debug.WriteLine(ex.Message);
-                //TODO exception handling
             }
 
             return Friends;
@@ -233,7 +232,9 @@ namespace Prototipo
                     Debug.WriteLine(result);
                     ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
                     LoggedUser = JsonConvert.DeserializeObject<User>(sr.data.ToString());
-                    //App.Database.SaveUser(LoggedUser);
+                    LoggedUser.password = userpass;
+                    App.Database.SaveUser(LoggedUser);
+                    Helpers.Settings.GeneralSettings = "logged";
                     return LoggedUser;
                 }
                 else
@@ -561,11 +562,6 @@ namespace Prototipo
             control.Add("operation", operation);
             message.Add("control", control);
             message.Add("data", data);
-            //message.control = new JObject();
-            //message.data = new JObject();
-            //message.control.operation = new JObject();
-            //message.control.operation = operation;
-            //message.data = data;
 
             return message;
         }
@@ -582,5 +578,6 @@ namespace Prototipo
         {
             return LoggedUser != null;
         }
+        
     }
 }

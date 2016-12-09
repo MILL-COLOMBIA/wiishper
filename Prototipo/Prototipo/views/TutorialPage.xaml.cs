@@ -46,7 +46,8 @@ namespace Prototipo
 
         private async void OnBegin(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new ProductsPage(), this);
+            Helpers.Settings.GeneralSettings = "used";
+            Navigation.InsertPageBefore(new StartPage(), this);
             await Navigation.PopAsync();
         }
     }

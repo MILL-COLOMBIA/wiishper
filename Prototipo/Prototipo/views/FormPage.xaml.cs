@@ -51,60 +51,6 @@ namespace Prototipo
             {
                 SaveNewUser(user);
             }
-            //user = (User)BindingContext;
-            //string response;
-            //if (RestService.IsUserLogged())
-            //{
-            //    user.apikey = RestService.LoggedUser.apikey;
-            //    user.password = RestService.userpass;
-            //    response = await App.Manager.UpdateUser(user);
-            //}
-            //else
-            //    response = await App.Manager.SignUp(user);
-
-            //if (response != null)
-            //{
-            //    RestService.LoggedUser = await App.Manager.Login(user.email , user.password);
-            //    user.apikey = RestService.LoggedUser.apikey;
-            //    if (RestService.IsUserLogged())
-            //    {
-                    
-            //        var imageStream = new MemoryStream();
-
-            //        if (picChanged)
-            //        {
-            //            StreamImageSource streamImageSource = (StreamImageSource)picture.Source;
-            //            System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
-            //            Task<Stream> task = streamImageSource.Stream(cancellationToken);
-            //            Stream stream = task.Result;
-            //            stream.CopyTo(imageStream);
-            //            bool uploaded = await ImageUploader.UploadPic(imageStream.ToArray(), RestService.LoggedUser.idusers + ".png");
-            //            RestService.LoggedUser.profilepic = uploaded ? "http://wiishper.com/profilepics/" + RestService.LoggedUser.idusers + ".png" : "http://wiishper.com/profilepics/main.png";
-            //        }
-            //        else
-            //        {
-            //            RestService.LoggedUser.profilepic = "http://wiishper.com/profilepics/main.png";
-            //        }
-
-            //        RestService.LoggedUser.apikey = user.apikey;
-            //        RestService.LoggedUser.password = user.password;
-            //        response = await App.Manager.UpdateUser(RestService.LoggedUser);
-            //        if (response != null)
-            //        {
-            //            notificator.Notify(ToastNotificationType.Success, "Wiishper", "Bienvenido a Wiishper", TimeSpan.FromSeconds(2));
-            //            Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
-            //            await Navigation.PopAsync();
-            //        }
-            //        else
-            //        {
-            //            await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, ocurrió un error en el registro", TimeSpan.FromSeconds(2));
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, ocurrió un error en el registro", TimeSpan.FromSeconds(2));
-            //}
         }
 
         private async void SaveExistingUser(User user)
@@ -168,6 +114,15 @@ namespace Prototipo
             if (response != null)
             {
                 notificator.Notify(ToastNotificationType.Success, "Wiishper", "Tus datos fueron actualizados", TimeSpan.FromSeconds(2));
+                List<Taste> tastes = App.Database.GetProducts().ToList();
+                foreach (Taste t in tastes)
+                {
+                    if (t.liked)
+                        App.Manager.LikeProduct(t.idproducts);
+                    else
+                        App.Manager.RejectProduct(t.idproducts);
+                }
+                App.Database.CleanProducts();
                 Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
                 await Navigation.PopAsync();
             }
