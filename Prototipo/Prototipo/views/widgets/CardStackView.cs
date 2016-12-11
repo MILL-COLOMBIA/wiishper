@@ -84,7 +84,7 @@ namespace Prototipo
                     }),
                     Constraint.RelativeToParent((parent) =>
                     {
-                        return parent.Height * 0.80;
+                        return parent.Height;
                     })
                 );
             }

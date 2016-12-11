@@ -24,6 +24,16 @@ namespace Prototipo
             {
                 InitializeComponent();
                 NavigationPage.SetHasNavigationBar(this, false);
+				Button logout = new Button
+				{
+					Text = "Salir",
+					TextColor = Color.White,
+					BackgroundColor = Color.FromHex("4E4E4E"),
+					HorizontalOptions=LayoutOptions.End,
+					VerticalOptions=LayoutOptions.End
+				};
+				logout.Clicked += OnLogOut;
+				MainLayout.Children.Add(logout);
                 notificator = DependencyService.Get<IToastNotificator>();
                 if (user == null)
                     user = new User();
@@ -143,6 +153,14 @@ namespace Prototipo
             user.gender = ((Switch)sender).IsToggled ? "F" : "M";
         }
 
+		private async void OnLogOut(object sender, EventArgs e)
+		{
+			RestService.LoggedUser = null;
+			Helpers.Settings.GeneralSettings = "used";
+			Navigation.InsertPageBefore(new SignUp(), this);
+			await Navigation.PopAsync();
+		}
+
         private async void OnPickPhoto(object sender, EventArgs e)
         {
             if (!CrossMedia.Current.IsPickPhotoSupported)
@@ -169,20 +187,6 @@ namespace Prototipo
             picChanged = true;
 
 
-            //User user = BindingContext as User;
-
-
-            //using (var memoryStream = new MemoryStream())
-            //{
-            //    file.GetStream().CopyTo(memoryStream);
-            //    file.Dispose();
-            //    bool state = await ImageUploader.UploadPic(memoryStream.ToArray(), user.idusers + ".png");
-            //    if(state)
-            //    {
-            //        user.profilepic = "http://wiishper.com/profilepics/" + user.idusers + ".png";
-            //        Debug.WriteLine(user.profilepic);
-            //    }
-            //}
         }
     }
 }

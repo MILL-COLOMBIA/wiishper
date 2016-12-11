@@ -6,7 +6,7 @@
              x:Class="Prototipo.FormPage"
              BackgroundColor="White">
   <ContentPage.Content>
-    <StackLayout Orientation="Vertical" Spacing="0">
+    <StackLayout Orientation="Vertical" Spacing="0" x:Name="MainLayout">
       <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D">
         <Button HeightRequest="50" WidthRequest="50" Image="back.png" BackgroundColor="Transparent" HorizontalOptions="Start" Clicked="OnDismiss"/>
         <Label Text="Ajustes" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand"/>
@@ -55,34 +55,8 @@
         <Switch Toggled="OnGenderChanged"/>
         <Label Text="femenino" BackgroundColor="White" TextColor="#808080" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" Margin="10, 0, 0, 0" FontSize="15"/>
       </StackLayout>
+	  <!-- <Button BackgroundColor="#4D4D4D" TextColor="White" Text="Salir" Clicked="OnLogout"/> -->
     </StackLayout>
-    <!--<ScrollView>
-      <RelativeLayout>
-        <BoxView Color="Transparent" HeightRequest="100" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
-        <Button BorderRadius="55" x:Name="ProfilePic" BackgroundColor="White" HeightRequest="90" WidthRequest="90" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-45}" RelativeLayout.YConstraint=" {ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=50}" />
-        <Button BorderRadius="40" BackgroundColor="Aqua" HeightRequest="80" WidthRequest="80" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfilePic, Property=X, Factor=1, Constant=5}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=55 }" />
-        <Entry Text="{Binding username}" Placeholder="Nombre de Usuario" BackgroundColor="Transparent" TextColor="White" FontAttributes="Bold" FontSize="26" HorizontalTextAlignment="Center" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=140}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" x:Name="usernameEntry"/>
-        <StackLayout RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=200}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
-          <Entry Placeholder="email" BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding email}" x:Name="emailEntry"/>
-          <Entry Placeholder="nombres" BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding name}" x:Name="nameEntry"/>
-          <Entry Placeholder="apellidos" BackgroundColor="Transparent" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding surname}" x:Name="surnameEntry"/>
-          <Entry Placeholder="contraseña" BackgroundColor="Transparent" TextColor="White" HorizontalOptions="Start" Text="{Binding password}" x:Name="passwordEntry" IsPassword="True" />
-          <StackLayout Orientation="Horizontal">
-            <Label Text="Fecha nacimiento" BackgroundColor="Transparent" TextColor="White" HorizontalOptions="FillAndExpand"/>
-            <DatePicker Date="{Binding birthdate}" HorizontalOptions="FillAndExpand" x:Name="birthdateEntry">
-              <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-            </DatePicker>
-          </StackLayout>
-          <Picker x:Name="gender" Title="Género" SelectedIndex="-1" SelectedIndexChanged="OnGenderChanged">
-            <Picker.Items>
-              <x:String>Masculino</x:String>
-              <x:String>Femenino</x:String>
-            </Picker.Items>
-          </Picker>
-          <Button Text="Guardar" Clicked="OnSave"/>
-        </StackLayout>
-      </RelativeLayout>
-    </ScrollView>-->
   </ContentPage.Content>
  
 </ContentPage>

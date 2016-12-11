@@ -24,8 +24,8 @@ namespace Prototipo
                 Button back = new Button() { BackgroundColor=Color.Transparent, Image="back.png", HorizontalOptions=LayoutOptions.Start, HeightRequest=50, WidthRequest=50 };
                 back.Clicked += async (sender, e) => { await Navigation.PopAsync(); };
                 mainbar.Children.Insert(0, back);
-                mainbar.Children.Add(new Button() { BackgroundColor = Color.Transparent, HeightRequest = 50, WidthRequest = 50 });
-            }
+				mainbar.Children.Add(new Button() { BackgroundColor = Color.Transparent, HeightRequest = 50, WidthRequest = 50 });
+			}
             else
             {
                 Button settings = new Button() { BackgroundColor = Color.Transparent, Image = "settings.png", HorizontalOptions = LayoutOptions.Start, HeightRequest = 50, WidthRequest = 50 };
@@ -46,6 +46,17 @@ namespace Prototipo
             ProductsView.FlowItemsSource = products;            
         }
 
+		private async void OnDelete(object sender, EventArgs e)
+		{
+			User u = BindingContext as User;
+			if (u.email == RestService.LoggedUser.email)
+			{
+				Button b = sender as Button;
+				int idproducts = (int)b.CommandParameter;
+				await App.Manager.RejectProduct(idproducts);
+				notificator.Notify(ToastNotificationType.Error, "Wiishper", "Producto eliminado de tu lista", TimeSpan.FromSeconds(2));
+			}
+		}
 
         private async void OnFollow(object sender, EventArgs e)
         {

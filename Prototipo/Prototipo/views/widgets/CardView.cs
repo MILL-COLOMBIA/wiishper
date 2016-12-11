@@ -40,7 +40,7 @@ namespace Prototipo
                               Constraint.RelativeToParent((parent) =>
                               {
                                   double h = parent.Height * 0.80;
-                                  return ((parent.Height - h) / 2 + 50);
+                                  return ((parent.Height - h) / 2 + 30);
                               }),
                               Constraint.RelativeToParent((parent) => { return parent.Width; }),
                               Constraint.RelativeToParent((parent) => { return parent.Height; })

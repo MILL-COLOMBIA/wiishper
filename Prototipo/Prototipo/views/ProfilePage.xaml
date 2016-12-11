@@ -54,6 +54,7 @@
       <flv:FlowListView FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="true" x:Name="ProductsView" HorizontalOptions="CenterAndExpand" FlowColumnMinWidth="140">
         <flv:FlowListView.FlowColumnTemplate>
           <DataTemplate>
+		  <RelativeLayout>					
             <Grid Padding="3">
               <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -66,7 +67,10 @@
               <Label BackgroundColor="#26CAD3" TextColor="#4E4E4E" Text="{Binding name}" FontAttributes="Bold" HorizontalTextAlignment="Start" FontSize="12" HorizontalOptions="Start" VerticalOptions="End"/>
               <Label BackgroundColor="#26CAD3" TextColor="#4E4E4E" Text="{Binding price}" FontSize="10" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalOptions="End"/>
               </StackLayout>
-            </Grid>
+	            </Grid>
+							<Button Image="exit.png" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-20}"
+								HeightRequest="20" WidthRequest="20" BackgroundColor="Transparent" CommandParameter="{Binding idproducts}" Clicked="OnDelete" x:Name="btn_reject"/>
+							</RelativeLayout>
           </DataTemplate>
         </flv:FlowListView.FlowColumnTemplate>
       </flv:FlowListView>

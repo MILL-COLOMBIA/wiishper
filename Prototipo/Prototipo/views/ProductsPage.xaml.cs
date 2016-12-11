@@ -158,7 +158,7 @@ namespace Prototipo
             Button like = new Button
             {
                 Image = "like.png",
-                BackgroundColor = Color.FromHex("F2F2F2")
+				BackgroundColor = Color.Transparent
             };
 
             like.Clicked += OnLike;
@@ -166,7 +166,7 @@ namespace Prototipo
             Button dislike = new Button
             {
                 Image = "dislike.png",
-                BackgroundColor = Color.FromHex("F2F2F2")
+				BackgroundColor = Color.Transparent
             };
 
             dislike.Clicked += OnReject;
@@ -179,7 +179,7 @@ namespace Prototipo
                               Constraint.RelativeToView(productCards,
                               (parent, sibling) =>
                               {
-                                  return sibling.Y + sibling.Height + 20;
+                                  return sibling.Y + sibling.Height + 60;
                               }),
                               Constraint.Constant(73),
                               Constraint.Constant(73));
@@ -189,7 +189,7 @@ namespace Prototipo
                               Constraint.RelativeToView(productCards,
                               (parent, sibling) =>
                               {
-                                  return sibling.Y + sibling.Height + 20;
+                                  return sibling.Y + sibling.Height + 60;
                               }),
                               Constraint.Constant(73),
                               Constraint.Constant(73));
@@ -211,7 +211,6 @@ namespace Prototipo
         private async void OnReject(object sender, EventArgs e)
         {
             int idproduct = productCards.product.idproducts;
-            Debug.WriteLine("######################################  " + idproduct);
             if (RestService.LoggedUser != null)
             {
                 string result = await App.Manager.RejectProduct(idproduct);
@@ -236,7 +235,6 @@ namespace Prototipo
         private async void OnLike(object sender, EventArgs e)
         {
             int idproduct = productCards.product.idproducts;
-            Debug.WriteLine("++++++++++++++++++++++++++++++++++++++++  " + idproduct);
             if (RestService.LoggedUser != null)
             {
                 string result = await App.Manager.LikeProduct(idproduct);
