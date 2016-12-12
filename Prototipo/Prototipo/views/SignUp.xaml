@@ -30,8 +30,7 @@
           <Button Image="facebook.png" HeightRequest="35" BackgroundColor="#2A559A" Grid.Column="1" Clicked="OnFbSignUp"/>
           <Button Image="twitter.png" HeightRequest="35" BackgroundColor="#00ADEF" Grid.Column="3" Clicked="OnTwitterSignUp"/>
         </Grid>
-        <BoxView Color="White" HeightRequest="40" />
-        <Button x:Name="create" VerticalOptions="EndAndExpand" BackgroundColor="White" TextColor="#60C4C3" FontSize="16" FontAttributes="Bold" Text="Crear una cuenta" Clicked="OnSignUp"/>
+        <Button x:Name="create" VerticalOptions="End" BackgroundColor="White" TextColor="#60C4C3" FontSize="16" FontAttributes="Bold" Text="Crear una cuenta" Clicked="OnSignUp"/>
       </StackLayout>      
     </RelativeLayout>
   </ContentPage.Content>

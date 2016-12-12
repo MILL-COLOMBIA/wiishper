@@ -57,6 +57,14 @@ namespace Prototipo
             }
         }
 
+        public bool IsEnding
+        {
+            get
+            {
+                return itemIndex >= ItemsSource.Count - 2;
+            }
+        }
+
         private static void OnItemsSourcePropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             ((CardStackView)bindable).Setup();

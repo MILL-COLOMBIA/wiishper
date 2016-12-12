@@ -27,9 +27,9 @@ namespace Prototipo
 				Button logout = new Button
 				{
 					Text = "Salir",
-					TextColor = Color.White,
-					BackgroundColor = Color.FromHex("4E4E4E"),
-					HorizontalOptions=LayoutOptions.End,
+					TextColor = Color.FromHex("4E4E4E"),
+                    BackgroundColor = Color.Transparent,
+					HorizontalOptions=LayoutOptions.Center,
 					VerticalOptions=LayoutOptions.End
 				};
 				logout.Clicked += OnLogOut;

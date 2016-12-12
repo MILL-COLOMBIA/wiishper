@@ -16,7 +16,7 @@
     <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" WinPhone="0, 0, 0, 0"/>
   </ContentPage.Padding>
   <ContentPage.Content>
-    <StackLayout Orientation="Vertical" Spacing="0" BackgroundColor="#F2F2F2">
+    <StackLayout Orientation="Vertical" Spacing="0" BackgroundColor="#F2F2F2" x:Name="MainContent">
       <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D" x:Name="mainbar">
         <Image Source="wordlogo.png" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
       </StackLayout>
@@ -74,8 +74,8 @@
           </DataTemplate>
         </flv:FlowListView.FlowColumnTemplate>
       </flv:FlowListView>
-      <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
-      <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="White">
+      <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" x:Name="bottomBar"/>
+      <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="White" x:Name="bottomMenu">
         <Button Image="people.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
         <Button Image="main.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
         <Button Image="profile.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>

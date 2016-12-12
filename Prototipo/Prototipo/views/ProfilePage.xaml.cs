@@ -43,7 +43,26 @@ namespace Prototipo
             base.OnAppearing();
 
             products = await App.Manager.ShowLikedProducts(((User)BindingContext).idusers);
-            ProductsView.FlowItemsSource = products;            
+            if (products == null || products.Count == 0)
+            {
+                int index = MainContent.Children.IndexOf(ProductsView);
+                MainContent.Children.Remove(ProductsView);
+                Image image = new Image { Source = "socks.png", BackgroundColor = Color.Transparent };
+                Image arrow = new Image { Source = "arrow.png", BackgroundColor = Color.Transparent, VerticalOptions=LayoutOptions.End };
+                Label label = new Label { Text = "¡Te están comprando unas medias en este momento por tener la lista vacía!", TextColor = Color.FromHex("4E4E4E"), BackgroundColor = Color.Transparent, HorizontalTextAlignment=TextAlignment.Center, FontSize=20};
+                Label order = new Label { Text = "Antójate", HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.FromHex("4E4E4E"), BackgroundColor=Color.Transparent, VerticalOptions=LayoutOptions.EndAndExpand, FontSize=16};
+                label.Margin = new Thickness(50, 50, 50, 0);
+                MainContent.Children.Insert(index, label);
+                MainContent.Children.Insert(index +1, image);
+                MainContent.Children.Insert(index + 2, order);
+                MainContent.Children.Insert(index + 3, arrow);
+                bottomBar.VerticalOptions = LayoutOptions.End;
+                bottomMenu.VerticalOptions = LayoutOptions.End;
+            }
+            else
+            {
+                ProductsView.FlowItemsSource = products;
+            }
         }
 
 		private async void OnDelete(object sender, EventArgs e)
