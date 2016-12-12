@@ -22,9 +22,6 @@ namespace Prototipo
             InitializeComponent();
             notificator = DependencyService.Get<IToastNotificator>();
             NavigationPage.SetHasNavigationBar(this, false);
-            //list = new List<User>() { new User() { name = "Andrés Felipe", followers = 10, following = 20, wishcount = 230, isfriend=true },
-            //                          new User() { name = "Juan Manuel", followers=230, following=229, wishcount=10, isfriend=false } };
-            //friendsView.ItemsSource = list;
         }
 
         protected async override void OnAppearing()
@@ -37,7 +34,10 @@ namespace Prototipo
                 foreach(User u in friends)
                 {
                     StackLayout layout = new StackLayout() { Orientation = StackOrientation.Vertical, BackgroundColor = Color.White };
-                    CachedImage pic = new CachedImage() { BackgroundColor= Color.White, HeightRequest = 61, Aspect = Aspect.Fill, DownsampleHeight = 61, DownsampleUseDipUnits = false, LoadingPlaceholder = "image_loading.png", ErrorPlaceholder = "image_error.png", Source = u.profilepic };
+                    CachedImage pic = new CachedImage() { BackgroundColor= Color.White, HeightRequest = 61, Aspect = Aspect.Fill, DownsampleHeight = 61, DownsampleUseDipUnits = false, LoadingPlaceholder = "image_loading.png", ErrorPlaceholder = "image_error.png", Source = u.profilepic, BindingContext=u };
+                    TapGestureRecognizer tapper = new TapGestureRecognizer();
+                    tapper.Tapped += async (sender, e) => { await Navigation.PushAsync(new ProfilePage(((CachedImage)sender).BindingContext as User)); };
+                    pic.GestureRecognizers.Add(tapper);
                     Button name = new Button() { Text=u.name, HeightRequest=30, FontSize=10, TextColor=Color.FromHex("#A8A9AD"), BackgroundColor=Color.Transparent, HorizontalOptions=LayoutOptions.Center, BindingContext=u};
                     name.Clicked += async (sender, e) => { await Navigation.PushAsync(new ProfilePage(((Button)sender).BindingContext as User)); };
                     layout.Children.Add(pic);
