@@ -86,7 +86,7 @@ namespace Prototipo
                 string result = await App.Manager.Unfriend((int)button.CommandParameter);
                 if (result.Equals("FAIL"))
                 {
-                    await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al agregar amigo", TimeSpan.FromSeconds(2));
+                    await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al eliminar amigo", TimeSpan.FromSeconds(2));
                 }
                 else
                 {

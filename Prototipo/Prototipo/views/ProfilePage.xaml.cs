@@ -51,7 +51,7 @@ namespace Prototipo
                 Image arrow = new Image { Source = "arrow.png", BackgroundColor = Color.Transparent, VerticalOptions=LayoutOptions.End };
                 Label label = new Label { Text = "¡Te están comprando unas medias en este momento por tener la lista vacía!", TextColor = Color.FromHex("4E4E4E"), BackgroundColor = Color.Transparent, HorizontalTextAlignment=TextAlignment.Center, FontSize=20};
                 Label order = new Label { Text = "Antójate", HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.FromHex("4E4E4E"), BackgroundColor=Color.Transparent, VerticalOptions=LayoutOptions.EndAndExpand, FontSize=16};
-                label.Margin = new Thickness(50, 50, 50, 0);
+                label.Margin = new Thickness(50, 40, 50, 0);
                 MainContent.Children.Insert(index, label);
                 MainContent.Children.Insert(index +1, image);
                 MainContent.Children.Insert(index + 2, order);
@@ -100,7 +100,7 @@ namespace Prototipo
                 string result = await App.Manager.Unfriend(user.idusers);
                 if (result.Equals("FAIL"))
                 {
-                    await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al agregar amigo", TimeSpan.FromSeconds(2));
+                    await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al eliminar amigo", TimeSpan.FromSeconds(2));
                 }
                 else
                 {

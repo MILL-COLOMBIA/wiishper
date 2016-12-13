@@ -15,7 +15,7 @@ namespace Prototipo
     {
         HttpClient client;
 
-        dynamic sendContent;
+        JObject sendContent;
         public static string userpass { get; set; }
         public List<User> Friends { get; private set; }
         public static List<Product> Products { get; private set; }
@@ -29,8 +29,8 @@ namespace Prototipo
             Products = new List<Product>();
             Products.Add(new Product() { name = "producto 1", image = "profilepic.png" });
             sendContent = new JObject();
-            sendContent.data = new JObject();
-            sendContent.control = new JObject();
+            sendContent.Add("data", new JObject());
+            sendContent.Add("control", new JObject());
         }
 
         public async Task<List<User>> GetFriends()
@@ -38,8 +38,8 @@ namespace Prototipo
             Friends = new List<User>();
 
             var uri = new Uri(Constants.RestURL);
-            dynamic data = new JObject();
-            dynamic sendContent = CreateMessage(Constants.SHOW_FRIENDS, data);
+            JObject data = new JObject();
+            JObject sendContent = CreateMessage(Constants.SHOW_FRIENDS, data);
             List<User> people = new List<User>();
             PrepareClient();
 
@@ -78,7 +78,7 @@ namespace Prototipo
             Products = new List<Product>();
 
             var uri = new Uri(Constants.RestURL);
-            dynamic sendContent = CreateMessage(Constants.SHOW_RANDOM_PRODS, null);
+            JObject sendContent = CreateMessage(Constants.SHOW_RANDOM_PRODS, null);
             var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
             PrepareClient();
             try
@@ -114,9 +114,9 @@ namespace Prototipo
         public async Task<string> SignUp(User user)
         {
             var uri = new Uri(Constants.RestURL);
-            var data = JsonConvert.SerializeObject(user);
-            dynamic sendContent = CreateMessage(Constants.SIGNUP, data);
-            sendContent.data = JsonConvert.SerializeObject(user);
+            string data = JsonConvert.SerializeObject(user);
+            JObject sendContent = CreateMessage(Constants.SIGNUP, new JObject(data));
+            sendContent.Add("data", JsonConvert.SerializeObject(user));
             userpass = user.password;
             try
             {
@@ -153,8 +153,8 @@ namespace Prototipo
         {
             var uri = new Uri(Constants.RestURL);
             var data = JsonConvert.SerializeObject(user);
-            dynamic sendContent = CreateMessage(Constants.UPDATE_USER, data);
-            sendContent.data = JsonConvert.SerializeObject(user);
+            JObject sendContent = CreateMessage(Constants.UPDATE_USER, new JObject(data));
+            sendContent.Add("data", JsonConvert.SerializeObject(user));
             try
             {
                 var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
@@ -216,10 +216,10 @@ namespace Prototipo
         public async Task<User> Login(string username, string password)
         {
             var uri = new Uri(Constants.RestURL);
-            dynamic data = new JObject();
-            data.password = password;
-            data.email = username;
-            dynamic sendContent = CreateMessage(Constants.LOGIN, data);
+            JObject data = new JObject();
+            data.Add("password", password);
+            data.Add("email", username);
+            JObject sendContent = CreateMessage(Constants.LOGIN, data);
             userpass = password;
             try
             {
@@ -257,8 +257,8 @@ namespace Prototipo
         public async Task<List<User>> ShowPeople()
         {
             var uri = new Uri(Constants.RestURL);
-            dynamic data = new JObject();
-            dynamic sendContent = CreateMessage(Constants.SEARCH_PEOPLE, data);
+            JObject data = new JObject();
+            JObject sendContent = CreateMessage(Constants.SEARCH_PEOPLE, data);
             List<User> people =  new List<User>();
             PrepareClient();
             try
@@ -293,9 +293,9 @@ namespace Prototipo
         public async Task<bool> IsFriend(int id)
         {
             var uri = new Uri(Constants.RestURL);
-            dynamic data = new JObject();
-            data.friendee = id;
-            dynamic sendContent = CreateMessage(Constants.IS_FRIEND, data);
+            JObject data = new JObject();
+            data.Add("friendee", id);
+            JObject sendContent = CreateMessage(Constants.IS_FRIEND, data);
             PrepareClient();
             bool answer;
             try
@@ -330,9 +330,9 @@ namespace Prototipo
         public async Task<string> AddFriend(int id)
         {
             var uri = new Uri(Constants.RestURL);
-            dynamic data = new JObject();
-            data.friendee = id;
-            dynamic sendContent = CreateMessage(Constants.ADD_FRIEND, data);
+            JObject data = new JObject();
+            data.Add("friendee", id);
+            JObject sendContent = CreateMessage(Constants.ADD_FRIEND, data);
             PrepareClient();
             string answer;
             try
@@ -371,9 +371,10 @@ namespace Prototipo
         public async Task<string> Unfriend(int id)
         {
             var uri = new Uri(Constants.RestURL);
-            dynamic data = new JObject();
-            data.friendee = id;
-            dynamic sendContent = CreateMessage(Constants.UNFRIEND, data);
+            JObject data = new JObject();
+            data.Add("friendee", id);
+            JObject sendContent = CreateMessage(Constants.UNFRIEND, data);
+            Debug.WriteLine(sendContent.ToString());
             PrepareClient();
             string answer;
             try
@@ -412,12 +413,12 @@ namespace Prototipo
         public async Task<string> LikeProduct(int id)
         {
             var uri = new Uri(Constants.RestURL);
-            dynamic data = new JObject();
-            data.idproducts = id;
-            data.liked = 1;
-            dynamic sendContent = CreateMessage(Constants.LIKE_PROD, data);
+            JObject data = new JObject();
+            data.Add("idproducts", id);
+            data.Add("liked", 1);
+            JObject sendContent = CreateMessage(Constants.LIKE_PROD, data);
             PrepareClient();
-
+            Debug.WriteLine(sendContent.ToString());
             try
             {
                 var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
@@ -447,10 +448,10 @@ namespace Prototipo
         public async Task<string> RejectProduct(int id)
         {
             var uri = new Uri(Constants.RestURL);
-            dynamic data = new JObject();
-            data.idproducts = id;
-            data.liked = 0;
-            dynamic sendContent = CreateMessage(Constants.REJECT_PROD, data);
+            JObject data = new JObject();
+            data.Add("idproducts", id);
+            data.Add("liked", 0);
+            JObject sendContent = CreateMessage(Constants.REJECT_PROD, data);
             PrepareClient();
 
             try
@@ -483,10 +484,10 @@ namespace Prototipo
         public async Task<List<Product>> ShowLikedProducts(int userid)
         {
             var uri = new Uri(Constants.RestURL);
-            dynamic data = new JObject();
+            JObject data = new JObject();
             if (userid >= 0)
-                data.userid = userid;
-            dynamic sendContent = CreateMessage(Constants.SHOW_LIKED_PRODS , data);
+                data.Add("userid", userid);
+            JObject sendContent = CreateMessage(Constants.SHOW_LIKED_PRODS , data);
             PrepareClient();
 
             try
@@ -521,10 +522,10 @@ namespace Prototipo
         public async Task<List<Product>> ShowRejectedProducts(int userid)
         {
             var uri = new Uri(Constants.RestURL);
-            dynamic data = new JObject();
+            JObject data = new JObject();
             if (userid >= 0)
-                data.userid = userid;
-            dynamic sendContent = CreateMessage(Constants.SHOW_REJECTED_PRODS , data);
+                data.Add("userid", userid);
+            JObject sendContent = CreateMessage(Constants.SHOW_REJECTED_PRODS , data);
             PrepareClient();
 
             try
@@ -555,7 +556,7 @@ namespace Prototipo
             }
         }
 
-        private dynamic CreateMessage(int operation, dynamic data)
+        private JObject CreateMessage(int operation, JObject data)
         {
             JObject message = new JObject();
             JObject control = new JObject();
