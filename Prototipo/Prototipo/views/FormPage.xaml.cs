@@ -119,27 +119,32 @@ namespace Prototipo
                 {
                     user.profilepic = user.profilepic == null ? "http://wiishper.com/profilepics/main.png" : user.profilepic;
                 }
-            }
-            response = await App.Manager.UpdateUser(user);
-            if (response != null)
-            {
-                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Tus datos fueron actualizados", TimeSpan.FromSeconds(2));
-                List<Taste> tastes = App.Database.GetProducts().ToList();
-                foreach (Taste t in tastes)
+                response = await App.Manager.UpdateUser(user);
+                if (response != null)
                 {
-                    if (t.liked)
-                        App.Manager.LikeProduct(t.idproducts);
-                    else
-                        App.Manager.RejectProduct(t.idproducts);
+                    notificator.Notify(ToastNotificationType.Success, "Wiishper", "Tus datos fueron actualizados", TimeSpan.FromSeconds(2));
+                    List<Taste> tastes = App.Database.GetProducts().ToList();
+                    foreach (Taste t in tastes)
+                    {
+                        if (t.liked)
+                            App.Manager.LikeProduct(t.idproducts);
+                        else
+                            App.Manager.RejectProduct(t.idproducts);
+                    }
+                    App.Database.CleanProducts();
+                    Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
+                    await Navigation.PopAsync();
                 }
-                App.Database.CleanProducts();
-                Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
-                await Navigation.PopAsync();
+                else
+                {
+                    await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, ocurrió un error en el registro", TimeSpan.FromSeconds(2));
+                }
             }
             else
             {
                 await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, ocurrió un error en el registro", TimeSpan.FromSeconds(2));
             }
+            
         }
 
         private async void OnDismiss(object sender, EventArgs e)

@@ -115,7 +115,7 @@ namespace Prototipo
         {
             var uri = new Uri(Constants.RestURL);
             string data = JsonConvert.SerializeObject(user);
-            JObject sendContent = CreateMessage(Constants.SIGNUP, new JObject(data));
+            JObject sendContent = CreateMessage(Constants.SIGNUP, null);
             sendContent.Add("data", JsonConvert.SerializeObject(user));
             userpass = user.password;
             try
@@ -153,7 +153,7 @@ namespace Prototipo
         {
             var uri = new Uri(Constants.RestURL);
             var data = JsonConvert.SerializeObject(user);
-            JObject sendContent = CreateMessage(Constants.UPDATE_USER, new JObject(data));
+            JObject sendContent = CreateMessage(Constants.UPDATE_USER, null);
             sendContent.Add("data", JsonConvert.SerializeObject(user));
             try
             {
@@ -562,7 +562,8 @@ namespace Prototipo
             JObject control = new JObject();
             control.Add("operation", operation);
             message.Add("control", control);
-            message.Add("data", data);
+            if(data != null)
+                message.Add("data", data);
 
             return message;
         }

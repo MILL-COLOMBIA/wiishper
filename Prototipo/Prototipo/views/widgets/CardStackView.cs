@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Prototipo
 {
@@ -27,6 +28,7 @@ namespace Prototipo
         // the last items index added to the stack of the cards
         int itemIndex = 0;
         bool ignoreTouch = false;
+        int currentProduct = 0;
 
         // called when a card is swiped left/right with the card index in the ItemSource
         public Action<int> SwipedRight = null;
@@ -46,6 +48,7 @@ namespace Prototipo
             {
                 SetValue(ItemsSourceProperty, value);
                 itemIndex = 0;
+                currentProduct = 0;
             }
         }
 
@@ -53,7 +56,7 @@ namespace Prototipo
         {
             get
             {
-                return ItemsSource[itemIndex];
+                return ItemsSource[currentProduct];
             }
         }
 
@@ -258,10 +261,11 @@ namespace Prototipo
 
                 topCard.IsVisible = true;
                 itemIndex++;
+                currentProduct++;
             }
         }
 
-        public async void NextLeft()
+        public async Task NextLeft()
         {
             ignoreTouch = true;
             var topCard = cards[topCardIndex];
@@ -273,7 +277,7 @@ namespace Prototipo
             ignoreTouch = false;
         }
 
-        public async void NextRight()
+        public async Task NextRight()
         {
             ignoreTouch = true;
             var topCard = cards[topCardIndex];

@@ -220,14 +220,14 @@ namespace Prototipo
                 }
                 else
                 {
-                    productCards.NextLeft();
+                    await productCards.NextLeft();
                     notificator.Notify(ToastNotificationType.Error, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(2));
                 }
             }
             else
             {
                 App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = new DateTime(), liked = false });
-                productCards.NextLeft();
+                await productCards.NextLeft();
                 notificator.Notify(ToastNotificationType.Error, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(2));
             }
             if (productCards.IsEnding)
@@ -246,14 +246,14 @@ namespace Prototipo
                 }
                 else
                 {
-                    productCards.NextRight();
+                    await productCards.NextRight();
                     notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(2));
                 }
             }
             else
             {
                 App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = new DateTime(), liked = true });
-                productCards.NextRight();
+                await productCards.NextRight();
                 notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(2));
             }
             if (productCards.IsEnding)
