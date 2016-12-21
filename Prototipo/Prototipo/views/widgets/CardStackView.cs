@@ -121,6 +121,7 @@ namespace Prototipo
                 card.Name.Text = ItemsSource[itemIndex].name;
                 card.Price.Text = ItemsSource[itemIndex].price;
                 card.Photo.Source = ImageSource.FromUri(new Uri(ItemsSource[itemIndex].image));
+                card.Store.Text = ItemsSource[itemIndex].store;
                 card.IsVisible = true;
                 card.Scale = GetScale(i);
                 card.RotateTo(0, 0);
@@ -258,6 +259,7 @@ namespace Prototipo
                 topCard.Name.Text = ItemsSource[itemIndex].name;
                 topCard.Price.Text = ItemsSource[itemIndex].price;
                 topCard.Photo.Source = ImageSource.FromUri(new Uri(ItemsSource[itemIndex].image));
+                topCard.Store.Text = ItemsSource[itemIndex].store;
 
                 topCard.IsVisible = true;
                 itemIndex++;

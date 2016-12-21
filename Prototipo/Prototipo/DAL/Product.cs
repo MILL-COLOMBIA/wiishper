@@ -16,5 +16,6 @@ namespace Prototipo
         public string image { get; set; }
         public string price { get; set; }
         public DateTime publishdate { get; set; }
+        public string store { get; set; }
     }
 }

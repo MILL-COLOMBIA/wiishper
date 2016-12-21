@@ -15,6 +15,7 @@ namespace Prototipo
         static UserDatabase database;
         public static bool IsLoggedIn { get; set; }
         public static string ApiKey { get; set; }
+        public static bool IsDebuging { get; set; }
 
         public static UserDatabase Database
         {
@@ -27,26 +28,35 @@ namespace Prototipo
         public App()
         {
             Manager = new RESTManager(new RestService());
-            bool firstTime = string.IsNullOrEmpty(Helpers.Settings.GeneralSettings);
-            if (firstTime)
+            IsDebuging = true;
+
+            if (IsDebuging)
             {
-                Helpers.Settings.GeneralSettings = "entered";
-                MainPage = new NavigationPage(new TutorialPage());
-            }
-            else if (Helpers.Settings.GeneralSettings.Equals("logged"))
-            {
-                RestService.LoggedUser = Database.GetUsers().First();
-                Manager.Login(RestService.LoggedUser.email, RestService.LoggedUser.password);
-                MainPage = new NavigationPage(new ProfilePage(RestService.LoggedUser));
+                MainPage = new NavigationPage(new ProductsPage());
             }
             else
             {
-                if (Helpers.Settings.GeneralSettings.Equals("used"))
-                    MainPage = new NavigationPage(new ProductsPage());
+                bool firstTime = string.IsNullOrEmpty(Helpers.Settings.GeneralSettings);
+                if (firstTime)
+                {
+                    Helpers.Settings.GeneralSettings = "entered";
+                    MainPage = new NavigationPage(new TutorialPage());
+                }
+                else if (Helpers.Settings.GeneralSettings.Equals("logged"))
+                {
+                    RestService.LoggedUser = Database.GetUsers().First();
+                    Manager.Login(RestService.LoggedUser.email, RestService.LoggedUser.password);
+                    MainPage = new NavigationPage(new ProfilePage(RestService.LoggedUser));
+                }
                 else
                 {
-                    Helpers.Settings.GeneralSettings = "used";
-                    MainPage = new NavigationPage(new StartPage());
+                    if (Helpers.Settings.GeneralSettings.Equals("used"))
+                        MainPage = new NavigationPage(new ProductsPage());
+                    else
+                    {
+                        Helpers.Settings.GeneralSettings = "used";
+                        MainPage = new NavigationPage(new StartPage());
+                    }
                 }
             }
         }

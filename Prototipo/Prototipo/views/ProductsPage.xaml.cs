@@ -26,8 +26,9 @@ namespace Prototipo
             RelativeLayout view = new RelativeLayout();
             view.BackgroundColor = Color.FromHex("F2F2F2");
             NavigationPage.SetHasNavigationBar(this, false);
-            notificator = DependencyService.Get<IToastNotificator>();            
+            notificator = DependencyService.Get<IToastNotificator>();
 
+            #region UI_building
             view.Children.Add(productCards,
                               Constraint.Constant(30),
                               Constraint.Constant(60),
@@ -37,7 +38,7 @@ namespace Prototipo
                               }),
                               Constraint.RelativeToParent((parent) =>
                               {
-                                  return parent.Height - 240;
+                                  return parent.Height - 160;
                               })
                 );
 
@@ -84,6 +85,8 @@ namespace Prototipo
                               }),
                               Constraint.Constant(50));
 
+            #region BottomMenu
+
             StackLayout bottomMenu = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
@@ -129,13 +132,13 @@ namespace Prototipo
                               Constraint.Constant(0),
                               Constraint.RelativeToParent((parent) =>
                               {
-                                  return parent.Height - 43;
+                                  return parent.Height - 53;
                               }),
                               Constraint.RelativeToParent((parent) =>
                               {
                                   return parent.Width;
                               }),
-                              Constraint.Constant(43));
+                              Constraint.Constant(53));
 
             BoxView bottomSeparator = new BoxView
             {
@@ -146,7 +149,7 @@ namespace Prototipo
                               Constraint.Constant(0),
                               Constraint.RelativeToParent((parent) =>
                               {
-                                  return parent.Height - 45;
+                                  return parent.Height - 55;
                               }
                               ),
                               Constraint.RelativeToParent((parent) =>
@@ -154,6 +157,7 @@ namespace Prototipo
                                   return parent.Width;
                               }),
                               Constraint.Constant(2));
+            #endregion
 
             Button like = new Button
             {
@@ -174,25 +178,18 @@ namespace Prototipo
             view.Children.Add(like,
                               Constraint.RelativeToParent((parent) =>
                               {
-                                  return parent.Width - 123;
+                                  return parent.Width - 49;
                               }),
-                              Constraint.RelativeToView(productCards,
-                              (parent, sibling) =>
-                              {
-                                  return sibling.Y + sibling.Height + 60;
-                              }),
-                              Constraint.Constant(73),
-                              Constraint.Constant(73));
+                              Constraint.RelativeToParent((parent) =>{return parent.Height - 93;}),
+                              Constraint.Constant(33),
+                              Constraint.Constant(33));
 
             view.Children.Add(dislike,
-                              Constraint.Constant(50),
-                              Constraint.RelativeToView(productCards,
-                              (parent, sibling) =>
-                              {
-                                  return sibling.Y + sibling.Height + 60;
-                              }),
-                              Constraint.Constant(73),
-                              Constraint.Constant(73));
+                              Constraint.Constant(16),
+                              Constraint.RelativeToParent((parent) => { return parent.Height - 93; }),
+                              Constraint.Constant(33),
+                              Constraint.Constant(33));
+            #endregion
 
             Content = view;
         }
