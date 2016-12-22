@@ -44,7 +44,7 @@ namespace Prototipo
 
             this.LayoutChanged += (object sender, System.EventArgs e) =>
             {
-                productCards.CardMoveDistance = (int)(this.Width * 0.60f);
+                productCards.CardMoveDistance = (int)(this.Width * 0.40f);
             };
 
             BoxView upperSeparator = new BoxView
@@ -97,7 +97,7 @@ namespace Prototipo
             Button friends = new Button
             {
                 Image = "people.png",
-                BackgroundColor = Color.White,
+                BackgroundColor = Color.FromHex("#4E4E4E"),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 BorderRadius = 0
             };
@@ -107,7 +107,7 @@ namespace Prototipo
             Button product_btn = new Button
             {
                 Image = "main.png",
-                BackgroundColor = Color.White,
+                BackgroundColor = Color.FromHex("26CAD3"),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 BorderRadius = 0
             };
@@ -117,7 +117,7 @@ namespace Prototipo
             Button profile = new Button
             {
                 Image = "profile.png",
-                BackgroundColor = Color.White,
+                BackgroundColor = Color.FromHex("4E4E4E"),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 BorderRadius = 0
             };

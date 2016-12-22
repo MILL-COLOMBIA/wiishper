@@ -106,7 +106,7 @@ namespace Prototipo
 
             Image Location = new Image { Source = "location.png", HorizontalOptions=LayoutOptions.CenterAndExpand };
 
-            locationStack.Children.Add(Location);
+            //locationStack.Children.Add(Location);
             locationStack.Children.Add(Store);
 
             bottomLayout.Children.Add(locationStack);

@@ -28,7 +28,7 @@ namespace Prototipo
         public App()
         {
             Manager = new RESTManager(new RestService());
-            IsDebuging = true;
+            IsDebuging = false;
 
             if (IsDebuging)
             {

@@ -55,30 +55,31 @@
         <flv:FlowListView.FlowColumnTemplate>
           <DataTemplate>
 		  <RelativeLayout>					
-            <Grid Padding="3">
+            <Grid Padding="3" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
               <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
               </Grid.RowDefinitions>
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
               </Grid.ColumnDefinitions>
-              <ffimageloading:CachedImage HeightRequest="140" Aspect="Fill" DownsampleHeight="140" DownsampleUseDipUnits="false" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" Source="{Binding image}"/>
+              <ffimageloading:CachedImage HeightRequest="140" Aspect="AspectFill" DownsampleHeight="140" DownsampleUseDipUnits="false" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" Source="{Binding image}"/>
               <StackLayout BackgroundColor="#26CAD3" HorizontalOptions="Fill" VerticalOptions="End">
               <Label BackgroundColor="#26CAD3" TextColor="#4E4E4E" Text="{Binding name}" FontAttributes="Bold" HorizontalTextAlignment="Start" FontSize="12" HorizontalOptions="Start" VerticalOptions="End"/>
               <Label BackgroundColor="#26CAD3" TextColor="#4E4E4E" Text="{Binding price}" FontSize="10" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalOptions="End"/>
               </StackLayout>
 	            </Grid>
 							<Button Image="exit.png" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-20}"
-								HeightRequest="20" WidthRequest="20" BackgroundColor="Transparent" CommandParameter="{Binding idproducts}" Clicked="OnDelete" x:Name="btn_reject"/>
+                                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=5}"
+								HeightRequest="15" WidthRequest="15" BackgroundColor="Transparent" CommandParameter="{Binding idproducts}" Clicked="OnDelete" x:Name="btn_reject"/>
 							</RelativeLayout>
           </DataTemplate>
         </flv:FlowListView.FlowColumnTemplate>
       </flv:FlowListView>
       <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" x:Name="bottomBar"/>
       <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="White" x:Name="bottomMenu">
-        <Button Image="people.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
-        <Button Image="main.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
-        <Button Image="profile.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
+        <Button Image="people.png" BackgroundColor="#4E4E4E" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
+        <Button Image="main.png" BackgroundColor="#4E4E4E" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
+        <Button Image="profile.png" BackgroundColor="#26CAD3" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
       </StackLayout>
       <!--<Grid ColumnSpacing="0" VerticalOptions="End" BackgroundColor="White">
         <Grid.ColumnDefinitions>

@@ -36,10 +36,10 @@
                 <StackLayout Padding="15,10,15,0" Spacing="0" Orientation="Horizontal" BackgroundColor="White">
                   <ffimageloading:CachedImage DownsampleHeight="44" DownsampleUseDipUnits="False" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" Aspect="AspectFill" Source="{Binding profilepic}" BackgroundColor="White" VerticalOptions="Center" HeightRequest="44" WidthRequest="44"/>
                   <StackLayout Spacing="0" BackgroundColor="White" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand">
-                    <StackLayout Orientation="Horizontal" BackgroundColor="White">
-                      <Label BackgroundColor="White" TextColor="Black" FontAttributes="Bold" Text="{Binding completename}" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="White" VerticalOptions="CenterAndExpand">
+                      <Label BackgroundColor="White" TextColor="Black" FontAttributes="Bold" Text="{Binding completename}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start"/>
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal" BackgroundColor="White">
+                    <!--<StackLayout Orientation="Horizontal" BackgroundColor="White">
                       <StackLayout Orientation="Vertical" BackgroundColor="White">
                         <Label Text="Seguidores" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
                         <Label Text="{Binding followers}" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
@@ -52,7 +52,7 @@
                         <Label Text="Deseos" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
                         <Label Text="{Binding wishcount}" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
                       </StackLayout>
-                    </StackLayout>
+                    </StackLayout>-->
                   </StackLayout>
                   <Button InputTransparent="True" CommandParameter="{Binding idusers}" FontSize="8" TextColor="White" HeightRequest="30" WidthRequest="92" HorizontalOptions="End" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center" Clicked="OnAddFriend"/>
                 </StackLayout>
@@ -63,9 +63,9 @@
       </ListView>
       <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
       <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="White">
-        <Button Image="people.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
-        <Button Image="main.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
-        <Button Image="profile.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
+        <Button Image="people.png" BackgroundColor="#16CAD3" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
+        <Button Image="main.png" BackgroundColor="#4E4E4E" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
+        <Button Image="profile.png" BackgroundColor="#4E4E4E" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
       </StackLayout>
     <!--<Grid ColumnSpacing="0" VerticalOptions="End" BackgroundColor="White">
       <Grid.ColumnDefinitions>
