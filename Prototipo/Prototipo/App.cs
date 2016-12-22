@@ -75,44 +75,5 @@ namespace Prototipo
         {
             // Handle when your app resumes
         }
-
-        private void LoadUsers()
-        {
-            Random r = new Random();
-            for(int i=0; i<10; i++)
-            {
-                Taste t = new Taste { idproducts = r.Next(10000), inter_date=new DateTime(), liked= r.Next(1) == 0 };
-                Database.SaveProduct(t);
-            }
-            //string[] names = { "Andrés", "Felipe", "Cristian", "Mónica", "Juan", "Renzo", "Jonathan", "Miguel", "Jeny", "Ginna" };
-            //string[] surnames = { "Mejía", "Perry", "Hincapié", "Saravia", "Sesana", "Álvarez", "Acosta", "Beltrán", "Barrera" };
-            //Random r = new Random();
-            //for(int i=0; i<15; i++)
-            //{
-            //    string name = names[r.Next(0, names.Length)];
-            //    string surname = surnames[r.Next(0, surnames.Length)];
-            //    User user = new User()
-            //    {
-            //        name = name,
-            //        surname = surname,
-            //        username = name + "_" + surname,
-            //        email = name.Substring(0, 1) + "." + surname + "@" + "mill.com.co",
-            //        birthdate = new DateTime(r.Next(1977, 1996), r.Next(1, 13), r.Next(1, 29)),
-            //        entrydate = new DateTime(r.Next(2015, 2017), r.Next(1, 13), r.Next(1, 29))
-            //    };
-            //    Database.SaveUser(user);
-            //    Debug.WriteLine(user);
-            //}      
-        }
-
-        private void UpdateUsers()
-        {
-            List<User> users = Database.GetUsers().ToList();
-            foreach(User user in users)
-            {
-                user.profilepic = "profilepic.png";
-                Database.SaveUser(user);
-            }
-        }
     }
 }
