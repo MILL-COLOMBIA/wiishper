@@ -62,10 +62,10 @@
         </ListView.ItemTemplate>
       </ListView>
       <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
-      <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="White">
-        <Button Image="people.png" BackgroundColor="#16CAD3" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
-        <Button Image="main.png" BackgroundColor="#4E4E4E" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
-        <Button Image="profile.png" BackgroundColor="#4E4E4E" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
+      <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="White" HeightRequest="53">
+        <Button Image="people_on.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
+        <Button Image="main_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
+        <Button Image="profile_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
       </StackLayout>
     <!--<Grid ColumnSpacing="0" VerticalOptions="End" BackgroundColor="White">
       <Grid.ColumnDefinitions>

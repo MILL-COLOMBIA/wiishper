@@ -96,8 +96,8 @@ namespace Prototipo
 
             Button friends = new Button
             {
-                Image = "people.png",
-                BackgroundColor = Color.FromHex("#4E4E4E"),
+                Image = "people_off.png",
+				BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 BorderRadius = 0
             };
@@ -106,8 +106,8 @@ namespace Prototipo
 
             Button product_btn = new Button
             {
-                Image = "main.png",
-                BackgroundColor = Color.FromHex("26CAD3"),
+                Image = "main_on.png",
+				BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 BorderRadius = 0
             };
@@ -116,10 +116,10 @@ namespace Prototipo
 
             Button profile = new Button
             {
-                Image = "profile.png",
-                BackgroundColor = Color.FromHex("4E4E4E"),
+                Image = "profile_off.png",
+				BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BorderRadius = 0
+				BorderRadius = 0
             };
 
             profile.Clicked += OnProfile;

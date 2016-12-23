@@ -76,10 +76,10 @@
         </flv:FlowListView.FlowColumnTemplate>
       </flv:FlowListView>
       <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" x:Name="bottomBar"/>
-      <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="White" x:Name="bottomMenu">
-        <Button Image="people.png" BackgroundColor="#4E4E4E" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
-        <Button Image="main.png" BackgroundColor="#4E4E4E" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
-        <Button Image="profile.png" BackgroundColor="#26CAD3" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
+      <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="White" x:Name="bottomMenu" HeightRequest="53">
+        <Button Image="people_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
+        <Button Image="main_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
+        <Button Image="profile_on.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
       </StackLayout>
       <!--<Grid ColumnSpacing="0" VerticalOptions="End" BackgroundColor="White">
         <Grid.ColumnDefinitions>

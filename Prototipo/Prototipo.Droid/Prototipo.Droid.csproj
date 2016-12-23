@@ -199,6 +199,12 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\raw\wiishperdb.db3" />
+    <AndroidResource Include="Resources\drawable\people_off.png" />
+    <AndroidResource Include="Resources\drawable\people_on.png" />
+    <AndroidResource Include="Resources\drawable\main_off.png" />
+    <AndroidResource Include="Resources\drawable\main_on.png" />
+    <AndroidResource Include="Resources\drawable\profile_off.png" />
+    <AndroidResource Include="Resources\drawable\profile_on.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -213,19 +219,10 @@
     <AndroidResource Include="Resources\drawable\profilepic.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\main.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\newsfeed.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\notifications.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\people.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\profile.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\logo.png" />
