@@ -11,6 +11,9 @@
       <local:BoolToStringConverter x:Key="stringConverter"/>
     </ResourceDictionary>
   </ContentPage.Resources>
+	<ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" WinPhone="0, 0, 0, 0"/>
+  </ContentPage.Padding>
   <ContentPage.Content>
     <StackLayout Orientation="Vertical" Spacing="0">
       <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D">
@@ -37,22 +40,12 @@
                   <ffimageloading:CachedImage DownsampleHeight="44" DownsampleUseDipUnits="False" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" Aspect="AspectFill" Source="{Binding profilepic}" BackgroundColor="White" VerticalOptions="Center" HeightRequest="44" WidthRequest="44"/>
                   <StackLayout Spacing="0" BackgroundColor="White" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand">
                     <StackLayout Orientation="Horizontal" BackgroundColor="White" VerticalOptions="CenterAndExpand">
-                      <Label BackgroundColor="White" TextColor="Black" FontAttributes="Bold" Text="{Binding completename}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start"/>
+                      <Label BackgroundColor="White" TextColor="Black" FontAttributes="Bold" Text="{Binding completename}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start">
+						<Label.FontSize>
+						   <OnPlatform x:TypeArguments="x:Double" iOS="10" Android="12"/>
+						</Label.FontSize>
+					  </Label>
                     </StackLayout>
-                    <!--<StackLayout Orientation="Horizontal" BackgroundColor="White">
-                      <StackLayout Orientation="Vertical" BackgroundColor="White">
-                        <Label Text="Seguidores" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
-                        <Label Text="{Binding followers}" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
-                      </StackLayout>
-                      <StackLayout Orientation="Vertical" BackgroundColor="White">
-                        <Label Text="Siguiendo" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
-                        <Label Text="{Binding following}" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
-                      </StackLayout>
-                      <StackLayout Orientation="Vertical" BackgroundColor="White">
-                        <Label Text="Deseos" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
-                        <Label Text="{Binding wishcount}" TextColor="#A8A9AD" FontSize="12" HorizontalTextAlignment="Center" BackgroundColor="White" VerticalOptions="Fill"/>
-                      </StackLayout>
-                    </StackLayout>-->
                   </StackLayout>
                   <Button InputTransparent="True" CommandParameter="{Binding idusers}" FontSize="8" TextColor="White" HeightRequest="30" WidthRequest="92" HorizontalOptions="End" Text="{Binding isfriend, Converter={StaticResource stringConverter}}" BackgroundColor="{Binding isfriend, Converter={StaticResource colorConverter}}" BorderRadius="3" VerticalOptions="Center" Clicked="OnAddFriend"/>
                 </StackLayout>
@@ -67,20 +60,6 @@
         <Button Image="main_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
         <Button Image="profile_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
       </StackLayout>
-    <!--<Grid ColumnSpacing="0" VerticalOptions="End" BackgroundColor="White">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-        <ColumnDefinition Width=".2*"/>
-      </Grid.ColumnDefinitions>
-      <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnNewsfeed"/>
-      <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnFriends"/>
-      <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProducts"/>
-      <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnActivity"/>
-      <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProfile"/>
-    </Grid>-->
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

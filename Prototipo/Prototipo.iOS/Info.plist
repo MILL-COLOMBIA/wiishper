@@ -47,9 +47,11 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
 	<string></string>
-  <key>NSCameraUsageDescription</key>
-  <string>Esta aplicación requiere acceso a tu cámara para tomar fotos de perfil</string>
-  <key>NSPhotoLibraryUsageDescription</key>
-  <string>Esta aplicación requiere acceso a tu galería de fotos para elegir foto de perfil</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Esta aplicación requiere acceso a tu cámara para tomar fotos de perfil</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Esta aplicación requiere acceso a tu galería de fotos para elegir foto de perfil</string>
+	<key>CFBundleName</key>
+	<string>Wiishper</string>
 </dict>
 </plist>

@@ -129,6 +129,22 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\arrow.png" />
+    <BundleResource Include="Resources\cake.png" />
+    <BundleResource Include="Resources\location.png" />
+    <BundleResource Include="Resources\main_off.png" />
+    <BundleResource Include="Resources\main_on.png" />
+    <BundleResource Include="Resources\people_off.png" />
+    <BundleResource Include="Resources\people_on.png" />
+    <BundleResource Include="Resources\profile_off.png" />
+    <BundleResource Include="Resources\profile_on.png" />
+    <BundleResource Include="Resources\slide1.jpg" />
+    <BundleResource Include="Resources\slide2.jpg" />
+    <BundleResource Include="Resources\slide3.jpg" />
+    <BundleResource Include="Resources\slide4.jpg" />
+    <BundleResource Include="Resources\socks.png" />
+    <BundleResource Include="Resources\tutorial_1.png" />
+    <BundleResource Include="Resources\tutorial_2.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DLToolkit.Forms.Controls.FlowListView, Version=1.0.6155.36080, Culture=neutral, processorArchitecture=MSIL">
