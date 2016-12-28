@@ -34,7 +34,7 @@ namespace Prototipo
                 foreach(User u in friends)
                 {
                     StackLayout layout = new StackLayout() { Orientation = StackOrientation.Vertical, BackgroundColor = Color.White };
-                    CachedImage pic = new CachedImage() { BackgroundColor= Color.White, HeightRequest = 61, Aspect = Aspect.Fill, DownsampleHeight = 61, DownsampleUseDipUnits = false, LoadingPlaceholder = "image_loading.png", ErrorPlaceholder = "image_error.png", Source = u.profilepic, BindingContext=u };
+					CachedImage pic = new CachedImage() { BackgroundColor= Color.White, WidthRequest = 61, HeightRequest = 61, Aspect = Aspect.Fill, DownsampleHeight = 61, DownsampleUseDipUnits = false, LoadingPlaceholder = "image_loading.png", ErrorPlaceholder = "image_error.png", Source = u.profilepic, BindingContext=u };
                     TapGestureRecognizer tapper = new TapGestureRecognizer();
                     tapper.Tapped += async (sender, e) => { await Navigation.PushAsync(new ProfilePage(((CachedImage)sender).BindingContext as User)); };
                     pic.GestureRecognizers.Add(tapper);
