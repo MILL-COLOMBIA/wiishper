@@ -149,7 +149,7 @@ namespace Prototipo
                               Constraint.Constant(0),
                               Constraint.RelativeToParent((parent) =>
                               {
-                                  return parent.Height - 55;
+                                  return parent.Height - 46;
                               }
                               ),
                               Constraint.RelativeToParent((parent) =>
