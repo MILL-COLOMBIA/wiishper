@@ -28,11 +28,11 @@ namespace Prototipo
         public App()
         {
             Manager = new RESTManager(new RestService());
-            IsDebuging = false;
+            IsDebuging = true;
 
             if (IsDebuging)
             {
-                MainPage = new NavigationPage(new ProductsPage());
+                MainPage = new NavigationPage(new SignUp());
             }
             else
             {

@@ -10,7 +10,10 @@
   <ContentPage.Content>
     <RelativeLayout>
       <Button Image="exit.png" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.9 }" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}" Clicked="OnExit" BackgroundColor="White"/>
-      <Image x:Name="logo" Source="logo.png" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=52}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-122}"/>
+      <Image x:Name="logo" Source="logo.png" 
+             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=82}" 
+             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-100}"
+             WidthRequest="200" HeightRequest="114"/>
       <StackLayout Orientation="Vertical" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=logo, Property=Height, Factor=1, Constant=102}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}" Spacing="8">
         <Entry x:Name="username"  HorizontalOptions="Fill" VerticalOptions="Center" Placeholder="correo electrónico" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="White"/>
         <Entry x:Name="password" HorizontalOptions="Fill" VerticalOptions="Center" IsPassword="true" Placeholder="contraseña" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="White"/>
