@@ -90,8 +90,10 @@ namespace Prototipo
             StackLayout bottomMenu = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                VerticalOptions = LayoutOptions.EndAndExpand,
-                BackgroundColor = Color.White
+                VerticalOptions = LayoutOptions.End,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = Color.White,
+                HeightRequest = 60
             };
 
             Image btnFriends = new Image
@@ -170,13 +172,12 @@ namespace Prototipo
                               Constraint.Constant(0),
                               Constraint.RelativeToParent((parent) =>
                               {
-                                  return parent.Height - 70;
+                                  return parent.Height - 60;
                               }),
                               Constraint.RelativeToParent((parent) =>
                               {
                                   return parent.Width;
-                              }),
-                              Constraint.Constant(65));
+                              }));
 
             //BoxView bottomSeparator = new BoxView
             //{
