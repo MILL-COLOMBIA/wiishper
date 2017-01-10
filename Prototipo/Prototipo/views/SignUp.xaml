@@ -14,7 +14,9 @@
              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=82}" 
              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-100}"
              WidthRequest="200" HeightRequest="114"/>
-      <StackLayout Orientation="Vertical" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=logo, Property=Height, Factor=1, Constant=102}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}" Spacing="8">
+      <StackLayout Orientation="Vertical" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=logo, Property=Height, Factor=1, Constant=102}" 
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}" 
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}" Spacing="5">
         <Entry x:Name="username"  HorizontalOptions="Fill" VerticalOptions="Center" Placeholder="correo electrónico" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="White"/>
         <Entry x:Name="password" HorizontalOptions="Fill" VerticalOptions="Center" IsPassword="true" Placeholder="contraseña" HeightRequest="48" TextColor="#BCBEC0" HorizontalTextAlignment="Center" BackgroundColor="White"/>
         <Button x:Name="login" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#F2F2F2" Text="Ingresa" WidthRequest="174"  HeightRequest="35" FontSize="14" FontAttributes="Bold" TextColor="#87888A" Clicked="OnLogin"/>

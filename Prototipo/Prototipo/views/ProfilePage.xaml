@@ -67,10 +67,10 @@
                            HeightRequest="20">
                 <Grid Padding="0">
                   <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".8*"/>
-                    <ColumnDefinition Width=".2*"/>
+                    <ColumnDefinition Width=".70*"/>
+                    <ColumnDefinition Width=".30*"/>
                   </Grid.ColumnDefinitions>
-                  <Label BackgroundColor="#F2F2F2" TextColor="#26CAD3" LineBreakMode="TailTruncation" Text="{Binding name}" FontAttributes="Bold" HorizontalTextAlignment="Start" FontSize="12" HorizontalOptions="Start" VerticalOptions="FillAndExpand" Grid.Column="0" VerticalTextAlignment="Center"/>
+                  <Label BackgroundColor="#F2F2F2" TextColor="#26CAD3" LineBreakMode="TailTruncation" Text="{Binding name}" FontAttributes="Bold" HorizontalTextAlignment="Start" FontSize="12" HorizontalOptions="Start" VerticalOptions="FillAndExpand" Grid.Column="0" VerticalTextAlignment="Center" Margin="5, 0, 0, 0"/>
                   <Label BackgroundColor="#F2F2F2" TextColor="#4E4E4E" Text="{Binding price}" LineBreakMode="CharacterWrap" FontSize="10" HorizontalTextAlignment="Start" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand" Grid.Column="1" VerticalTextAlignment="Center"/>
                 </Grid>
               </StackLayout>
@@ -83,10 +83,13 @@
         </flv:FlowListView.FlowColumnTemplate>
       </flv:FlowListView>
       <!--<BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" x:Name="bottomBar"/>-->
-      <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="White" x:Name="bottomMenu" HeightRequest="53">
-        <Button Image="people_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
-        <Button Image="main_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
-        <Button Image="profile_on.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
+      <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="White" x:Name="bottomMenu" HeightRequest="60">
+        <!--<Button Image="people_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends" HeightRequest="53" WidthRequest="50"/>
+        <Button Image="main_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts" HeightRequest="53" WidthRequest="60"/>
+        <Button Image="profile_on.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile" HeightRequest="53" WidthRequest="50"/>-->
+        <Image Source="people_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25" x:Name="btnFriends"/>
+        <Image Source="main_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" HeightRequest="50" WidthRequest="50" x:Name="btnProducts"/>
+        <Image Source="profile_on.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25" x:Name="btnProfile"/>
       </StackLayout>
     </StackLayout>
   </ContentPage.Content>

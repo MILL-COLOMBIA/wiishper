@@ -52,10 +52,13 @@
         </ListView.ItemTemplate>
       </ListView>
       <!--<BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>-->
-      <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="White">
-        <Button Image="people_on.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
-        <Button Image="main_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
-        <Button Image="profile_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
+      <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="White" HeightRequest="60">
+        <!--<Button Image="people_on.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends" HeightRequest="50"/>
+        <Button Image="main_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts" HeightRequest="60"/>
+        <Button Image="profile_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile" HeightRequest="50"/>-->
+        <Image Source="people_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25" x:Name="btnFriends"/>
+        <Image Source="main_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" HeightRequest="50" WidthRequest="50" x:Name="btnProducts"/>
+        <Image Source="profile_on.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25" x:Name="btnProfile"/>
       </StackLayout>
     </StackLayout>
   </ContentPage.Content>

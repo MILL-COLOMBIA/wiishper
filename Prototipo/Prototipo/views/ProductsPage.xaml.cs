@@ -94,51 +94,89 @@ namespace Prototipo
                 BackgroundColor = Color.White
             };
 
-            Button friends = new Button
+            Image btnFriends = new Image
             {
-                Image = "people_off.png",
-				BackgroundColor = Color.White,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BorderRadius = 0
+                Source = "people_off.png",
+                BackgroundColor = Color.White,
+                HeightRequest = 25,
+                WidthRequest = 25,
+                HorizontalOptions = LayoutOptions.CenterAndExpand
             };
 
-            friends.Clicked += OnFriends;
+            TapGestureRecognizer tapper_friends = new TapGestureRecognizer();
+            tapper_friends.Tapped += OnFriends;
+            btnFriends.GestureRecognizers.Add(tapper_friends);
 
-            Button product_btn = new Button
+    //        Button friends = new Button
+    //        {
+    //            Image = "people_off.png",
+				//BackgroundColor = Color.White,
+    //            HorizontalOptions = LayoutOptions.CenterAndExpand,
+    //            BorderRadius = 0,
+    //            HeightRequest = 50
+    //        };
+
+    //        friends.Clicked += OnFriends;
+
+    //        Button product_btn = new Button
+    //        {
+    //            Image = "main_on.png",
+				//BackgroundColor = Color.White,
+    //            HorizontalOptions = LayoutOptions.CenterAndExpand,
+    //            BorderRadius = 0,
+    //            HeightRequest = 60
+    //        };
+
+    //        product_btn.Clicked += OnProducts;
+
+            Image btnProducts = new Image
             {
-                Image = "main_on.png",
-				BackgroundColor = Color.White,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BorderRadius = 0
+                Source = "main_on.png",
+                BackgroundColor = Color.White,
+                HeightRequest = 50,
+                WidthRequest = 50,
+                HorizontalOptions = LayoutOptions.CenterAndExpand
             };
 
-            product_btn.Clicked += OnProducts;
+    //        Button profile = new Button
+    //        {
+    //            Image = "profile_off.png",
+				//BackgroundColor = Color.White,
+    //            HorizontalOptions = LayoutOptions.CenterAndExpand,
+				//BorderRadius = 0,
+    //            HeightRequest = 50
+    //        };
 
-            Button profile = new Button
+            Image btnProfile = new Image
             {
-                Image = "profile_off.png",
-				BackgroundColor = Color.White,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-				BorderRadius = 0
+                Source = "profile_off.png",
+                BackgroundColor = Color.White,
+                HeightRequest = 25,
+                WidthRequest = 25,
+                HorizontalOptions = LayoutOptions.CenterAndExpand
             };
 
-            profile.Clicked += OnProfile;
+            TapGestureRecognizer tapper_profile = new TapGestureRecognizer();
+            tapper_profile.Tapped += OnProfile;
+            btnProfile.GestureRecognizers.Add(tapper_profile);
 
-            bottomMenu.Children.Add(friends);
-            bottomMenu.Children.Add(product_btn);
-            bottomMenu.Children.Add(profile);
+            //profile.Clicked += OnProfile;
+
+            bottomMenu.Children.Add(btnFriends);
+            bottomMenu.Children.Add(btnProducts);
+            bottomMenu.Children.Add(btnProfile);
 
             view.Children.Add(bottomMenu,
                               Constraint.Constant(0),
                               Constraint.RelativeToParent((parent) =>
                               {
-                                  return parent.Height - 53;
+                                  return parent.Height - 70;
                               }),
                               Constraint.RelativeToParent((parent) =>
                               {
                                   return parent.Width;
                               }),
-                              Constraint.Constant(53));
+                              Constraint.Constant(65));
 
             //BoxView bottomSeparator = new BoxView
             //{
@@ -265,7 +303,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new NotificationsPage(), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnFriends(object sender, EventArgs e)
@@ -278,7 +316,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new FriendsPage(), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnProducts(object sender, EventArgs e)
@@ -296,7 +334,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new ActivityPage(), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnProfile(object sender, EventArgs e)
@@ -309,7 +347,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         async void SwipedLeft(int index)
