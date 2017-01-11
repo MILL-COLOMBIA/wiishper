@@ -8,7 +8,7 @@
     <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
   </ContentPage.Padding>
   <ContentPage.Content>
-    <RelativeLayout>
+    <RelativeLayout x:Name="MainLayout">
       <Button Image="exit.png" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.9 }" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}" Clicked="OnExit" BackgroundColor="White"/>
       <Image x:Name="logo" Source="logo.png" 
              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=82}" 
