@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,12 +16,6 @@ namespace Prototipo
         public SignUp()
         {
             InitializeComponent();
-            if(Device.OS == TargetPlatform.iOS && Device.Idiom == TargetIdiom.Tablet)
-            {
-                ScrollView view = new ScrollView { Orientation = ScrollOrientation.Vertical };
-                view.Content = MainLayout;
-                Content = view;
-            }
             NavigationPage.SetHasNavigationBar(this, false);
             notificator = DependencyService.Get<IToastNotificator>();
         }
