@@ -58,7 +58,7 @@ namespace Prototipo
                     int index = MainContent.Children.IndexOf(ProductsView);
                     MainContent.Children.Remove(ProductsView);
                     Image arrow = new Image { Source = "arrow.png", BackgroundColor = Color.Transparent, VerticalOptions = LayoutOptions.End };
-                    Label label = new Label { Text = "¿Aún no te has antojado de nada?", TextColor = Color.FromHex("7E7E7E"), BackgroundColor = Color.Transparent, HorizontalTextAlignment = TextAlignment.Center, FontSize = 20 };
+                    Label label = new Label { Text = "¿Aún no has visto de nada?", TextColor = Color.FromHex("7E7E7E"), BackgroundColor = Color.Transparent, HorizontalTextAlignment = TextAlignment.Center, FontSize = 20 };
                     Label order = new Label { Text = "Antójate", HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.FromHex("4E4E4E"), BackgroundColor = Color.Transparent, VerticalOptions = LayoutOptions.EndAndExpand, FontSize = 16 };
                     label.Margin = new Thickness(50, 40, 50, 0);
                     MainContent.Children.Insert(index, label);

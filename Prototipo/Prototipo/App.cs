@@ -40,7 +40,7 @@ namespace Prototipo
                 if (firstTime)
                 {
                     Helpers.Settings.GeneralSettings = "entered";
-                    MainPage = new NavigationPage(new TutorialPage());
+                    MainPage = new NavigationPage(new ProductsPage());
                 }
                 else if (Helpers.Settings.GeneralSettings.Equals("logged"))
                 {
@@ -50,13 +50,7 @@ namespace Prototipo
                 }
                 else
                 {
-                    if (Helpers.Settings.GeneralSettings.Equals("used"))
-                        MainPage = new NavigationPage(new ProductsPage());
-                    else
-                    {
-                        Helpers.Settings.GeneralSettings = "used";
-                        MainPage = new NavigationPage(new StartPage());
-                    }
+                    MainPage = new NavigationPage(new ProductsPage());
                 }
             }
         }

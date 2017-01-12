@@ -74,12 +74,6 @@
     </Compile>
     <Compile Include="DAL\User.cs" />
     <Compile Include="DAL\UserDatabase.cs" />
-    <Compile Include="views\StartPage.xaml.cs">
-      <DependentUpon>StartPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="views\TutorialPage.xaml.cs">
-      <DependentUpon>TutorialPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="views\widgets\CardStackView.cs" />
     <Compile Include="views\widgets\CardView.cs" />
   </ItemGroup>
@@ -194,18 +188,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="views\ActivityPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="views\TutorialPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="views\StartPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
