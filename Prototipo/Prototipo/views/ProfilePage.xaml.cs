@@ -17,6 +17,14 @@ namespace Prototipo
         public ProfilePage(User user)
         {
             InitializeComponent();
+            TapGestureRecognizer tapper_friends = new TapGestureRecognizer();
+            tapper_friends.Tapped += OnFriends;
+            btnFriends.GestureRecognizers.Add(tapper_friends);
+
+            TapGestureRecognizer tapper_products = new TapGestureRecognizer();
+            tapper_products.Tapped += OnProducts;
+            btnProducts.GestureRecognizers.Add(tapper_products);
+
             NavigationPage.SetHasNavigationBar(this, false);
             notificator = DependencyService.Get<IToastNotificator>();
             if (user.email != RestService.LoggedUser.email)
@@ -45,18 +53,19 @@ namespace Prototipo
             products = await App.Manager.ShowLikedProducts(((User)BindingContext).idusers);
             if (products == null || products.Count == 0)
             {
-                int index = MainContent.Children.IndexOf(ProductsView);
-                MainContent.Children.Remove(ProductsView);
-                Image image = new Image { Source = "socks.png", BackgroundColor = Color.Transparent };
-                Image arrow = new Image { Source = "arrow.png", BackgroundColor = Color.Transparent, VerticalOptions=LayoutOptions.End };
-                Label label = new Label { Text = "¡Te están comprando unas medias en este momento por tener la lista vacía!", TextColor = Color.FromHex("4E4E4E"), BackgroundColor = Color.Transparent, HorizontalTextAlignment=TextAlignment.Center, FontSize=20};
-                Label order = new Label { Text = "Antójate", HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.FromHex("4E4E4E"), BackgroundColor=Color.Transparent, VerticalOptions=LayoutOptions.EndAndExpand, FontSize=16};
-                label.Margin = new Thickness(50, 40, 50, 0);
-                MainContent.Children.Insert(index, label);
-                MainContent.Children.Insert(index +1, image);
-                MainContent.Children.Insert(index + 2, order);
-                MainContent.Children.Insert(index + 3, arrow);
-                bottomBar.VerticalOptions = LayoutOptions.End;
+                if (((User)BindingContext).email.Equals(RestService.LoggedUser.email))
+                {
+                    int index = MainContent.Children.IndexOf(ProductsView);
+                    MainContent.Children.Remove(ProductsView);
+                    Image arrow = new Image { Source = "arrow.png", BackgroundColor = Color.Transparent, VerticalOptions = LayoutOptions.End };
+                    Label label = new Label { Text = "¿Aún no has visto de nada?", TextColor = Color.FromHex("7E7E7E"), BackgroundColor = Color.Transparent, HorizontalTextAlignment = TextAlignment.Center, FontSize = 20 };
+                    Label order = new Label { Text = "Antójate", HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.FromHex("4E4E4E"), BackgroundColor = Color.Transparent, VerticalOptions = LayoutOptions.EndAndExpand, FontSize = 16 };
+                    label.Margin = new Thickness(50, 40, 50, 0);
+                    MainContent.Children.Insert(index, label);
+                    MainContent.Children.Insert(index + 1, order);
+                    MainContent.Children.Insert(index + 2, arrow);
+                    //bottomBar.VerticalOptions = LayoutOptions.End;
+                }
                 bottomMenu.VerticalOptions = LayoutOptions.End;
             }
             else
@@ -121,7 +130,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new NotificationsPage(), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnFriends(object sender, EventArgs e)
@@ -134,13 +143,13 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new FriendsPage(), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnProducts(object sender, EventArgs e)
         {
             Navigation.InsertPageBefore(new ProductsPage(), this);
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnActivity(object sender, EventArgs e)
@@ -153,7 +162,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new ActivityPage(), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnProfile(object sender, EventArgs e)
@@ -163,7 +172,7 @@ namespace Prototipo
 
         private async void OnSettings(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new FormPage(BindingContext as User));
+            await Navigation.PushAsync(new FormPage(BindingContext as User), false);
         }
     }
 }

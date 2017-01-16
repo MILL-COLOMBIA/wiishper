@@ -5,7 +5,7 @@
              xmlns:local="clr-namespace:Prototipo;assembly=Prototipo"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Prototipo.ProfilePage"
-             BackgroundColor="#F2F2F2">
+             BackgroundColor="#E7E7E7">
   <ContentPage.Resources>
     <ResourceDictionary>
       <local:BoolToColorConverter x:Key="colorConverter"/>
@@ -24,7 +24,7 @@
       <BoxView Color="White" HeightRequest="5" HorizontalOptions="FillAndExpand"/>
       <StackLayout Orientation="Horizontal" BackgroundColor="White" Spacing="10">
         <ffimageloading:CachedImage DownsampleHeight="88" DownsampleUseDipUnits="false" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" HeightRequest="88" WidthRequest="88" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Source="{Binding profilepic}"/>
-        <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="CenterAndExpand">
+        <StackLayout Orientation="Vertical" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Spacing="0">
           <StackLayout Orientation="Horizontal" BackgroundColor="White">
           <Label TextColor="Black" FontSize="16" FontAttributes="Bold" Text="{Binding name}" HorizontalTextAlignment="Start" HorizontalOptions="Fill"/>
           <Label TextColor="Black" FontSize="16" FontAttributes="Bold" Text="{Binding surname}" HorizontalTextAlignment="Start" HorizontalOptions="Fill"/>
@@ -51,49 +51,46 @@
         </StackLayout>
       </StackLayout>
       <BoxView Color="White" HeightRequest="5" HorizontalOptions="FillAndExpand"/>
-      <flv:FlowListView FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="true" x:Name="ProductsView" HorizontalOptions="CenterAndExpand" FlowColumnMinWidth="140">
+      <flv:FlowListView FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="true" x:Name="ProductsView" HorizontalOptions="CenterAndExpand" FlowColumnMinWidth="140" BackgroundColor="#7E7E7E">
         <flv:FlowListView.FlowColumnTemplate>
           <DataTemplate>
-		  <RelativeLayout>					
-            <Grid Padding="3">
+		  <RelativeLayout BackgroundColor="#E7E7E7">					
+            <Grid Padding="3" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
               <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
               </Grid.RowDefinitions>
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
               </Grid.ColumnDefinitions>
-              <ffimageloading:CachedImage HeightRequest="140" Aspect="Fill" DownsampleHeight="140" DownsampleUseDipUnits="false" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" Source="{Binding image}"/>
-              <StackLayout BackgroundColor="#26CAD3" HorizontalOptions="Fill" VerticalOptions="End">
-              <Label BackgroundColor="#26CAD3" TextColor="#4E4E4E" Text="{Binding name}" FontAttributes="Bold" HorizontalTextAlignment="Start" FontSize="12" HorizontalOptions="Start" VerticalOptions="End"/>
-              <Label BackgroundColor="#26CAD3" TextColor="#4E4E4E" Text="{Binding price}" FontSize="10" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalOptions="End"/>
+              <ffimageloading:CachedImage HeightRequest="160" Aspect="AspectFill" DownsampleHeight="140" DownsampleUseDipUnits="false" LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png" Source="{Binding image}"/>
+              <StackLayout Orientation="Horizontal" BackgroundColor="#F2F2F2" HorizontalOptions="Fill" VerticalOptions="EndAndExpand" Spacing="0"
+                           HeightRequest="20">
+                <Grid Padding="0">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".70*"/>
+                    <ColumnDefinition Width=".30*"/>
+                  </Grid.ColumnDefinitions>
+                  <Label BackgroundColor="#F2F2F2" TextColor="#26CAD3" LineBreakMode="TailTruncation" Text="{Binding name}" FontAttributes="Bold" HorizontalTextAlignment="Start" FontSize="12" HorizontalOptions="Start" VerticalOptions="FillAndExpand" Grid.Column="0" VerticalTextAlignment="Center" Margin="5, 0, 0, 0"/>
+                  <Label BackgroundColor="#F2F2F2" TextColor="#4E4E4E" Text="{Binding price}" LineBreakMode="CharacterWrap" FontSize="10" HorizontalTextAlignment="Start" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand" Grid.Column="1" VerticalTextAlignment="Center"/>
+                </Grid>
               </StackLayout>
 	            </Grid>
 							<Button Image="exit.png" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-20}"
-								HeightRequest="20" WidthRequest="20" BackgroundColor="Transparent" CommandParameter="{Binding idproducts}" Clicked="OnDelete" x:Name="btn_reject"/>
+                                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=5}"
+								HeightRequest="15" WidthRequest="15" BackgroundColor="Transparent" CommandParameter="{Binding idproducts}" Clicked="OnDelete" x:Name="btn_reject"/>
 							</RelativeLayout>
           </DataTemplate>
         </flv:FlowListView.FlowColumnTemplate>
       </flv:FlowListView>
-      <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" x:Name="bottomBar"/>
-      <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="White" x:Name="bottomMenu">
-        <Button Image="people.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends"/>
-        <Button Image="main.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts"/>
-        <Button Image="profile.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile"/>
+      <!--<BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" x:Name="bottomBar"/>-->
+      <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="White" x:Name="bottomMenu" HeightRequest="60">
+        <!--<Button Image="people_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnFriends" HeightRequest="53" WidthRequest="50"/>
+        <Button Image="main_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProducts" HeightRequest="53" WidthRequest="60"/>
+        <Button Image="profile_on.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" BorderRadius="0" Clicked="OnProfile" HeightRequest="53" WidthRequest="50"/>-->
+        <Image Source="people_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25" x:Name="btnFriends"/>
+        <Image Source="main_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" HeightRequest="50" WidthRequest="50" x:Name="btnProducts"/>
+        <Image Source="profile_on.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25" x:Name="btnProfile"/>
       </StackLayout>
-      <!--<Grid ColumnSpacing="0" VerticalOptions="End" BackgroundColor="White">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width=".2*"/>
-          <ColumnDefinition Width=".2*"/>
-          <ColumnDefinition Width=".2*"/>
-          <ColumnDefinition Width=".2*"/>
-          <ColumnDefinition Width=".2*"/>
-        </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Image="newsfeed.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnNewsfeed"/>
-        <Button Grid.Column="1" Image="people.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnFriends"/>
-        <Button Grid.Column="2" Image="main.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProducts"/>
-        <Button Grid.Column="3" Image="notifications.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnActivity"/>
-        <Button Grid.Column="4" Image="profile.png" BackgroundColor="White" HorizontalOptions="Fill" BorderRadius="0" Clicked="OnProfile"/>
-      </Grid>-->
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

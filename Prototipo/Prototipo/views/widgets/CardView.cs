@@ -76,7 +76,7 @@ namespace Prototipo
                               Constraint.RelativeToParent((parent) => { return parent.Height - 99; })
                               );
 
-            StackLayout bottomLayout = new StackLayout { Spacing=0, BackgroundColor = Color.White, Orientation = StackOrientation.Vertical, InputTransparent = true, Padding=new Thickness(0, 10) };
+            StackLayout bottomLayout = new StackLayout { Spacing=3, BackgroundColor = Color.White, Orientation = StackOrientation.Vertical, InputTransparent = true, Padding=new Thickness(0, 10) };
 
             Price = new Label
             {
@@ -97,19 +97,23 @@ namespace Prototipo
                 InputTransparent = true,
                 FontSize = 10,
                 HorizontalTextAlignment = TextAlignment.Center,
-                HorizontalOptions = LayoutOptions.CenterAndExpand
+                HorizontalOptions = LayoutOptions.Fill,
+                Margin = new Thickness(4, 0, 0, 0)
             };
 
             bottomLayout.Children.Add(Price);
 
-            StackLayout locationStack = new StackLayout { Spacing=0, BackgroundColor = Color.White, Orientation = StackOrientation.Horizontal, VerticalOptions=LayoutOptions.Center };
+            StackLayout locationStack = new StackLayout { Spacing=0, BackgroundColor = Color.White, Orientation = StackOrientation.Horizontal, VerticalOptions=LayoutOptions.Center, HorizontalOptions=LayoutOptions.CenterAndExpand };
 
-            Image Location = new Image { Source = "location.png", HorizontalOptions=LayoutOptions.CenterAndExpand };
+            Image Location = new Image { Source = "location.png", HorizontalOptions=LayoutOptions.Fill, Margin= new Thickness(0), BackgroundColor = Color.White };
 
             locationStack.Children.Add(Location);
             locationStack.Children.Add(Store);
 
-            bottomLayout.Children.Add(locationStack);
+            StackLayout yetAnotherStack = new StackLayout { Spacing = 0, BackgroundColor = Color.White, Orientation = StackOrientation.Horizontal, VerticalOptions = LayoutOptions.Center };
+            yetAnotherStack.Children.Add(locationStack);
+
+            bottomLayout.Children.Add(yetAnotherStack);
 
             view.Children.Add(bottomLayout,
                               Constraint.Constant(0),

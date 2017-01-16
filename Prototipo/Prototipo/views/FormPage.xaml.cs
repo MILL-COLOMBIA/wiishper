@@ -24,16 +24,27 @@ namespace Prototipo
             {
                 InitializeComponent();
                 NavigationPage.SetHasNavigationBar(this, false);
-				Button logout = new Button
+				Button save = new Button
 				{
-					Text = "Salir",
+					Text = "Guardar",
 					TextColor = Color.FromHex("4E4E4E"),
                     BackgroundColor = Color.Transparent,
 					HorizontalOptions=LayoutOptions.Center,
 					VerticalOptions=LayoutOptions.End
 				};
-				logout.Clicked += OnLogOut;
-				MainLayout.Children.Add(logout);
+				save.Clicked += OnSave;
+				MainLayout.Children.Add(save);
+
+                Button logout = new Button
+                {
+                    Text = "Cerrar sesión",
+                    TextColor = Color.FromHex("4E4E4E"),
+                    BackgroundColor = Color.Transparent,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.EndAndExpand
+                };
+                logout.Clicked += OnLogOut;
+                MainLayout.Children.Add(logout);
                 notificator = DependencyService.Get<IToastNotificator>();
                 if (user == null)
                     user = new User();
@@ -85,7 +96,7 @@ namespace Prototipo
             var response = await App.Manager.UpdateUser(user);
             if (response != null)
             {
-                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Bienvenido a Wiishper", TimeSpan.FromSeconds(2));
+                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Actualizamos tus datos", TimeSpan.FromSeconds(2));
                 Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
                 await Navigation.PopAsync();
             }
@@ -122,7 +133,7 @@ namespace Prototipo
                 response = await App.Manager.UpdateUser(user);
                 if (response != null)
                 {
-                    notificator.Notify(ToastNotificationType.Success, "Wiishper", "Tus datos fueron actualizados", TimeSpan.FromSeconds(2));
+                    notificator.Notify(ToastNotificationType.Success, "Wiishper", "Bienvenido a Wiishper", TimeSpan.FromSeconds(2));
                     List<Taste> tastes = App.Database.GetProducts().ToList();
                     foreach (Taste t in tastes)
                     {

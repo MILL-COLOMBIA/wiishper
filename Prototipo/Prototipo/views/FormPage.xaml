@@ -9,8 +9,8 @@
     <StackLayout Orientation="Vertical" Spacing="0" x:Name="MainLayout">
       <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D">
         <Button HeightRequest="50" WidthRequest="50" Image="back.png" BackgroundColor="Transparent" HorizontalOptions="Start" Clicked="OnDismiss"/>
-        <Label Text="Ajustes" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand"/>
-        <Button HeightRequest="50" WidthRequest="50" Image="accept.png" BackgroundColor="Transparent" HorizontalOptions="End" Clicked="OnSave"/>
+        <Label Text="Ajustes" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
+        <Button HeightRequest="50" WidthRequest="50"  BackgroundColor="Transparent" HorizontalOptions="End" IsEnabled="False"/>
       </StackLayout>
       <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
       <BoxView Color="White" HeightRequest="10" />

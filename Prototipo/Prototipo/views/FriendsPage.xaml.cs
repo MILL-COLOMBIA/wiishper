@@ -20,6 +20,14 @@ namespace Prototipo
         public FriendsPage()
         {
             InitializeComponent();
+            TapGestureRecognizer tapper_profile = new TapGestureRecognizer();
+            tapper_profile.Tapped += OnProfile;
+            btnProfile.GestureRecognizers.Add(tapper_profile);
+
+            TapGestureRecognizer tapper_products = new TapGestureRecognizer();
+            tapper_products.Tapped += OnProducts;
+            btnProducts.GestureRecognizers.Add(tapper_products);
+
             notificator = DependencyService.Get<IToastNotificator>();
             NavigationPage.SetHasNavigationBar(this, false);
         }
@@ -34,7 +42,7 @@ namespace Prototipo
                 foreach(User u in friends)
                 {
                     StackLayout layout = new StackLayout() { Orientation = StackOrientation.Vertical, BackgroundColor = Color.White };
-                    CachedImage pic = new CachedImage() { BackgroundColor= Color.White, HeightRequest = 61, Aspect = Aspect.Fill, DownsampleHeight = 61, DownsampleUseDipUnits = false, LoadingPlaceholder = "image_loading.png", ErrorPlaceholder = "image_error.png", Source = u.profilepic, BindingContext=u };
+					CachedImage pic = new CachedImage() { BackgroundColor= Color.White, WidthRequest = 61, HeightRequest = 61, Aspect = Aspect.Fill, DownsampleHeight = 61, DownsampleUseDipUnits = false, LoadingPlaceholder = "image_loading.png", ErrorPlaceholder = "image_error.png", Source = u.profilepic, BindingContext=u };
                     TapGestureRecognizer tapper = new TapGestureRecognizer();
                     tapper.Tapped += async (sender, e) => { await Navigation.PushAsync(new ProfilePage(((CachedImage)sender).BindingContext as User)); };
                     pic.GestureRecognizers.Add(tapper);
@@ -107,7 +115,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new NotificationsPage(), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnFriends(object sender, EventArgs e)
@@ -118,7 +126,7 @@ namespace Prototipo
         private async void OnProducts(object sender, EventArgs e)
         {
             Navigation.InsertPageBefore(new ProductsPage(), this);
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnActivity(object sender, EventArgs e)
@@ -131,7 +139,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new ActivityPage(), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnProfile(object sender, EventArgs e)
@@ -144,7 +152,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
     }

@@ -44,7 +44,7 @@ namespace Prototipo
 
             this.LayoutChanged += (object sender, System.EventArgs e) =>
             {
-                productCards.CardMoveDistance = (int)(this.Width * 0.60f);
+                productCards.CardMoveDistance = (int)(this.Width * 0.40f);
             };
 
             BoxView upperSeparator = new BoxView
@@ -90,73 +90,112 @@ namespace Prototipo
             StackLayout bottomMenu = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                VerticalOptions = LayoutOptions.EndAndExpand,
-                BackgroundColor = Color.White
-            };
-
-            Button friends = new Button
-            {
-                Image = "people.png",
+                VerticalOptions = LayoutOptions.End,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
                 BackgroundColor = Color.White,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BorderRadius = 0
+                HeightRequest = 60
             };
 
-            friends.Clicked += OnFriends;
-
-            Button product_btn = new Button
+            Image btnFriends = new Image
             {
-                Image = "main.png",
+                Source = "people_off.png",
                 BackgroundColor = Color.White,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BorderRadius = 0
+                HeightRequest = 25,
+                WidthRequest = 25,
+                HorizontalOptions = LayoutOptions.CenterAndExpand
             };
 
-            product_btn.Clicked += OnProducts;
+            TapGestureRecognizer tapper_friends = new TapGestureRecognizer();
+            tapper_friends.Tapped += OnFriends;
+            btnFriends.GestureRecognizers.Add(tapper_friends);
 
-            Button profile = new Button
+    //        Button friends = new Button
+    //        {
+    //            Image = "people_off.png",
+				//BackgroundColor = Color.White,
+    //            HorizontalOptions = LayoutOptions.CenterAndExpand,
+    //            BorderRadius = 0,
+    //            HeightRequest = 50
+    //        };
+
+    //        friends.Clicked += OnFriends;
+
+    //        Button product_btn = new Button
+    //        {
+    //            Image = "main_on.png",
+				//BackgroundColor = Color.White,
+    //            HorizontalOptions = LayoutOptions.CenterAndExpand,
+    //            BorderRadius = 0,
+    //            HeightRequest = 60
+    //        };
+
+    //        product_btn.Clicked += OnProducts;
+
+            Image btnProducts = new Image
             {
-                Image = "profile.png",
+                Source = "main_on.png",
                 BackgroundColor = Color.White,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BorderRadius = 0
+                HeightRequest = 50,
+                WidthRequest = 50,
+                HorizontalOptions = LayoutOptions.CenterAndExpand
             };
 
-            profile.Clicked += OnProfile;
+    //        Button profile = new Button
+    //        {
+    //            Image = "profile_off.png",
+				//BackgroundColor = Color.White,
+    //            HorizontalOptions = LayoutOptions.CenterAndExpand,
+				//BorderRadius = 0,
+    //            HeightRequest = 50
+    //        };
 
-            bottomMenu.Children.Add(friends);
-            bottomMenu.Children.Add(product_btn);
-            bottomMenu.Children.Add(profile);
+            Image btnProfile = new Image
+            {
+                Source = "profile_off.png",
+                BackgroundColor = Color.White,
+                HeightRequest = 25,
+                WidthRequest = 25,
+                HorizontalOptions = LayoutOptions.CenterAndExpand
+            };
+
+            TapGestureRecognizer tapper_profile = new TapGestureRecognizer();
+            tapper_profile.Tapped += OnProfile;
+            btnProfile.GestureRecognizers.Add(tapper_profile);
+
+            //profile.Clicked += OnProfile;
+
+            bottomMenu.Children.Add(btnFriends);
+            bottomMenu.Children.Add(btnProducts);
+            bottomMenu.Children.Add(btnProfile);
 
             view.Children.Add(bottomMenu,
                               Constraint.Constant(0),
                               Constraint.RelativeToParent((parent) =>
                               {
-                                  return parent.Height - 53;
+                                  return parent.Height - 60;
                               }),
                               Constraint.RelativeToParent((parent) =>
                               {
                                   return parent.Width;
-                              }),
-                              Constraint.Constant(53));
+                              }));
 
-            BoxView bottomSeparator = new BoxView
-            {
-                BackgroundColor = Color.FromHex("80BCBEC0")
-            };
+            //BoxView bottomSeparator = new BoxView
+            //{
+            //    BackgroundColor = Color.FromHex("80BCBEC0")
+            //};
 
-            view.Children.Add(bottomSeparator,
-                              Constraint.Constant(0),
-                              Constraint.RelativeToParent((parent) =>
-                              {
-                                  return parent.Height - 55;
-                              }
-                              ),
-                              Constraint.RelativeToParent((parent) =>
-                              {
-                                  return parent.Width;
-                              }),
-                              Constraint.Constant(2));
+            //view.Children.Add(bottomSeparator,
+            //                  Constraint.Constant(0),
+            //                  Constraint.RelativeToParent((parent) =>
+            //                  {
+            //                      return parent.Height - Device.OnPlatform<double>(46, 55, 0);
+            //                  }
+            //                  ),
+            //                  Constraint.RelativeToParent((parent) =>
+            //                  {
+            //                      return parent.Width;
+            //                  }),
+            //                  Constraint.Constant(2));
             #endregion
 
             Button like = new Button
@@ -211,24 +250,23 @@ namespace Prototipo
             if (RestService.LoggedUser != null)
             {
                 string result = await App.Manager.RejectProduct(idproduct);
-                if (result.Equals("FAIL"))
-                {
-                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al rechazar el producto", TimeSpan.FromSeconds(2));
-                }
-                else
+                
+                if (!result.Equals("FAIL"))
                 {
                     await productCards.NextLeft();
-                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(2));
                 }
             }
             else
             {
                 App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = new DateTime(), liked = false });
                 await productCards.NextLeft();
-                notificator.Notify(ToastNotificationType.Error, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(2));
             }
             if (productCards.IsEnding)
-                productCards.ItemsSource.AddRange(await App.Manager.GetProducts());
+            {
+                List<Product> temp = await App.Manager.GetProducts();
+                List<Product> actual = productCards.ItemsSource;
+                productCards.ItemsSource.AddRange(temp.Where(x => !actual.Any(y => x.idproducts == y.idproducts)));
+            }
         }
 
         private async void OnLike(object sender, EventArgs e)
@@ -237,24 +275,23 @@ namespace Prototipo
             if (RestService.LoggedUser != null)
             {
                 string result = await App.Manager.LikeProduct(idproduct);
-                if (result.Equals("FAIL"))
-                {
-                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al agregar el producto", TimeSpan.FromSeconds(2));
-                }
-                else
+                
+                if (!result.Equals("FAIL"))
                 {
                     await productCards.NextRight();
-                    notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(2));
                 }
             }
             else
             {
                 App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = new DateTime(), liked = true });
                 await productCards.NextRight();
-                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(2));
             }
             if (productCards.IsEnding)
-                productCards.ItemsSource.AddRange(await App.Manager.GetProducts());
+            {
+                List<Product> temp = await App.Manager.GetProducts();
+                List<Product> actual = productCards.ItemsSource;
+                productCards.ItemsSource.AddRange(temp.Where(x => !actual.Any(y => x.idproducts == y.idproducts)));
+            }
         }
 
         private async void OnNewsfeed(object sender, EventArgs e)
@@ -267,7 +304,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new NotificationsPage(), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnFriends(object sender, EventArgs e)
@@ -280,7 +317,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new FriendsPage(), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnProducts(object sender, EventArgs e)
@@ -298,7 +335,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new ActivityPage(), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         private async void OnProfile(object sender, EventArgs e)
@@ -311,7 +348,7 @@ namespace Prototipo
             {
                 Navigation.InsertPageBefore(new ProfilePage(RestService.LoggedUser), this);
             }
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(false);
         }
 
         async void SwipedLeft(int index)
@@ -324,18 +361,17 @@ namespace Prototipo
                 {
                     notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al rechazar el producto", TimeSpan.FromSeconds(1));
                 }
-                else
-                {
-                    notificator.Notify(ToastNotificationType.Error, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(1));
-                }
             }
             else
             {
                 App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = DateTime.Today, liked = false });
-                notificator.Notify(ToastNotificationType.Error, "Wiishper", "Producto rechazado", TimeSpan.FromSeconds(1));
             }
             if (productCards.IsEnding)
-                productCards.ItemsSource.AddRange(await App.Manager.GetProducts());
+            {
+                List<Product> temp = await App.Manager.GetProducts();
+                List<Product> actual = productCards.ItemsSource;
+                productCards.ItemsSource.AddRange(temp.Where(x => !actual.Any(y => x.idproducts == y.idproducts)));
+            }
         }
 
         async void SwipedRight(int index)
@@ -348,18 +384,17 @@ namespace Prototipo
                 {
                     notificator.Notify(ToastNotificationType.Error, "Wiishper", "Error al agregar el producto", TimeSpan.FromSeconds(1));
                 }
-                else
-                {
-                    notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(1));
-                }
             }
             else
             {
                 App.Database.SaveProduct(new Taste { idproducts = idproduct, inter_date = DateTime.Today, liked = true });
-                notificator.Notify(ToastNotificationType.Success, "Wiishper", "Producto agregado", TimeSpan.FromSeconds(1));
             }
             if (productCards.IsEnding)
-                productCards.ItemsSource.AddRange(await App.Manager.GetProducts());
+            {
+                List<Product> temp = await App.Manager.GetProducts();
+                List<Product> actual = productCards.ItemsSource;
+                productCards.ItemsSource.AddRange(temp.Where(x => !actual.Any(y => x.idproducts == y.idproducts)));
+            }
         }
 
 
