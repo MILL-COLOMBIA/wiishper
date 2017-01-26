@@ -22,5 +22,6 @@ namespace Prototipo
         Task<string> RejectProduct(int id);
         Task<List<Product>> ShowLikedProducts(int id);
         Task<List<Product>> ShowRejectedProducts(int id);
+        Task<User> ValidateUser(User user);
     }
 }

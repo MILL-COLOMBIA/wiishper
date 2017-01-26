@@ -15,6 +15,7 @@ namespace Prototipo
         public static int LOGIN = 101;
         public static int REFRESH_SESSION = 102;
         public static int UPDATE_USER = 103;
+        public static int VALIDATE_USER = 104;
         public static int SHOW_FRIENDS = 200;
         public static int SEARCH_PEOPLE = 201;
         public static int ADD_FRIEND = 202;

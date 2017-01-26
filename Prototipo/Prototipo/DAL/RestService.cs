@@ -556,6 +556,48 @@ namespace Prototipo
             }
         }
 
+        public async Task<User> ValidateUser(User user)
+        {
+            var uri = new Uri(Constants.RestURL);
+            string data = JsonConvert.SerializeObject(user);
+            JObject sendContent = CreateMessage(Constants.VALIDATE_USER, null);
+            sendContent.Add("data", data);
+
+            try
+            {
+                var content = new StringContent(sendContent.ToString(), Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = null;
+                response = await client.PostAsync(uri, content);
+
+                if(response.IsSuccessStatusCode)
+                {
+                    byte[] buffer = await response.Content.ReadAsByteArrayAsync();
+                    string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                    Debug.WriteLine(result);
+                    ServiceResult sr = JsonConvert.DeserializeObject<ServiceResult>(result);
+                    LoggedUser = JsonConvert.DeserializeObject<User>(sr.data.ToString());
+                    LoggedUser.password = "1q2w3e4r5R";
+                    App.Database.SaveUser(LoggedUser);
+                    Helpers.Settings.GeneralSettings = "logged";
+                    return LoggedUser;
+                }
+                else
+                {
+                    byte[] buffer = await response.Content.ReadAsByteArrayAsync();
+                    string result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                    Debug.WriteLine(result);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
         private JObject CreateMessage(int operation, JObject data)
         {
             JObject message = new JObject();

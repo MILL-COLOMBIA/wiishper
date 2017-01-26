@@ -173,6 +173,9 @@ namespace Prototipo
 		{
 			RestService.LoggedUser = null;
 			Helpers.Settings.GeneralSettings = "used";
+            List<User> users = App.Database.GetUsers().ToList();
+            foreach (User user in users)
+                App.Database.DeleteUser(user.idusers);
 			Navigation.InsertPageBefore(new SignUp(), this);
 			await Navigation.PopAsync();
 		}

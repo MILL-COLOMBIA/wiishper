@@ -90,5 +90,10 @@ namespace Prototipo
         {
             return restService.Update(user);
         }
+
+        public Task<User> ValidateUser(User user)
+        {
+            return restService.ValidateUser(user);
+        }
     }
 }

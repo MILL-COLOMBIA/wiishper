@@ -51,7 +51,8 @@ namespace Prototipo
 
         private async void OnFbSignUp(object sender, EventArgs e)
         {
-            await notificator.Notify(ToastNotificationType.Info, "Wiishper", "Estamos trabajando en esta funcionalidad", TimeSpan.FromSeconds(2));
+            Navigation.InsertPageBefore(new SocialLoginPage(SocialLoginPage.SocialNetwork.Facebook), this);
+            await Navigation.PopAsync();
         }
 
         private async void OnTwitterSignUp(object sender, EventArgs e)
@@ -67,7 +68,8 @@ namespace Prototipo
 
         private async void OnGoogleSignUp(object sender, EventArgs e)
         {
-            await notificator.Notify(ToastNotificationType.Info, "Wiishper", "Estamos trabajando en esta funcionalidad", TimeSpan.FromSeconds(2));
+            Navigation.InsertPageBefore(new SocialLoginPage(SocialLoginPage.SocialNetwork.Google), this);
+            await Navigation.PopAsync();
         }
     }
 }

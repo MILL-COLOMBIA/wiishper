@@ -18,6 +18,19 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>fb397763907223862</string>
+      </array>
+    </dict>
+  </array>
+  <key>FacebookAppID</key>
+  <string>397763907223862</string>
+  <key>FacebookDisplayName</key>
+  <string>Wiishper</string>
 	<key>MinimumOSVersion</key>
 	<string>6.0</string>
 	<key>CFBundleDisplayName</key>
