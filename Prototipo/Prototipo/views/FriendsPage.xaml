@@ -11,6 +11,9 @@
       <local:BoolToStringConverter x:Key="stringConverter"/>
     </ResourceDictionary>
   </ContentPage.Resources>
+	<ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" WinPhone="0, 0, 0, 0"/>
+  </ContentPage.Padding>
   <ContentPage.Content>
     <StackLayout Orientation="Vertical" Spacing="0">
       <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D">

@@ -71,7 +71,6 @@
       <DependentUpon>FriendsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DAL\ISQLite.cs" />
-    <Compile Include="views\MainCsPage.cs" />
     <Compile Include="views\NotificationsPage.xaml.cs">
       <DependentUpon>NotificationsPage.xaml</DependentUpon>
     </Compile>
