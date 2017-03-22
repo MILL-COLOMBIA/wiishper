@@ -90,6 +90,18 @@
     <Compile Include="views\SocialLoginPage.cs" />
     <Compile Include="views\widgets\CardStackView.cs" />
     <Compile Include="views\widgets\CardView.cs" />
+    <Compile Include="views\widgets\DemoFriendsList.xaml.cs">
+      <DependentUpon>DemoFriendsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\widgets\DemoProfile.xaml.cs">
+      <DependentUpon>DemoProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\widgets\DemoSearch.xaml.cs">
+      <DependentUpon>DemoSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\widgets\DemoView.xaml.cs">
+      <DependentUpon>DemoView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -216,6 +228,30 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="views\FacebookProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="views\widgets\DemoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="views\widgets\DemoSearch.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="views\widgets\DemoProfile.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="views\widgets\DemoFriendsList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

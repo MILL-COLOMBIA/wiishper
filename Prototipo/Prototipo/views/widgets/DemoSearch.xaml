@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Prototipo.DemoSearch">
+  <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <RelativeLayout x:Name="view">
+                <StackLayout Orientation="Horizontal" BackgroundColor="#5F000000"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                    <StackLayout Orientation="Vertical" VerticalOptions="End">
+                        <Label Text="Busca a tus amigos" HorizontalOptions="Start" Margin="20,0,0,0" BackgroundColor="Transparent" TextColor="White"/>
+                        <Image Source="Instruccional_08.png" BackgroundColor="Transparent" WidthRequest="120" HeightRequest="120" HorizontalOptions="Start"/>
+                    </StackLayout>
+                </StackLayout>
+                <Button  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+                        Clicked="OnClick"/>
+            </RelativeLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

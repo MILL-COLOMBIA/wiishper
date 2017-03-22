@@ -35,6 +35,16 @@ namespace Prototipo
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            Debug.WriteLine(Helpers.Settings.TutorialFriends);
+
+        /*    if (!(string.IsNullOrEmpty(Helpers.Settings.TutorialFriends)))
+            {
+                view.Children.Remove(demoFriends);
+                Debug.WriteLine("ola ke ase");
+            }
+          */  
+            
+
             friendsStack.Children.Clear();
             friends = await App.Manager.GetFriends();
             if(friends != null && friends.Count > 0)

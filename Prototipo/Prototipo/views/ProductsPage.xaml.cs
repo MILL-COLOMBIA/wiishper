@@ -15,6 +15,12 @@ namespace Prototipo
 
         IToastNotificator notificator;
         CardStackView productCards;
+        DemoView demoView;
+        DemoProfile demoProfile;
+        DemoSearch demoSearch;
+        RelativeLayout view;
+        int state;
+
         public ProductsPage()
         {
             InitializeComponent();
@@ -23,7 +29,7 @@ namespace Prototipo
             productCards.SetBinding(CardStackView.ItemsSourceProperty, "ProductList");
             productCards.SwipedLeft += SwipedLeft;
             productCards.SwipedRight += SwipedRight;
-            RelativeLayout view = new RelativeLayout();
+            view = new RelativeLayout();
             view.BackgroundColor = Color.FromHex("F2F2F2");
             NavigationPage.SetHasNavigationBar(this, false);
             notificator = DependencyService.Get<IToastNotificator>();
@@ -42,6 +48,26 @@ namespace Prototipo
                               })
                 );
 
+/*            if (string.IsNullOrEmpty(Helpers.Settings.Tutorial))
+            {
+  */          
+
+                demoView = new DemoView();
+                demoView.page = this;
+
+                view.Children.Add(demoView,
+                                  Constraint.Constant(0),
+                                  Constraint.Constant(0),
+                                  Constraint.RelativeToParent((parent) =>
+                                  {
+                                      return parent.Width;
+                                  }),
+                                  Constraint.RelativeToParent((parent) =>
+                                  {
+                                      return parent.Height;
+                                  })
+                    );
+          //  }
             this.LayoutChanged += (object sender, System.EventArgs e) =>
             {
                 productCards.CardMoveDistance = (int)(this.Width * 0.40f);
@@ -242,6 +268,52 @@ namespace Prototipo
             {
                 await notificator.Notify(ToastNotificationType.Error, "Wiishper", "Ooops, no encontramos ningún producto", TimeSpan.FromSeconds(2));
             }
+        }
+
+        public void OnChange()
+        {
+
+
+            if (++state == 1)
+            {
+                view.Children.Remove(demoView);
+
+                    demoSearch = new DemoSearch();
+                    demoSearch.page = this;
+                    view.Children.Add(demoSearch,
+                                      Constraint.Constant(0),
+                                      Constraint.Constant(0),
+                                      Constraint.RelativeToParent((parent) =>
+                                      {
+                                          return parent.Width;
+                                      }),
+                                      Constraint.RelativeToParent((parent) =>
+                                      {
+                                          return parent.Height;
+                                      })
+                        );
+            }
+            else
+            {
+                view.Children.Remove(demoSearch);
+                demoProfile = new DemoProfile();
+                demoProfile.page = this;
+                view.Children.Add(demoProfile,
+                                  Constraint.Constant(0),
+                                  Constraint.Constant(0),
+                                  Constraint.RelativeToParent((parent) =>
+                                  {
+                                      return parent.Width;
+                                  }),
+                                  Constraint.RelativeToParent((parent) =>
+                                  {
+                                      return parent.Height;
+                                  })
+                    );
+
+            }
+
+            //Helpers.Settings.Tutorial = "show";
         }
 
         private async void OnReject(object sender, EventArgs e)

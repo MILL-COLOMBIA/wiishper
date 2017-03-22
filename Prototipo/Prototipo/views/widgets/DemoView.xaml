@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Prototipo.DemoView">
+  <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <RelativeLayout x:Name="view">
+                <StackLayout Orientation="Horizontal" BackgroundColor="#5F000000" Spacing="0"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                        <Image Source="Instruccional_07.png" BackgroundColor="Transparent" WidthRequest="120" HeightRequest="120" HorizontalOptions="Start"/>
+                        <Label Text="Desliza a la izquierda para descartarlo" Margin="10" FontAttributes="Bold"  FontSize="12" HorizontalOptions="Start" BackgroundColor="Transparent" TextColor="White"/>
+                    </StackLayout>
+                    <Image Source="tap.png" BackgroundColor="Transparent" WidthRequest="120" HeightRequest="120" HorizontalOptions="Center"/>
+                    <StackLayout Orientation="Vertical" BackgroundColor="Transparent" VerticalOptions="Center" Margin="0,0,50,0" Padding="0" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+                        <Image Source="Instruccional_06.png" BackgroundColor="Transparent" WidthRequest="120" Margin="0,0,50,0" HeightRequest="120" HorizontalOptions="End"/>
+                        <Label Text="Desliza a la derecha para guardarlo en tu lista" FontSize="12" FontAttributes="Bold"  Margin="0,0,50,0" BackgroundColor="Transparent" TextColor="White"/>
+                    </StackLayout>
+                </StackLayout>
+                <Button  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+                        Clicked="OnUp"/>
+            </RelativeLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

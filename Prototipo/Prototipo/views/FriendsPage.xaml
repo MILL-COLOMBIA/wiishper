@@ -11,9 +11,13 @@
       <local:BoolToStringConverter x:Key="stringConverter"/>
     </ResourceDictionary>
   </ContentPage.Resources>
-  <ContentPage.Content>
-    <StackLayout Orientation="Vertical" Spacing="0">
-      <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D">
+    <ContentPage.Content>
+        <RelativeLayout x:Name="view">
+            <StackLayout Orientation="Vertical" Spacing="0" RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+                                                        RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+                                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                                                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+         <StackLayout Orientation="Horizontal" BackgroundColor="#5D5D5D" x:Name="upperBar">
         <Image Source="wordlogo.png" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
       </StackLayout>
     <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
@@ -61,5 +65,11 @@
         <Image Source="profile_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25" x:Name="btnProfile"/>
       </StackLayout>
     </StackLayout>
-  </ContentPage.Content>
+            <local:DemoFriendsList x:Name="demoFriends" RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=50}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-110}"/>
+
+        </RelativeLayout>
+    </ContentPage.Content>
 </ContentPage>

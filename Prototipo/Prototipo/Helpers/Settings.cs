@@ -38,6 +38,27 @@ namespace Prototipo.Helpers
         AppSettings.AddOrUpdateValue<string>(SettingsKey, value);
       }
     }
+        public static string Tutorial {
+            get
+            {
+                return AppSettings.GetValueOrDefault<string>("tutorial", SettingsDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue<string>("tutorial", value);
+            }
+        }
 
+        public static string TutorialFriends
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault<string>("tutorial", SettingsDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue<string>("tutorial", value);
+            }
+        }
   }
 }
