@@ -22,7 +22,7 @@
       </StackLayout>
     <BoxView Color="#86CACD" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
     <StackLayout Spacing="0" Orientation="Horizontal" BackgroundColor="White" Margin="10, 0">
-      <Button HeightRequest="48" WidthRequest="48" Image="search.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+      <Button HeightRequest="48" WidthRequest="48" Margin="10" Image="search.png" BackgroundColor="Transparent" HorizontalOptions="Start"/>
       <Entry HeightRequest="48" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="#FEFEFE" TextColor="#BCBEC0" Placeholder="Buscar" FontSize="15"/>
     </StackLayout>
     <BoxView Color="#80BCBEC0" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
