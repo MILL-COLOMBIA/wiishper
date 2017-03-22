@@ -65,11 +65,5 @@
         <Image Source="profile_off.png" BackgroundColor="White" HorizontalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25" x:Name="btnProfile"/>
       </StackLayout>
     </StackLayout>
-            <local:DemoFriendsList x:Name="demoFriends" RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=50}"
-                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
-                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
-                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-110}"/>
-
-        </RelativeLayout>
-    </ContentPage.Content>
+  </ContentPage.Content>
 </ContentPage>

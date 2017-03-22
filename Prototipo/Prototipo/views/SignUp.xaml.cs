@@ -68,8 +68,15 @@ namespace Prototipo
 
         private async void OnGoogleSignUp(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new SocialLoginPage(SocialLoginPage.SocialNetwork.Google), this);
-            await Navigation.PopAsync();
+			if (Device.OS == TargetPlatform.iOS)
+			{
+				notificator.Notify(ToastNotificationType.Info, "Wiishper", "Google está revisando sus políticas de autenticación, tendremos está funcionalidad muy pronto", TimeSpan.FromSeconds(2));
+			}
+			else
+			{
+				Navigation.InsertPageBefore(new SocialLoginPage(SocialLoginPage.SocialNetwork.Google), this);
+				await Navigation.PopAsync();
+			}
         }
     }
 }
